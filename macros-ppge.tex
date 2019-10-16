@@ -1,0 +1,208 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Sumario (TOC) ABNT-6027-2012
+% CFT == Table of Contents, Figures and Tables 
+
+% Comando para mudar letras dos títulos nas CFT
+
+% HEADSTART
+\renewcommand{\tocheadstart}{\vspace{0 em}\center}
+\renewcommand{\lofheadstart}{\vspace{0 em}\center}
+\renewcommand{\lotheadstart}{\vspace{0 em}\center}
+
+% AFTER TITLE
+\renewcommand{\afterloftitle}{\par\vspace{\baselineskip}}
+\renewcommand{\afterlottitle}{\par\vspace{\baselineskip}}
+\renewcommand{\aftertoctitle}{\par\vspace{-0.5 em}}
+
+% lista de ilustracoes
+\renewcommand{\cftfigurename}{\figurename\space} 
+\renewcommand*{\cftfigureaftersnum}{\hfill\textendash\hfill}
+ 
+% lista de tabelas  
+\renewcommand{\cfttablename}{\tablename\space}
+\renewcommand*{\cfttableaftersnum}{\hfill\textendash\hfill}	
+
+% suprime espaço entre os itens de listings de diferentes capítulos 
+\setlength{\cftbeforechapterskip}{0pt plus 0pt}
+\renewcommand*{\insertchapterspace}{}
+
+% pagestyle (layout de página)
+\addtodef{\listoffigures}{\clearpage\pagestyle{empty}}{}
+\addtodef{\listoftables}{\clearpage\pagestyle{empty}}{}
+\addtodef{\tableofcontents}{\clearpage\pagestyle{empty}}{}
+
+% nivel de profundidade (implementa o quinto nivel - subsubsubsection)
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{2}
+
+% leaders para os capitulos (pontos entre titulo e pagenum)
+\renewcommand*{\cftchapterdotsep}{\cftdotsep} 
+
+% macros para configurar o Sumário conforme 6027-2012 ou tradicional cft
+\cftinsertcode{A}{}
+
+% Set indents
+\newlength{\cftlastnumwidth}
+\setlength{\cftlastnumwidth}{\cftsubsectionnumwidth}
+\addtolength{\cftlastnumwidth}{0 em}
+
+\cftsetindents{part}{0em}{\cftlastnumwidth}
+\cftsetindents{chapter}{0em}{\cftlastnumwidth}
+\cftsetindents{section}{0em}{\cftlastnumwidth}
+\cftsetindents{subsection}{0em}{\cftlastnumwidth}
+\cftsetindents{subsubsection}{0em}{\cftlastnumwidth}
+\cftsetindents{paragraph}{0em}{\cftlastnumwidth}
+\cftsetindents{subparagraph}{0em}{\cftlastnumwidth}
+\cftsetindents{bibsection}{0em}{\cftlastnumwidth}
+
+\renewcommand{\tocprintchapter}{%
+\addtocontents{toc}{\cftsetindents{chapter}{0em}{\cftlastnumwidth}}}
+
+\renewcommand{\tocinnonumchapter}{%
+\addtocontents{toc}{\cftsetindents{chapter}{\cftlastnumwidth}{2em}}%
+\cftinserthook{toc}{A}}
+
+\renewcommand{\tocprintchapternonum}{%
+\addtocontents{toc}{\cftsetindents{chapter}{\cftlastnumwidth}{2em}}}
+
+\renewcommand{\tocpartapendices}{%
+\addtocontents{toc}{\cftsetindents{part}{\cftlastnumwidth}{2em}}
+\cftinserthook{toc}{A}}
+
+\renewcommand{\tocpartanexos}{%
+\addtocontents{toc}{\cftsetindents{part}{\cftlastnumwidth}{2em}}
+\cftinserthook{toc}{A}}
+
+\setlength{\cftbeforechapterskip}{2 em}
+
+% fonte das partes e do capitulo do TOC
+\renewcommand{\cftchapterfont}{\normalsize\bfseries\MakeTextUppercase}
+\renewcommand{\cftsectionfont}{\normalsize\MakeTextUppercase}
+\renewcommand{\cftsubsectionfont}{\normalsize\bfseries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ajuste entrada Referencias
+
+\renewcommand{\bibsection}{%
+\chapter*{\bibname}
+\bibmark
+\phantomsection
+\addcontentsline{toc}{chapter}{\texorpdfstring{\chapternumberline {}{\bibname}}}
+% \addcontentsline{toc}{chapter}{\texorpdfstring{\chapternumberline {} {\bibname}}
+\prebibhook
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% capitulos textual
+\makechapterstyle{ppge1}{%
+\renewcommand{\chapterheadstart}{\vspace{0 em}}
+\renewcommand{\chapnamefont}{\bfseries\MakeTextUppercase}
+\renewcommand{\chapnumfont}{\bfseries\MakeTextUppercase}
+\renewcommand{\chaptitlefont}{\bfseries\MakeTextUppercase}
+
+\renewcommand{\printchaptername}{}
+\renewcommand{\chapternamenum}{ }
+\renewcommand{\printchapternum}{\chapnumfont \thechapter}
+\renewcommand{\afterchapternum}{\hspace{1 em}}
+\renewcommand{\afterchaptertitle}{\par \vspace{\baselineskip}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% capitulos pre and post textual
+\makechapterstyle{ppge2}{%
+\renewcommand{\chapterheadstart}{\vspace{0 em}}
+\renewcommand{\chapnamefont}{\bfseries}
+\renewcommand{\chapnumfont}{\bfseries}
+\renewcommand{\chaptitlefont}{\centering\bfseries\MakeTextUppercase}
+
+\renewcommand{\printchaptername}{ }
+\renewcommand{\chapternamenum}{ }
+\renewcommand{\printchapternum}{\chapnumfont \thechapter}
+\renewcommand{\afterchapternum}{\hspace{1 em}}
+\renewcommand{\afterchaptertitle}{\par \vspace{\baselineskip}}
+}
+\chapterstyle{ppge2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Declaracoes de cabecalhos e Layout de Páginas
+
+% Cabecalho padrao
+\makepagestyle{abntheadings}
+\makeevenhead{abntheadings}{\thepage}{}{}
+\makeoddhead{abntheadings}{}{}{\thepage}
+% \makeheadrule{abntheadings}{\textwidth}{\normalrulethickness}
+
+% Cabecalho do inicio do capitulo
+\makepagestyle{abntchapfirst}
+\makeoddhead{abntchapfirst}{}{}{\thepage}
+
+% layout para elementos pre-textuais
+\newcommand{\pretextual}{%
+  \aliaspagestyle{chapter}{empty}% customizing chapter pagestyle
+  \pagestyle{empty}
+  \aliaspagestyle{cleared}{empty}
+  \aliaspagestyle{part}{empty}
+  \chapterstyle{ppge2}
+}
+\renewcommand{\frontmatter}{\pretextual} 
+
+% layout para elementos textuais
+\newcommand{\textual}{%
+%   \ifthenelse{\equal{\ABNTEXisarticle}{true}}{%
+%     \pagestyle{plain}%
+%   }{%else  
+    \pagestyle{abntheadings}%
+    \aliaspagestyle{chapter}{abntchapfirst}% customizing chapter pagestyle
+    \chapterstyle{ppge1}
+% }  
+  % \nouppercaseheads%
+  % \bookmarksetup{startatroot}% 
+}
+\renewcommand{\mainmatter}{\textual}
+
+% layout para elementos pos-textuais
+\newcommand{\postextual}{%
+\phantompart
+\chapterstyle{ppge2}
+}
+\renewcommand{\backmatter}{\postextual}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Espaçamentos entre seções
+% section
+\setbeforesecskip{18 pt}
+\setaftersecskip{18 pt}
+
+% % subsection
+\setbeforesubsecskip{18 pt}
+\setaftersubsecskip{18 pt}
+
+% subsubsection
+\setbeforesubsubsecskip{\baselineskip}
+\setaftersubsubsecskip{\baselineskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fontes de section, subsec, subsubsec
+\setsecheadstyle{\normalsize\MakeTextUppercase}
+\setsubsecheadstyle{\normalsize\bfseries}
+\setsubsubsecheadstyle{\normalsize\itshape}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Espaçamentos entre linhas e parágrafos 
+\OnehalfSpacing
+% \SingleSpacing
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm} % Tamanho do TAB
+
+% Controle do espaçamento entre um parágrafo e outro:
+% \setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Comando para mudar tamanho da paginação
+% \renewcommand*{\thepage}{\footnotesize\arabic{page}}
+% \renewcommand{\thepage}{\arabic{page}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

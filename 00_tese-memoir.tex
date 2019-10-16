@@ -1,0 +1,2499 @@
+\documentclass[12pt,oneside,a4paper]{memoir}
+% \documentclass[12pt,oneside,a4paper]{abntex2}
+\usepackage[a4paper, lmargin=3cm, rmargin=2cm,tmargin=3cm,bmargin=2cm]{geometry}   % MARGENS
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Pacotes básicos 
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage[english]{babel}
+% \selectlanguage{english}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Pacotes de citações
+% BIBLIOGRAPHYSTYLE (BST) DIFERENTE LA EM BAIXO
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{mathtools, amsmath, amssymb, amsthm, latexsym}
+\usepackage{lscape}				% Gira a página em 90 graus
+%\usepackage{listings}			% Formatação para inserir códigos
+\usepackage[normalem]{ulem}
+\usepackage[all]{xy}
+\usepackage{xcolor}
+\usepackage{ragged2e}           % formatação texto
+\usepackage{bm}                 % bold symbols 
+% \usepackage{hyperref}         % referencias dentro do texo (*QUEBRA MEMOIR*)
+\usepackage{url}                % URL
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{subcaption}			% Faz subfiguras
+\usepackage{textcase}			% MakeTextUppercase
+%\usepackage{subfigure}         % subfigures
+% \usepackage{setspace}         % Espaçamento
+\usepackage{pdfpages}           % inclui páginas de pdfs (*FICHA CATALOGRAFICA*)
+\usepackage[flushleft]{threeparttable} % notas nas tabelas
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{ifthen}           % 
+\usepackage{textcase}
+% \usepackage{bookmark}   			
+\usepackage{enumitem}
+\usepackage{calc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{macros.tex}
+\input{macros-ppge.tex}
+
+%   % References
+%   \DisemulatePackage{tocbibind}
+%   \let\bibsection\relax
+%   \usepackage[chapter,notlot,notlof,nottoc]{tocbibind}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Início do documento
+\begin{document}
+\selectlanguage{english}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ELEMENTOS PRÉ-TEXTUAIS
+\pretextual
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Capa do Projeto
+\begin{center}
+\textbf{UNIVERSIDADE FEDERAL DO RIO GRANDE DO SUL
+  \\
+FACULDADE DE CIÊNCIAS ECONÔMICAS
+  \\
+PROGRAMA DE PÓS-GRADUAÇÃO EM ECONOMIA}
+\end{center}
+
+\vspace{4.5 em}
+
+\begin{center}
+\textbf{PAULO FERREIRA NAIBERT}
+\end{center}
+
+\vspace{4.5 em}
+
+\begin{center}
+	\textbf{ESSAYS IN PORTFOLIO OPTIMIZATION}
+\end{center}
+\vfill
+
+\begin{center}
+\textbf{Porto Alegre
+\\
+2019}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Capa do Projeto
+\clearpage
+
+\begin{center}
+\textbf{PAULO FERREIRA NAIBERT}
+\end{center}
+
+\vspace{9 em}
+
+\begin{center}
+	\textbf{ESSAYS IN PORTFOLIO OPTIMIZATION}
+\end{center}
+
+\vspace{9 em}
+\hfill
+\begin{minipage}{.5\textwidth}
+\begin{SingleSpace}
+Tese submetida ao Programa de Pós-Graduação em Economia da Faculdade de Ciências Econômicas da UFRGS, como requisito parcial para obtenção do título de Doutor em Economia.
+
+\vspace{1 em}
+Orientador: Prof. Dr. João Frois Caldeira 
+\end{SingleSpace}
+\end{minipage}
+\vfill
+
+\begin{center}
+\textbf{Porto Alegre
+\\
+2019}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FICHA CATALOGRÁFICA
+%Ficha catalográfica vem aqui
+\clearpage
+% \includepdf{ficha.pdf}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FOLHA DE APROVAÇÃO
+\clearpage
+
+\begin{center}
+\textbf{PAULO FERREIRA NAIBERT}
+\end{center}
+
+\vspace{3 em}
+
+\begin{center}
+\textbf{ESSAYS IN PORTFOLIO OPTIMIZATION}
+\end{center}
+
+\vspace{3 em}
+% \vfill
+\hfill  
+\begin{minipage}{.5\textwidth}
+\begin{SingleSpace}
+Tese submetida ao Programa de Pós-Graduação em Economia da Faculdade de Ciências Econômicas da UFRGS, como requisito parcial para obtenção do título de Doutor em Economia.
+\end{SingleSpace}
+\end{minipage}
+\vfill
+
+\noindent
+Aprovada em: Porto Alegre, 17 de setembro de 2019.\\
+\vspace{1 em}
+
+\noindent
+BANCA EXAMINADORA:\\
+%
+
+\vspace{1 em}
+\noindent
+\rule{\textwidth}{1pt}
+Prof. Dr. João Fróis Caldeira -- Orientador\\
+UFRGS\\
+
+\vspace{1 em}
+\noindent
+\rule{\textwidth}{1pt}
+Prof. Dr. Márcio Poletti Laurini\\
+USP--RP\\
+
+\vspace{1 em}
+\noindent
+\rule{\textwidth}{1pt}
+Prof. Dr. Tiago Pascoal Filomena\\
+UFRGS\\
+
+\vspace{1 em}
+\noindent
+\rule{\textwidth}{1pt}
+Dr. Leonardo Riegel Sant'anna\\
+Sicredi\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AGRADECIMENTOS
+\clearpage
+
+% \chapter*{acknowledgements} 
+\chapter*{ACKNOWLEDGEMENTS} 
+
+Primeiro, gostaria de agradecer minha família por sempre apoiar os meus estudos.
+Em especial, gostaria de agradecer minha prima Raquel Oliveira por me ajudar a revisar essa tese.
+Todos os erros continuam sendo meus.
+Também gostaria de agradecer meus amigos por terem tornado a jornada do Doutorado mais divertida.
+
+Aos professores do PPGE/UFRGS, deixo um muito obrigado pelo conhecimento que me passaram em suas aulas.
+Em especial, gostaria de agradecer ao meu orientador João Caldeira.
+Finalmente, gostaria de agradecer ao CNPq pela bolsa de Doutorado concedida para eu realizar o curso de Doutorado na UFRGS.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% RESUMOS
+\clearpage
+
+% ABSTRACT
+% \chapter*{abstract} 
+\chapter*{ABSTRACT} 
+
+\noindent
+This thesis presents three essays in the topic of portfolio optimization and index tracking.
+% TP
+The first essay is a critique of the Tangency Portfolio (TP).
+The TP has paramount theoretical importance in the Modern Portfolio Theory, however, its performance is far from satisfactory.
+The TP presents unstable weights, what increases the portfolio turnover and, consequently, its transaction costs.
+Furthermore, the denominator of the TP is frequently close to zero, what can result in extreme weights, precluding the portfolio from being well diversified.
+There is also the possibility that the TP's denominator is negative, causing an inversion of the allocation vector's signal and the delivery of a poor portfolio.
+This work compares the TP with other portfolios and finds that the TP always comes at the bottom.
+The work also offers propositions that show that the TP can be outperformed (in terms of utility) by other portfolios.
+% letter
+The second essay provides an explicit derivation to the equivalence between the minimum variance portfolio of excess returns on a benchmark and the minimum Tracking Error volatility portfolio.
+This result relies on the Sherman-Morrison formula.
+The essay also presents an equivalence of those results to an OLS regression with constrained beta.
+Further, the essay uses the first equivalence result to find a tracking portfolio using the approach of \citeonline{memmel-2006}.
+% featsel
+The third essay compares the performance of passive investment portfolio with a small number of assets (sparse index tracking portfolios) using different feature selection algorithms.
+To that end we provide an empirical examination with two datasets: one American and one Brazilian.
+To isolate the effect of the selection methods, we separate the asset selection and the asset allocation phase.
+In the asset allocation phase, we follow \citeonline{liu-2009}, and select minimum Tracking Error volatility portfolios.
+The selection methods used are the backward stepwise selection, forward stepwise selection, and the lasso.
+Our results show that, in the Brazilian case, the lasso selection method outperforms the other methods.
+It presents similar Tracking Error volatility and higher mean return, which leads to a better risk-adjusted performance.
+In the American case, the lasso presents better risk-adjusted performance, but this is due to higher mean returns, not lower volatility.
+This is undesirable in our case.
+One highlight of this essay is that the forward and backward iteration algorithms (simple methods that receive little attention in the literature) perform well in selecting assets for index tracking.
+
+\noindent
+\textbf{Key-words}: Mean-Variance Analysis. Portfolio Optimization. Index Tracking. Performance Evaluation.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --- RESUMO em PT-BR ---
+% \chapter*{resumo}
+\chapter*{RESUMO}
+
+\noindent
+A presente tese apresenta três ensaios com o tema de otimização de carteiras e \textit{index tracking}.
+% TP
+O primeiro ensaio é uma critica ao Portfolio de Tangência (TP).
+O TP tem grande importância teórica na Moderna Teoria do Portfólio; porém, o seu desempenho está longe de ser satisfatório.
+O TP apresenta pesos instáveis, o que aumenta o \textit{turnove}r da carteira e, consequentemente, os seus custos de transação.
+Além disso, frequentemente, o denominador do TP é perto de zero, o que pode resultar em pesos extremos, o que impede a boa diversificação dos pesos da carteira.
+Também há a possibilidade de o denominador do TP ser negativo, o que causa a inversão do sinal do vetor de alocação, resultando em um portfólio ruim.
+Este trabalho compara o TP com outras carteiras e chega a conclusão que o TP tem um desempenho pífio.
+O trabalho também oferece proposições que mostram que o TP pode ser superado (em termos de utilidade) por outras carteiras.
+% letter
+O segundo ensaio oferece uma derivação explícita da equivalência entre a carteira de variância mínima e a carteira de mínima volatilidade do \textit{Tracking Error}.
+Esse resultado depende da fórmula de Sherman-Morrison .
+O ensaio também apresenta uma equivalência desses resultados com uma regressão restringida de Mínimos Quadrados.
+Além disso, o ensaio usa a primeira equivalência para achar uma carteira de \textit{tracking} usando a abordagem de \citeonline{memmel-2006}.
+% featsel
+O terceiro ensaio compara a performance de carteiras de investimento passivo com um número pequeno de ativos (carteiras esparsas de \textit{index tracking} usando diferentes algoritmos de \textit{feature selection}.
+Para isso, oferecemos um estudo empírico com duas bases de dados, uma americana e outra brasileira.
+Para isolarmos o efeito dos métodos de seleção, nós separamos a fase de seleção de ativos da fase de alocação de ativos.
+Na fase de alocação de ativos, seguimos \citeonline{liu-2009} e selecionamos a carteira com a menor volatilidade de \textit{Tracking Error}.
+Os métodos de seleção utilizados são o \textit{backward stepwise selection}, o \textit{forward stepwise selection} e o lasso.
+Nossos resultados mostram que, no caso brasileiro, a seleção pelo método lasso supera os outros métodos.
+Ele apresenta volatilidade do \textit{Tracking Error} similar aos outros métodos com maior retorno médio, o que leva a um melhor desempenho ajustado pelo risco.
+No caso americano, o lasso apresenta melhor desempenho ajustado pelo risco, porém isto é devido a maiores retornos, não a menor volatilidade, o que não é desejável no nosso caso.
+Um destaque deste ensaio é que os algoritmos de iteração \textit{forward} e \textit{backward} (métodos simples que recebem pouca atenção na literatura) têm bom desempenho na seleção de ativos para o \textit{index tracking}.
+
+\noindent 
+\textbf{Palavras-chaves}: Média-Variância. Otimização de Carteiras. \textit{Index Tracking.} Avaliação de Desempenho.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% inserir lista de ilustrações
+
+\cleardoublepage
+\listoffigures*
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% inserir lista de tabelas
+
+\cleardoublepage
+\listoftables*
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INSERIR SUMÁRIO
+
+\cleardoublepage
+\tableofcontents*
+\cleardoublepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ELEMENTOS TEXTUAIS
+\textual
+
+% numero de páginas até o inicio do intro menos 2 (dois)
+% capa nao conta, nem a ficha
+\setcounter{page}{10} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INTRODUÇÃO
+% \chapter{Introduction}
+\chapter{INTRODUCTION}
+
+It is reasonable to imagine that investors prefer to elevate their wealth while minimizing the risks associated to any potential gain.
+To that end, professional wealth managers use portfolio optimization on investment decisions.
+This optimization is an important process of diversification in which the proportion of each financial asset kept on a portfolio is determined to maximize the return contingent to a desired risk level.
+The classic approach was introduced by \citeonline{markowitz1952} and \citeonline{markowitz1959}, and perfected by \citeonline{merton1972}.
+It is known as the Modern Portfolio Theory (MPT) and it aims to optimize the trade-off between risk and return of a portfolio.
+This mean-variance framework is the basis to the subsequent development of portfolio optimization.
+
+Since the seminal contributions of \citeonline{markowitz1952} and \citeonline{markowitz1959}, mean-variance portfolio optimization has become the cornerstone to several areas in quantitative finance, including asset allocation, portfolio management of stocks, bonds, and other assets.
+This framework defines the appropriate portfolio weights by solving an optimization problem.
+This problem presents itself in three main forms:
+the first is to maximize return given a level of risk;
+the second is to minimize risk given a level of return; and
+the third is to optimize an objective (or utility) function.
+Even though this approach presents some deficiencies, one of them being the sensibility of the optimal weights to the inputs (estimated means and variances), the mean-variance optimization still is the mainstay of the Modern Portfolio Theory.
+Hence, a solid understanding of this method allied with some intuition is essential to the comprehension and to the successful implementation of any quantitative investment strategies.
+
+Before Markowitz's work, the risk return interaction was treated in a rather \textit{ad hoc} manner, as \citeonline{KTF2014} point out.
+Since then, portfolio selection and optimization is a fundamental problem of finance, both from the academic point of view and from the market practitioner point of view.
+The MPT offers an answer to one of finance's most fundamental question: ``How should an investor allocate his funds amongst all the possible assets''?
+
+Underlying Markowitz's optimization problem there is a known economic problem: the utility maximization, which arises from the definition of Economics. 
+Markowitz's portfolio theory presupposes that the investor has a concave utility function that expresses a risk-averse behavior.
+So, Markowitz formulates the portfolio selection with two criteria at its base: mean and variance.
+One of the basic assumptions in economics is that the economic agents want to allocate its resources in the most efficient way possible.
+Hence, it is also legitimate that finance supposes that the investors want to allocate wealth in the most efficient manner.
+They do this by trying to maximize return and minimize risk.
+Ergo, the portfolio selection problem is a genuine economic problem that deserves the researcher's attention.
+
+However, it is prudent to highlight that the process of portfolio selection proposed by Markowitz has its pitfalls.
+For example, it presents a high sensibility to the uncertainty of its inputs.
+This is observed by \citeonline{BestGrauer91a}, who show how changes in the mean asset returns affect the return, risk, and composition of a given portfolio.
+\citeonline{cz93} do something similar, they examine the relative impact on the portfolio of estimation errors in the mean, variance, and covariance of assets.
+
+This thesis is inserted in the context of portfolio selection and optimization, it offers three different essays with this common theme.
+However, the essays differ in their approaches and subthemes.
+Because this thesis is comprised of three different essays with a common theme, it is inevitable to have some content overlap.
+Also, because we wanted to make the essays the most self contained as possible, we had to allow those redundancies in content throughout the text.
+
+Finally, this thesis is comprised of five chapters.
+Beyond this introduction, there are three essays, one for each chapter, and the thesis finishes in Chapter 5, with some final considerations.
+% first essay TP
+The first essay offers a critique of the Tangency Portfolio (TP).\footnote{A preliminary version of this essay was accepted to the XIX Econtro Brasileiro de Finanças with the title ``Tangency Portfolio: A Critique''}
+This critique is due to the widespread misconception that the TP is the most efficient mean-variance portfolio, as can be seen in \citeonline{dgu2009} and \citeonline{memmel-2006} among others.
+% second essay LETTER
+The second essay provides an explicit derivation of the equivalence between the minimum variance portfolio and the minimum Tracking Error volatility portfolio.
+This equivalence is much talked about in intuitive terms but seldom demonstrated analytically, see \citeonline{liu-2009} and \citeonline{demol2016}.
+The main contribution of this essay, besides the direct analytical derivation, is to present the connection among general portfolio optimization, index tracking portfolio optimization and OLS regressions.
+% third essay FEATSEL
+The third essay is about feature selection in the context of index tracking.
+In it, we make an empirical comparison of feature selection methods in the context of portfolio optimization.
+The study of such methods is important, in view of the observation made by \citeonline{liu-2009} and \citeonline{tz2011} that the majority of institutional managers are benchmarked by an external index like the SP500.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ensaio 1
+
+% \chapter{Tangency Portfolio: A Critique}
+\chapter{TANGENCY PORTFOLIO: A CRITIQUE}
+
+% \section{Introduction} \label{sec:intro:tp}
+
+In the present paper we will offer evidence as to why the Tangency Portfolio (TP) should not be used for empirical evaluations.
+We present an analytical study of the TP, where we offer some propositions about the ex-ante performance (in terms of utility) of the TP.
+We also perform an empirical evaluation using the Kenneth French Data Library.
+Even though the propositions do not take uncertainty into account they reveal an important fact: the TP can be outperformed (in terms of utility) in sample by other portfolios.
+
+In Portfolio Theory, the Tangency Portfolio (TP) is of paramount importance and has several meaningful properties, as stated by \citeonline{roll79}, \citeonline{brandtc5}, \citeonline{orc1}, and \citeonline{best-2010}.
+However, it presents a poor out of sample performance, as shown in \citeonline{fko2012}, \citeonline{kritzman2010}, and \citeonline{dgu2009}.
+Sometimes the TP is presented as the best mean-variance efficient portfolio as in \citeonline{memmel-2006}, \citeonline{jones-1999}, and \citeonline{dgu2009}.
+This is inaccurate.
+The TP is optimal under the criterion of Sharpe Ratio optimality, not mean-variance utility optimality.
+For a portfolio to be optimal under a mean-variance utility, the optimization problem has to take into account the investor's risk-aversion, which the TP does not do.
+Furthermore, there are other alternatives for mean-variance efficient portfolios that present less uncertainty with more stable and less extreme weights, as \citeonline{fko2012} show.
+
+\citeonline{markowitz1952} pioneered the research of the Modern Portfolio Theory by establishing rules to select portfolios. One of its greatest innovations was the ability to provide a quantitative method through which the diversification of investments could be performed. With this method, the investor was able to directly solve the risk-return trade off of a portfolio by maximizing the return given an acceptable level of risk, or minimizing the risk given a wanted return.
+\citeonline{merton1972} derived the efficient frontier of portfolio returns from Markowitz's work.
+He did it by creating a function that finds the optimal variance given an expected return of the combination of assets that form the optimal portfolio.
+
+
+Further problems with the Tangeny Portfolio are aired by \citeonline{fko2012} when they point out that: i) if its denominator ($A = \mathbf{e}^{\prime} \Sigma^{-1} \mu$) is small, then the TP can display extreme weights and hence extreme returns; ii) if  the denominator is negative ($A<0$), it reverses the direction of the allocation vector, which can bring disastrous consequences to the investor using such portfolio; iii) those undesirable values of $A$ happen more often than we would like. So, we can see that the values of $A$ play a large role in what the value of the TP will be.
+
+With this in mind, \citeonline{jk1980} analyze the distribution of $\mathbf{e}^{\prime} \Sigma^{-1}\mu$ and show that it is very volatile. This volatility directly affects the TP's weights, making them unstable and extreme, which raises the TP's turnover and, with it, its transaction costs. This high transaction costs worsen the TP's performance.
+
+One of the components of $A$ is $\mu$.
+Several papers on parameter uncertainty like \citeonline{merton1980} and \citeonline{cz93} indict $\mu$ as the main culprit of the volatility of portfolio weights.
+They also point out that $\mu$ is one of the most volatile quantities to be estimated in Portfolio Theory.
+
+Dealing with parameter and estimation uncertainty, \citeonline{kz07} derive rules for portfolio allocation that minimize estimation risk.
+In the beginning of their paper, \citeonline{kz07} derive the optimal portfolio allocation when the investor knows, with certainty, the vector of expected returns ($\mu$) and the covariance matrix of returns ($\Sigma$), and find that the maximum utility is given when $\mathbf{w}=\dfrac{\Sigma^{-1}\mu}{\gamma}$. Later, they relax the assumption of knowing $\mu$ and $\Sigma$ with certainty and find rules for optimal allocation when those quantities are not known with certainty. The derivation of those rules are based on loss and risk functions, which are widely used in decision analysis and Bayesian choice theory.
+
+\citeonline{kz07} never mention the TP per se, because the it is not the solution of their maximization problem. But as \citeonline{schmid2006} point out, the TP does not have moments higher or equal to one. This means that even if we wanted, we could not compute the ex-post expected utility of the TP.
+
+% Results
+Our results show that the TP rarely outperforms other portfolios on in and out of sample evaluations.  Further, our propositions show that the TP can be outperformed in sample.
+This underperformance is exacerbated in out of sample evaluations of the TP, as shown here and in other papers. Hence, it is not that the TP is optimal with a bad out of sample performance. The TP is not optimal in sample as well.
+
+% TOC
+The rest of the paper is organized as follows.
+Section \ref{sec:ports} presents the basics of portfolio selection and the portfolios that we will use throughout this paper.
+Section \ref{sec:critique} offers an analytical study with some Propositions that show in what situations the TP is overperformed by other portfolios ex-ante.
+Section \ref{sec:experiment:tp} shows an empirical evaluation of the TP against other portfolios; for this, we will use the Kenneth French data library.
+Finally, Section \ref{sec:conclusion} concludes.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section[PORTFOLIO SELECTION]{Portfolio Selection} \label{sec:ports}
+
+\section{Portfolio Selection} \label{sec:ports}
+
+In this section, we present the basics of portfolio selection and the portfolios that we will use throughout this paper. We start by considering an investment universe with $N$ assets $S_1, S_2, \dots, S_N$. Then, we denote the vector of future and uncertain returns of those assets by $R_{t}$, where 
+
+\vspace{-12pt}
+\begin{align*} \label{ret_vec}
+	R_{t} =  [R_{t1}, R_{t2} , \dots, R_{tN}]'.
+\end{align*}
+
+\noindent
+Letting $R_t$ be an $N \times 1$ vector of risky-asset returns for period $t$, we will assume that the returns follow a multivariate normal distribution with mean vector $\mu=E[R_{t}]$ and covariance matrix $\Sigma = \mathrm{Var}[R_{t}]$.
+
+The vector of expected returns $\mu = E[{R_{t}}]$ has elements $\mu_i = E[R_{it}]$, for all $i=1, \dots, N$ and it is denoted by 
+\begin{align*}
+	\mu = [\mu_1, \mu_2, \dots, \mu_N]'.
+\end{align*}
+
+% covmat
+The covariance matrix of returns $\Sigma = \mathrm{Var}[R_{t}]$ has elements
+$\sigma_{ii} = \sigma_i^2$ and $\sigma_{ij} = \rho_{ij} \sigma_i \sigma_j$ (for $i \neq j$), where  $\sigma_i$ is the standard deviation of $R_{it}$ and $\rho_{ij}$ is the correlation coefficient of assets $S_i$ and $S_j$ (for $i \neq j$).
+The covariance matrix $\Sigma$ is symmetric and is denoted by
+
+\vspace{-12pt}
+\begin{align*}
+\Sigma = ( \sigma_{ij} )_{i,j=1,\dots,N} = 
+	\begin{bmatrix}
+	\sigma_{11} & \sigma_{12} & \dots & \sigma_{1N}
+	\\
+	\sigma_{21} & \sigma_{22} & \dots & \sigma_{2N}
+	\\
+	\vdots           & \vdots            & \ddots & \vdots
+	\\
+	\sigma_{n1} & \sigma_{N2} & \dots & \sigma_{NN}
+\end{bmatrix}.
+\end{align*}
+
+\noindent
+Throughout this paper, we will assume that $\Sigma$ is positive definite so it can be invertible.
+
+% portfolio
+A portfolio is represented by a $N$-dimensional vector $\mathbf{w}$, where:
+\begin{align*}
+	\mathbf{w} = \left[ w_1, w_2 , \dots, w_N \right]',
+\end{align*}
+
+\noindent
+and $w_{i}$ is the fraction of total wealth invested in asset $S_{i}$. The vector $\mathbf{w}$ can also be called the allocation vector. The (uncertain) portfolio return $R_{p}$ is a weighted average of the asset returns selected to the portfolio with weights $w_{i}$ for $i=1,\dots,N$.
+\begin{equation} \label{ret_port}
+R_p = w_1 R_1 + \dots + w_N R_N = \sum_{i=1}^{N} w_i R_{ti} = \mathbf{w}^{\prime}R_{t}.
+\end{equation}
+
+Hence, the portfolio's expected return $\mu_{p}$ is a weighted average of individual expected returns and the portfolio variance $\sigma^{2}_{p}$ is a quadratic function of the allocation vector, as shown in:
+\begin{align}
+	\mu_p &= E[R_p] = E[ \mathbf{w}^{\prime}R_{t} ] = \mathbf{w}^{\prime}\mu \\
+	\sigma_p^2 &= \mathrm{Var}[R_p] = \mathrm{Var}[\mathbf{w}^{\prime} R_{t}] = \mathbf{w}^{\prime}\Sigma \mathbf{w} \\
+	\sigma_p &=  \sqrt{\mathbf{w}^{\prime}\Sigma \mathbf{w}}.
+\end{align}
+With those definitions, we can define the mean-variance, or quadratic, utility function of portfolio $\mathbf{w}$, as:
+\begin{align}
+\label{mv:util}
+U(\mathbf{w}) = \mathbf{w}^{\prime} \mu - \frac{\gamma}{2} \mathbf{w}^{\prime} \Sigma \mathbf{w}.
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Optimal Unconstrained Portfolio}
+
+\noindent Here and in the next subsections, we will show how to find optimized portfolios. The first one here is the Optimal Unconstrained portfolio. It assumes that there is a risk-free asset, so we ignore the fully-invested restriction and solve the following problem:
+
+\vspace{-12pt}
+\begin{align}
+\label{xou:mean}
+\min_{\mathbf{w}} \quad & \frac{\mathbf{w}^{\prime} \Sigma \mathbf{w}}{2} \quad
+\mathrm{s.t.} \quad \mathbf{w}^{\prime}\mu = \mu_{0}.
+\end{align}
+
+\noindent That problem has the following Lagrangian:
+
+\begin{align} \label{L:xou}
+L = \frac{\mathbf{w}^{\prime}\Sigma \mathbf{w}}{2} - \lambda (\mathbf{w}^{\prime} \mu - \mu_{0}).
+\end{align}
+
+Solving that Lagrangian is equivalent to maximizing a quadratic utility:
+
+\vspace{-12pt}
+\begin{align}
+\label{xou:util}
+U(\mathbf{w}) = \mathbf{w}^{\prime} \mu - \frac{\gamma}{2} \mathbf{w}^{\prime} \Sigma \mathbf{w},
+\end{align}
+ 
+\noindent
+where $\gamma$ is the coefficient of risk-aversion.
+In the problem \eqref{xou:mean} the trade-off between risk and return is given by the Lagrange Multiplier $\lambda$ in equation \eqref{L:xou}, and the risk-aversion is implicit and subject to alterations given the level of return wanted by the investor.
+
+The answer to the problem \eqref{xou:util} is given when the agent's utility is maximized (first derivative set to zero) and we find the following solution:
+
+\vspace{-12pt}
+\begin{align}
+\label{ou1}
+\mathbf{w}_{\mathrm{ou}} & =\frac{ \Sigma^{-1} \mu }{ \gamma}.
+\end{align}
+
+\noindent
+Now, the solution to the problem \eqref{xou:mean} is given by Lagrange's method, where we find:
+
+\vspace{-12pt}
+\begin{align}
+\label{ou2}
+\mathbf{w}_{\mathrm{ou}}  &= \frac{\mu_{0}}{\mu' \Sigma^{-1} \mu} \Sigma^{-1} \mu.
+\end{align}
+
+\noindent
+We will call this solution $\mathbf{w}_{\mathrm{ou}} $ or OU for Optimal Unconstrained. From \eqref{ou1} and \eqref{ou2}, we can infer that:
+
+\vspace{-12pt}
+\begin{align}
+\label{lambda-ou}
+ \lambda = \frac{1}{\gamma} = \frac{\mu_{0}}{\mu' \Sigma^{-1} \mu},
+\end{align}
+which means that the choice of \(\mu_{0}\) affects the \(\gamma\), i.e. the risk-aversion coefficient.
+\red{So the choice of $\mu_{0}$ controls the aggressiveness with which the problem seeks return instead of variance.}
+The 
+
+\citeonline{fko2012} set \(\mu_{0}\) equal to the return of the equal weighted portfolio (\(\mu_{\mathrm{ew}}=\mu^{\prime} \mathbf{e}/N\)) to let the aggressiveness of the mean-variance portfolio comparable to it. In this paper however, we use $1.1$ times the mean return of the minimum variance portfolio ($\mu_{\mathrm{mv}}$) as our target return. This happens because, in our data, the mean return of the equally weighted portfolio is smaller than the mean return of the minimum variance portfolio, consequently, it is not efficient to use $\mu_{\mathrm{ew}}$ as a target return.
+
+\subsubsection*{Sum of Positions}
+
+From \eqref{ou1}, we can notice that the sum of the weights, or the portfolio's total position, equals to:
+
+\begin{align*}
+x_{\mathrm{TP},t} =\frac{ \mathbf{e}^{\prime} \Sigma^{-1} \mu }{\gamma},
+\end{align*}
+
+\noindent
+where $\mathbf{e}$ is a conformable vector of ones. Observe that \(x_{\mathrm{TP},t}\) does not necessarily sum to one (fully invested position). That happens because we did not constrain our portfolio to do that, so it is only complete with the risk-free asset, which has an implicit weight of:
+\begin{align}
+    \notag
+	w_{f,t} = 1 - \mathbf{w}^{\prime}  \mathbf{e}  = 1 -x_{\mathrm{TP},t}
+\end{align}
+
+\noindent
+where \(w_{f,t}\) is the weight put on the risk-free asset.
+
+\subsection{Tangency Portfolio}
+
+If we were to invest only on the risky part of the OU, we would have to normalize the allocation vector, turning it into what is called the Tangency Portfolio (TP):
+\begin{align}
+\label{tp}
+\mathbf{w}_{\mathrm{TP},t} = \frac{\Sigma^{-1} \mu}{\mathbf{e}^{\prime} \Sigma^{-1} \mu} .
+\end{align}
+
+\noindent
+Where $\mathbf{e}$ is a conformable vector of ones. This portfolio of risky assets has the property of maximizing the Sharpe Ratio ($\mu_p/\sigma_p$).
+We can also find it by solving:
+
+\vspace{-12pt}
+\begin{align}\label{max:sr}
+	\max_{\mathbf{w}} \quad \frac{\mu'\mathbf{w} - \mathbf{e} r_{\textrm{f}}}{\sqrt{\mathbf{w}^{\prime}\Sigma \mathbf{w}}}
+	\quad
+	\text{s.t.} \quad \mathbf{e}^{\prime} \mathbf{w} = 1.
+\end{align}
+
+\noindent
+The statement of the problem above makes it easy for us to see that the TP is, by definition, the portfolio with the maximum Sharpe Ratio.
+
+\subsection{Minimum Variance Portfolio}
+
+If the investor is only interested in minimizing variance, what might be the case when his risk aversion is very high ($\gamma \to + \infty$), he solves the following problem:
+
+\begin{align}
+\label{gmv:prob}
+	\min_{\mathbf{w}}  & \frac{\mathbf{w}^{\prime} \Sigma \mathbf{w}}{2} \quad
+\mathrm{s.t.} \quad \mathbf{e}^{\prime}\mathbf{w} = 1,
+\end{align}
+
+\noindent
+with the following Lagrangian:
+
+\vspace{-1 em}
+\begin{align} \label{L:gmv}
+	L=\frac{\mathbf{w}^{\prime} \Sigma w}{2} - \lambda(\mathbf{e}^{\prime}\mathbf{w} - 1)
+\end{align}
+
+The answer to the problem is:
+
+\begin{align}
+\label{gmv}
+	\mathbf{w}_{\mathrm{mv}} = \frac{\Sigma^{-1}\mathbf{e}}{\mathbf{e}^{\prime}\Sigma^{-1}\mathbf{e}} ,
+\end{align}
+
+\noindent
+where $\mathbf{e}$ is a conformable vector of ones. We call this portfolio MV.
+
+\subsection{Optimal Constrained}
+
+In the original problem of \citeonline{markowitz1952}, the investor considers only risky assets, yielding the problem:
+
+\vspace{-1 em}
+\begin{align}
+\label{xoc:mean}
+\min_{\mathbf{w}}  \quad & \frac{\mathbf{w}^{\prime} \Sigma w}{2} \quad
+\mathrm{s.t.} \quad \mathbf{w}^{\prime} \mu = \mu_{0}, \; \mathbf{w}^{\prime} \mathbf{e} = 1,
+\end{align}
+
+\noindent
+with Lagrangean:
+
+\vspace{-1 em}
+\begin{align} \label{L:oc1}
+	L = \frac{\mathbf{w}^{\prime} \Sigma \mathbf{w} }{2} - \lambda_{1}(\mathbf{w}^{\prime} \mu - \mu_{0}) - \lambda_{2}(\mathbf{w}^{\prime} \mathbf{e}  - 1).
+\end{align}
+
+This is equivalent to maximizing a quadratic utility constrained to the fully-invested condition:
+
+\vspace{-1 em}
+\begin{align}
+\label{xoc:util}
+U(\mathbf{w}) = \mathbf{w}^{\prime}\mu - \frac{\gamma}{2} \mathbf{w}^{\prime}\Sigma \mathbf{w} \quad
+\mathrm{s.t.} \quad \mathbf{w}^{\prime}\mathbf{e} = 1,
+\end{align}
+which has the following Lagrangian:
+\begin{align} \label{L:oc1}
+	L =  \mathbf{w}^{\prime} \mu - \frac{\gamma}{2}\mathbf{w}^{\prime} \Sigma \mathbf{w}  - \lambda(\mathbf{w}^{\prime} \mathbf{e}  - 1).
+\end{align}
+
+\citeonline{merton1972} solves problem \eqref{xoc:mean} and gives the answer:
+
+\vspace{-1 em}
+\begin{align}
+	\label{xoc:merton}
+\mathbf{w}_{\mathrm{oc}} = \frac{C \mu_0 - A }{D}\Sigma^{-1} \mu +
+\frac{B - A \mu_0}{D}\Sigma^{-1} \mathbf{e},
+\end{align}
+
+\noindent 
+where $A$, $B$, $C$, and $D$ are Merton's constants, which are equal to:
+
+\begin{align}
+	\label{merton:cte}
+	A = \mathbf{e}^{\prime}\Sigma^{-1}\mu, \quad
+	B = \mu'\Sigma^{-1}\mu,\quad
+	C = \mathbf{e}^{\prime}\Sigma^{-1}\mathbf{e}, \quad
+	D = BC - A^2.
+\end{align}
+
+\noindent
+\cite[p. 1853]{merton1972} points out the fact that $B>0$, $C>0$ and $D>0$, if $\Sigma$ is Positive Definite. We call the portfolio in equation \eqref{xoc:merton} OC for Optimal Constrained. Another solution to problem \eqref{xoc:util} is
+\begin{align}
+	\label{xoc}
+ \mathbf{w}_{\mathrm{oc}} = \frac{\Sigma^{-1}\mu}{\gamma} + 
+	\left(1 - \frac{ \mathbf{e}^{\prime}\Sigma^{-1}\mu}{\gamma}
+	\right)
+	\frac{\Sigma^{-1} \mathbf{e}}{ \mathbf{e}^{\prime}\Sigma^{-1} \mathbf{e}}.
+\end{align}
+
+The relation between \eqref{xoc} and \eqref{xoc:merton} appears in \citeonline{bodnar2013}. They show for what values of $\gamma$ those values are the same, and the answer is:
+\begin{align}
+	\label{gamma:bodnar}
+\gamma = 
+	\begin{cases}
+		\dfrac{s}{\mu_0 - R_{\mathrm{gmv}}}, &\text{ for } \mu_0 > R_{\mathrm{gmv}}
+		\\
+		\infty, & \text{ for } \mu_0 = R_{\mathrm{gmv}},
+	\end{cases}
+\end{align}
+where,
+\begin{align}
+R_{\mathrm{gmv}}=\frac{A}{C}, \quad s = \mu'Q\mu, \quad Q = \Sigma^{-1} - \frac{\Sigma^{-1} \mathbf{e} \mathbf{e}^{\prime}\Sigma^{-1}}{C}.
+\end{align}
+ 
+\noindent If $\mu_0 <  R_{\mathrm{gmv}}$, the solution does not lie on the efficient frontier.  Representing $\gamma$ in terms of Merton's constants:
+
+\vspace{-2 em}
+\begin{align}
+% \gamma = \frac{s}{\mu_0 - R_{gmv}} = \frac{D/C}{\mu_0 - A/C} = \frac{D}{C \mu_0 - A}
+\gamma &= \frac{D}{C \mu_0 - A}, \text{ for }   \mu_0 >\frac{A}{C},
+\\
+\mu_0 &= \frac{A}{C} + \frac{D}{\gamma C}.
+\end{align}
+
+\noindent
+Notice that the equation above forms an expression of $\gamma$ in terms of $\mu_0$.
+This way, we can find the implicit $\gamma$ for any value of $\mu_0$.
+With this expression of $\gamma$, we can find \eqref{xoc:merton} in terms of the TP and the MV:
+
+\vspace{-2 em}
+\begin{align*}
+\mathbf{w}_{\mathrm{oc}} &= \frac{C \mu_0 - A}{D}\Sigma^{-1} \mu + \frac{B - A \mu_0}{D}\Sigma^{-1} \mathbf{e},
+\\
+&= \frac{1}{\gamma}\Sigma^{-1} \mu +
+\frac{1}{C} \left( 1 - \frac{A}{\gamma} \right) \Sigma^{-1} \mathbf{e},
+\\
+&= \mathbf{w}_{\textrm{ou}} + (1 - x_{\textrm{tp}} )\mathbf{w}_{\textrm{mv}},
+\\
+&= \mathbf{w}_{\textrm{tp}}   x_{\textrm{tp}}+ \mathbf{w}_{\textrm{mv}} -\mathbf{w}_{\textrm{mv}}   x_{\textrm{tp}},
+\\
+&= \mathbf{w}_{\textrm{mv}} + (\mathbf{w}_{\textrm{tp}}-\mathbf{w}_{\textrm{mv}} )  x_{\textrm{tp}}.
+\end{align*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Analytical Study} \label{sec:critique}
+\section{ANALYTICAL STUDY} \label{sec:critique}
+
+In this section, we will present the ex-ante utilities of the following portfolios: Equally-Weighted Portfolio (EW), Optimal Unconstrained Portfolio (OU), Tangency Portfolio (TP), Minimum Variance Portfolio (MV), and the Optimal Constrained Portfolio (OC).
+Next, we will compare the Utility of the TP with other portfolios to find under what conditions the TP has higher utility.
+
+Even though the ideal comparison would be to proceed as \citeonline{kz07} and compute ex-post expected utilities for the TP, \citeonline{schmid2006} point out that the TP does not have moments higher or equal to one. Hence, finding the expected utility of the TP is an impossible task. Still, our propositions present an interesting result: In sample, the TP can be outperformed by other portfolios in terms of utility. Consequently, the TP might not be the best portfolio choice. % The proofs are presented in the Appendix.
+
+Using equation \eqref{mv:util}, we may find the utilities of the portfolios listed above.
+This results in:
+
+\begin{align}
+	\label{u:ew}
+	U_{\mathrm{ew}} &= \frac{\mathbf{e}^{\prime} \mu}{N} - \frac{\gamma}{2N^2} \mathbf{e}^{\prime}\Sigma \mathbf{e}, \\
+	\label{u:ou}
+	U_{\mathrm{ou}} &= \frac{B}{2\gamma},  \\
+	\label{u:tp}
+	U_{\mathrm{tp}} &= \frac{B}{2A^2} (2A - \gamma), \\
+	\label{u:mv}
+	U_{\mathrm{mv}} &= \frac{1}{2C} (2A- \gamma), \\
+	\label{u:oc}
+	U_{\mathrm{oc}} &= \frac{-\gamma^2 + 2A\gamma + D}{2\gamma C},
+\end{align}
+
+\noindent 
+where $\mathbf{e}$ is a conformable vector of ones, and $A$, $B$, $C$, and $D$ are Merton's constants, which are equal to:
+
+\vspace{-1 em}
+\begin{align}
+	\label{merton:cte}
+	A = \mathbf{e}^{\prime}\Sigma^{-1}\mu, \quad
+	B = \mu'\Sigma^{-1}\mu,\quad
+	C = \mathbf{e}^{\prime}\Sigma^{-1}\mathbf{e}, \quad
+	D = BC - A^2.
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{TP and OU}
+
+Comparing \eqref{u:tp} with \eqref{u:ou}, we find:
+
+\begin{align*}
+U_{\mathrm{tp}} & \geq U_{\mathrm{ou}}
+\\
+\frac{B}{2A^2} (2A - \gamma) & \geq	\frac{B}{2\gamma}  
+\\
+\gamma (2A - \gamma) & \geq	A^2  
+\\
+-\gamma^2 + 2A\gamma - A^2 & \geq 0
+\\
+-(\gamma - A)^2 & \geq 0
+\end{align*}
+
+\noindent
+Unless $\gamma = A$, $U_{\mathrm{tp}}  \leq U_{\mathrm{ou}}$.
+This leads to our first proposition:
+
+\noindent
+\textbf{Proposition 1:}
+Ex-ante, the utility of the OU is higher than the TP, except when $\gamma = A$, in which case $U_{ou}=U_{tp}$. \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{TP and OC}
+
+Comparing \eqref{u:tp} with \eqref{u:oc}, we find:
+
+\begin{align*}
+U_{\mathrm{tp}} & \geq U_{\mathrm{oc}}
+\\
+\frac{B}{2A^2} (2A - \gamma) & \geq	\frac{-\gamma^2 + 2A\gamma + D}{2\gamma C} 
+\\
+BC \gamma (2A - \gamma) & \geq -\gamma^2A^2 + 2A^3\gamma + A^2 D
+\\
+- \gamma^2(BC - A^2) + \gamma A(2BC - 2A^2) - A^2 D & \geq 0
+\\
+-D \gamma^2 + 2AD \gamma - A^2 D & \geq 0
+\end{align*}
+
+\noindent 
+D is always positive, so we can divide both sides by it.
+
+\vspace{-1 em}
+\begin{align*}
+-(\gamma^2 - 2A \gamma + A^2) & \geq 0
+\\
+-(\gamma - A)^2 & \geq 0
+\end{align*}
+
+\noindent
+Again, unless $\gamma = A$, $U_{tp}  \leq U_{oc}$.
+This leads to our second proposition:
+
+\noindent
+\textbf{Proposition 2:}
+Ex-ante, the utility of the OC is higher than the TP, except when $\gamma = A$, in which case $U_{oc}=U_{tp}$.\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{TP and MV}
+Comparing \eqref{u:tp} with \eqref{u:mv}, we find:
+
+\begin{align*}
+U_{\mathrm{mv}} & \geq U_{\mathrm{tp}}
+\\
+\frac{1}{2C} (2A- \gamma) & \geq \frac{B}{2A^2} (2A - \gamma) 
+\\
+A^2(2A- \gamma) & \geq BC (2A - \gamma)
+\\
+(A^2-BC)(2A- \gamma) & \geq 0
+\\
+-D(2A- \gamma) & \geq 0
+\end{align*}
+
+\noindent 
+$D$ is always positive, so we can divide both sides by it.
+
+\vspace{-1 em}
+\begin{align*}
+-2A + \gamma & \geq 0
+\\
+\gamma & \geq 2A
+\end{align*}
+
+So for $\gamma \geq 2A$, $U_{\mathrm{mv}} \geq U_{\mathrm{tp}}$.
+Otherwise ($\gamma < 2A$), $U_{\mathrm{tp}} > U_{\mathrm{mv}}$.
+This leads to our third proposition:
+
+\noindent
+\textbf{Proposition 3:}
+The ex-ante utilities $U_{\mathrm{mv}}$ and $U_{\mathrm{tp}}$ depend on the values of $\gamma$ with
+$U_{\mathrm{mv}} > U_{\mathrm{tp}}$ for $\gamma > 2A$ and 
+$U_{\mathrm{mv}} < U_{\mathrm{tp}}$ for $\gamma < 2A$. \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The propositions above demonstrate that, even without uncertainty, the utility of the TP can be lower than the other portfolios. They also demonstrate that the utilities depend on what values we use for $\gamma$ in relation to $A$. This is significant because the portfolio literature treats the TP as being the best mean-variance portfolio \cite{memmel-2006, jones-1999, dgu2009}. This is falsified by our propositions above.
+
+Further comparisons of utility values for different values of $\gamma$ can be seen in the Figures \ref{fig:gama:ff10} and \ref{fig:gama:ff25} below. In the figures, we can see that when $\gamma=A$, the OC, the OU, and the TP have the same utilities. For values of $\gamma$ different from $A$, the TP has lower utility than the OU and the OC. The figures also show that the MV has lower utility than the TP when $\gamma$ is lesser than $2A$, but the MV has higher utility when $\gamma$ is greater than $2A$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{The Experiment} \label{sec:experiment:tp}
+\section{THE EXPERIMENT} \label{sec:experiment:tp}
+
+\noindent In this section, we will do an experiment to test the performance of the Tangency Portfolio against alternative portfolios. This experiment consists in forming the optimal portfolios from Section \ref{sec:ports} in pseudo real time and evaluating the out of sample performance of those portfolios against each other.
+
+\subsection{Data}
+% DATA
+The data for this empirical analysis consists of two datasets of monthly raw returns (not in excess of the risk-free asset) drawn from the Kenneth French library.\footnote[1]{\url{http://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html}} One dataset is the 10 Industry portfolios (FF10), and the other dataset is the 25 Size and Book to Market portfolios (FF25). Versions of those datasets were used in \citeonline{dgu2009} and \citeonline{fko2012}. The sample period used here is from July 1963 to June 2018 ($T=660$).
+
+To estimate the parameters inputs used in the portfolio policies of Section \ref{sec:ports}, we adopt a recursive estimation approach based on a \textit{rolling window time series of returns} $\{R_{t}\}_{t=i}^{J-i+1}$  with $i$ varying from $i=1$ to $i=T-J-1$. For this experiment, we use window length equal to $J=120$.
+
+With the rolling windows' scheme, we form the vector of expected means and the covariance matrices with the formulas:
+% 
+% \vspace{-1.75 em}
+\begin{align}
+	\hat{\mu} &= E[R_{t}] = J^{-1}\sum_{t=1}^{J} R_{t} 
+	% = \frac{\mathbf{e}^{\prime}R_{t}}{\mathbf{e}^{\prime}\mathbf{e}},
+	\\
+	\hat{\Sigma} &= \mathrm{Var}[R_{t}] = (J-1)^{-1} \sum_{t=1}^{J}(R_{t} - \hat{\mu})(R_{t} - \hat{\mu})'.
+\end{align}
+ 
+This results in $T-J-1=479$ estimates of covariance matrices and expected returns. Using them, we find the allocation vector using the policies of Section \ref{sec:ports}. By the end of this process, we generate $T-J-1=479$ allocation vectors for each policy. 
+
+Holding the portfolio $\mathbf{w}_{\textrm{p,t}}$ for one month gives the out of sample return in $t+1$,
+
+\vspace{-1 em}
+\begin{align}
+	R_{p,t+1} &= \mathbf{w}_{\textrm{p,t}}^{\prime}  R_{t+1}.
+\end{align}
+
+\noindent
+The time series of the \textit{out of sample portfolio returns} $\{R_{p,t+1}\}_{t=J}^{T-1}$ is the subject of our analysis. 
+
+\subsection{Evaluation Measures} % \label{sec:eval}
+
+As we have said above, what we will evaluate are the out of sample returns of the portfolios. Since the risk-return tradeoff is at the core of the Portfolio Theory, any evaluation of portfolio performance has to take this tradeoff into account. We do this by computing two measures.
+
+\subsubsection{Sharpe Ratio} 
+
+The first measure is the \textit{Sharpe Ratio} (SR), that measures the amount of additional return for each unit of risk incurred by the portfolio. The SR has the following formula:
+
+\vspace{-12pt}
+\begin{align} \label{SR}
+	\hat{SR}_p &= \frac{\hat{\mu}_{p}}{\hat{\sigma}_{p}}.
+\end{align}
+
+\noindent
+Where $\hat{\mu}_{p}$ is the average of returns, and $\hat{\sigma}_{p}$ is the standard deviation (volatility) of returns, calculated as follows:
+
+\vspace{-12pt}
+\begin{align}
+\hat{\mu}_{p} &= (T-J-1)^{-1}\sum_{t=J+1}^{T}R_{pt},
+\\
+\hat{\sigma}_{p} &= \sqrt{(T-J-2)^{-1}\sum_{t=J+1}^{T}(R_{pt} - \hat{\mu}_{p})^2},
+\end{align}
+
+\noindent
+where $R_{pt}=\mathbf{w}^{\prime}_{p,t-1}R_{t}$ is the portfolio return.
+
+However, the SR does not take into account the investor's specific risk aversion, nor the amount of leverage the portfolio has.  Hence, we use alternative measures to mitigate this problem.
+
+% CEQ
+\subsubsection{CEQ} 
+
+The second measure that we use is the \textit{certainty equivalent} (CEQ) \textit{return}. This measure expresses the risk-free rate (return without risk) that the investor is willing to accept in lieu of a particular risky portfolio strategy. It is also a measure of the investor's quadratic utility.
+
+\vspace{-12pt}
+\begin{align} \label{CEQ}
+	\hat{CEQ}_{p} &= \hat{U}_p = \hat{\mu}_{p} - \frac{\gamma}{2} \hat{\sigma}^{2}_{p}.
+\end{align}
+
+\noindent
+Here, we used $\gamma=1$ and $\gamma=5$ to evaluate the portfolios' performance.
+
+\subsubsection*{Transaction Costs}
+
+To get a sense of the amount of trading required to implement each portfolio strategy, we compute the portfolio turnover. As \citeonline{liu-2009} points out, the turnover can be understood in the following way: in the moment prior to rebalancing, each dollar invested in asset $S_{i}$ in the portfolio has changed its value from $w_{i,t}$ to $w_{i,t}(1+R_{i,t+1})$. So, in general, each dollar invested in the whole portfolio has changed from $w_{t}$ to $\mathbf{w}_{t}(1+R_{t+1})$, where $w_{i,t}$ is the $i$-th element of $w_{t}$ and the $i$-th element of $R_{t}$ is denoted as $R_{i,t}$. Therefore, prior to rebalancing, the weight on asset $S_{i}$ has changed from $w_{i,t}$ to $w_{i,t}\dfrac{1+R_{i,t+1}}{1+\mathbf{w}_{t}^{\prime}R_{t+1}}$, meaning the turnover rate in time $t$ after rebalancing the portfolio can be defined as:
+
+\begin{align}
+	\label{to}
+	\mathrm{TO}_{t} &= \sum_{i=1}^{N} \left|w_{i, t+1} - w_{i,t}\frac{1+R_{i,t+1}}{1+R_{p,t}}\right|.
+\end{align}
+
+\noindent
+We report the average of this rate throughout time.
+
+% Net returns
+Associated with the turnover there is the associated transaction costs of rebalancing a portfolio.
+If the rebalancing is too frequent or too extreme, it can lead to overtrading.
+According to \citeonline{barber-2000}, overtrading has negative effects on portfolio performance due to its associated transaction costs.
+To take into account the impact of such costs we also evaluate the returns net of transaction costs, which have formula:
+
+\vspace{-12pt}
+\begin{align}
+	R^{net}_{p,t} &= (1 + R_{p,t} )(1 - c\times \mathrm{TO}),
+\end{align}
+
+\noindent
+where $c$ is the fee that must be paid for each transaction. We use $c=50\mathrm{bps}$ like in \citeonline{dgu2009} and \citeonline{fko2012}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{RESULTS}
+
+In this subsection we present the results of our empirical analysis. Table \ref{tab:is} presents the in sample results for the Tangency Portfolio (TP), Minimum Variance Portfolio (MV), Optimal Constrained Portfolio (OC), and the Equally Weighted Portfolio (EW) for the FF10 (Panel A) and the FF25 (Panel B) datasets. The statistics shown are:  the annualized mean of the portfolio return ($\mu$), the annualized standard deviation of the portfolio return ($\sigma$), the annualized Sharpe Ratio of the portfolio returns (SR),  the quadratic utility of the portfolio returns for $\gamma=1$ and $\gamma=5$ (CEQ 1 and CEQ 5), and the in sample implied risk-aversion of the portfolios ($\gamma$).
+
+Table \ref{tab:oos} presents out of sample results for the Tangency Portfolio (TP), Minimum Variance Portfolio (MV), Optimal Constrained Portfolio (OC), and the Equally Weighted Portfolio (EW) for the FF10 (Panel A) and FF25 (Panel B) datasets.
+The statistics shown are the same as in Table \ref{tab:is} with the exclusion of $\gamma$, and the inclusion of the average turnover of the portfolio (TO).
+Also, the statistics to the right of the TO column are for the returns net of transaction costs with 50bp.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{FF10}
+
+The in sample results for the FF10 are presented in the Panel A of Table \ref{tab:is}. We can observe that the TP and the OC are tied for the highest SR with $1.04$. However, for both risk-aversions ($\gamma=1$ and $\gamma=5$), the OC has higher CEQ with $1.05$ and $0.77$, while the TP has $1.03$ and $0.76$.
+
+On the out of sample results, presented in the Panel A of Table \ref{tab:oos}, we can observe that the TP comes at the very bottom of the comparisons, with and without transaction costs (TC). The TP's Sharpe Ratio is degraded when compared to the in sample results (from $1.04$ to $0.33$), what also happens in much less extent to the OC (from $1.04$ to $0.99$).
+On the other hand, for the MV and the EW, the out of sample results are barely distinguishable from the in sample ones. That happens because the objective function of the MV is to minimize volatility, and there's actually no difference from in sample and the out of sample's allocation vector of the EW. Also, the MV wins the out of sample comparisons with the best values of SR and CEQ.
+
+After transaction costs (TC), the TP is dealt another blow to its performance and it can hardly be recognizable as an optimal portfolio (SR equal to $-0.03$ and negative CEQs). The same cannot be said about the OC and the MV. Even though they present positive turnover (TO), they are robust to transaction costs and come on top of the EW in terms of SR and CEQ with $\gamma=5$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{FF25}
+
+Now for the FF25 dataset, the in sample results are presented in the Panel B of Table \ref{tab:is}.
+Here, all risk-adjusted performance measures have the following order: TP, OC, MV, EW.
+The SR for those portfolios are $1.85$, $1.45$, $1.33$, and $0.83$.
+
+This is different for the out of sample results. Before TC, the only performance measure that the TP wins is with the CEQ 1 with value of $1.39$, tied with the OC. At all the other risk-adjusted measures the TP comes at the very bottom. The OC, on the other hand, has all the better measures with an SR of $1.32$ and CEQ 5 of $1.10$. As for the lack of degradation of the EW and the MV, it is due to the same reasons presented in the FF10 results.
+
+Once we consider transaction costs, the TP's performance goes from bad to worse and it trails further behind the other portfolios presenting negative values for all the risk-adjusted measures.
+The OC portfolio loses only to the EW in terms of the CEQ 1, coming on top for the other measures.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Concluding Remarks} \label{sec:conclusion}
+\section{CONCLUDING REMARKS} \label{sec:conclusion}
+
+In our empirical experiment, we showed that in the FF10 dataset, the MV portfolio wins in the out of sample evaluation and the TP almost always come at the bottom. In the FF25 dataset, the OC portfolio wins in the out of sample evaluation, and the TP almost always come at the bottom. We also observe that, although the TP has the higher SR in sample, this might not be true for the CEQ. We also observe that almost certainly this is not true out of sample with and without transaction costs. The transaction costs greatly degrade the TP's performance, because it has the highest turnover of the portfolios.
+
+The poor out of sample performance of the TP is already common sense in the portfolio selection literature, what does not seem to be common sense is the results shown in the Section \ref{sec:critique}. Those results show that the TP might be overperformed in sample by other portfolios, they also show in what occasions they overperform the TP. Through those propositions and the empirical illustration, we wish to show that it might be undesirable to use the TP to practical ends. The TP's weights not only present instability and extreme weights, but they also might not be optimal in sample. In its stead we should use alternative portfolios like the MV and the OC, depending on the investor's risk aversion.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TABLE IS Results
+
+
+\input{../01-tp-port/TABS/port-is.tex}
+\input{./note-tab-is-TP.tex}
+
+\citeonline{lw2008-sr}
+\citeonline{lw2011-var}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TABLE OOS Results
+
+\begin{landscape}
+\input{../01-tp-port/TABS/port-oos.tex}
+\input{./note-tab-oos-TP.tex}
+
+\end{landscape}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PVAL VAR
+
+% \input{../01-tp-port/TABS/pval-var.tex}
+% \input{./note-TP-tab-pval-var.tex}
+
+\begin{table}[!ht] 
+\centering 
+\footnotesize 
+\caption{pvalues for Difference of Variances} 
+\vspace{-1 em} 
+\label{tab:pval:var} 
+\begin{threeparttable} 
+\begin{tabular}{@{\extracolsep{1 ex}} lrrrrrr} 
+\\[-1.8ex] \hline \hline 
+% ---------------------------------------- 
+  & Var Diff & $b=02$ & $b=04$ & $b=06$ & $b=08$ & $b=10$ \\ 
+% ---------------------------------------- 
+\hline \\[-1.8ex] 
+% ---------------------------------------- 
+\multicolumn{ 6 }{l}{\textit{Panel A: FF10 Dataset}} \\ 
+TP & $1.48$  & $12.90$  & $17.20$  & $22.10$  & $24.90$  & $27.70$ \\ 
+OC & $0.03$  & $3.60$  & $4.30$  & $4.30$  & $4.60$  & $4.60$ \\ 
+EW & $0.34$  & $0.00$  & $0.00$  & $0.00$  & $0.00$  & $0.00$ \\ 
+\hline \\[-1.8ex] 
+% ---------------------------------------- 
+\multicolumn{ 6 }{l}{\textit{Panel B: FF25 Dataset}} \\ 
+TP & $2.19$  & $2.50$  & $2.90$  & $4.40$  & $7.20$  & $9.20$ \\ 
+OC & $0.01$  & $36.50$  & $36.80$  & $37.40$  & $37.10$  & $38.20$ \\ 
+EW & $0.56$  & $0.00$  & $0.00$  & $0.00$  & $0.00$  & $0.00$ \\ 
+\hline \\[-1.8ex] 
+% ---------------------------------------- 
+\multicolumn{ 6 }{l}{\textit{Panel C: IBOV Dataset}} \\ 
+TP & $10.47$  & $31.20$  & $23.50$  & $19.20$  & $15.80$  & $14.30$ \\ 
+OC & $0.00$  & $54.10$  & $53.70$  & $53.20$  & $52.00$  & $53.00$ \\ 
+EW & $0.81$  & $0.00$  & $0.00$  & $0.00$  & $0.00$  & $0.00$ \\ 
+\hline \hline 
+\end{tabular} 
+\vspace{-1 ex} 
+\begin{tablenotes} 
+\input{./note-TP-tab-pval-var.tex}
+\end{tablenotes} 
+\end{threeparttable} 
+\end{table} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PVAL SR
+
+% \input{../01-tp-port/TABS/pval-sr.tex}
+% \input{./note-TP-tab-pval-sr.tex}
+
+\begin{table}[!ht] 
+\centering 
+\footnotesize 
+\caption{pvalues for Difference of SR} 
+\vspace{-1 em} 
+\label{tab:pval:sr} 
+\begin{threeparttable} 
+\begin{tabular}{@{\extracolsep{1 ex}} lrrrrrr} 
+\\[-1.8ex] \hline \hline 
+% ---------------------------------------- 
+  & SR Diff & $b=02$ & $b=04$ & $b=06$ & $b=08$ & $b=10$ \\ 
+% ---------------------------------------- 
+\hline \\[-1.8ex] 
+% ---------------------------------------- 
+\multicolumn{ 6 }{l}{\textit{Panel A: FF10 Dataset}} \\ 
+TP & $-0.68$  & $0.74$  & $1.34$  & $1.84$  & $2.88$  & $4.14$ \\ 
+OC & $-0.03$  & $26.85$  & $28.35$  & $27.59$  & $28.37$  & $27.75$ \\ 
+EW & $-0.17$  & $16.54$  & $18.20$  & $18.40$  & $18.94$  & $18.34$ \\ 
+\hline \\[-1.8ex] 
+% ---------------------------------------- 
+\multicolumn{ 6 }{l}{\textit{Panel B: FF25 Dataset}} \\ 
+TP & $-0.65$  & $3.54$  & $3.50$  & $4.08$  & $4.58$  & $5.56$ \\ 
+OC & $0.06$  & $0.04$  & $0.02$  & $0.04$  & $0.04$  & $0.04$ \\ 
+EW & $-0.44$  & $0.32$  & $0.14$  & $0.16$  & $0.38$  & $0.40$ \\ 
+\hline \\[-1.8ex] 
+% ---------------------------------------- 
+\multicolumn{ 6 }{l}{\textit{Panel C: IBOV Dataset}} \\ 
+TP & $-1.90$  & $1.64$  & $1.50$  & $1.52$  & $1.66$  & $1.84$ \\ 
+OC & $0.02$  & $44.35$  & $45.67$  & $44.49$  & $45.49$  & $44.39$ \\ 
+EW & $-0.62$  & $4.92$  & $5.42$  & $5.08$  & $5.08$  & $5.30$ \\ 
+\hline \hline 
+\end{tabular} 
+\vspace{-1 ex} 
+\begin{tablenotes} 
+\input{./note-TP-tab-pval-sr.tex}
+\end{tablenotes} 
+\end{threeparttable} 
+\end{table} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FF10 FIG 
+
+\begin{figure}[ht!]
+\centering
+\footnotesize
+\caption{Portfolio Utility for Different Risk-Aversions of the FF10 Data}\label{fig:gama:ff10} % after caption
+\vspace{-1 em}
+\includegraphics[width=.9\textwidth]{../01-tp-port/FIGS/fig-gama-ff10.pdf}
+\vspace{-2 em}
+\begin{quote}
+\textbf{Source:} The author. \\
+\textbf{Note:}
+The figure shows the utility level rankings for different Risk-Aversion for each portfolio.
+TP is the Tangency Portfolio, MV is the Minimum-Variance Portfolio, OC is the Optimal Constrained Portfolio, OU is the Optimal Unconstrained Portfolio and EW is the Equally Weighted Portfolio.
+The OC uses the implied $\gamma$ of having a target return of $\mu_{0}=1.1\times\mu_{mv}$.
+$A=e'\Sigma^{-1}\mu$ is the Merton constant shown in equation \eqref{merton:cte}. 
+\end{quote}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FF25 FIG 
+\begin{figure}[!ht]
+\centering
+\footnotesize
+\caption{Portfolio Utility for Different Risk-Aversions of the FF25 Data}\label{fig:gama:ff25} % after caption
+\vspace{-1 em}
+\includegraphics[width=.9\textwidth]{../01-tp-port/FIGS/fig-gama-ff25.pdf}
+\vspace{-2 em}
+\begin{quote}
+\textbf{Source:} The author. \\
+\textbf{Note:}
+The figure shows the utility level rankings for different Risk-Aversion for each portfolio.
+TP is the Tangency Portfolio, MV is the Minimum-Variance Portfolio, OC is the Optimal Constrained Portfolio, OU is the Optimal Unconstrained Portfolio and EW is the Equally Weighted Portfolio.
+The OC uses the implied $\gamma$ of having a target return of $\mu_{0}=1.1\times\mu_{mv}$.
+$A=e'\Sigma^{-1}\mu$ is the Merton constant shown in equation \eqref{merton:cte}.
+\end{quote}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ensaio 2
+
+\chapter{ON THE EQUIVALENCE OF MINIMUM TRACKING ERROR AND MINIMUM VARIANCE PORTFOLIOS}
+
+% \section{Introduction} \label{intro:letter}
+
+Minimum variance (MV) and minimum Tracking Error (MT) optimal portfolios of excess returns on a benchmark are among the most used portfolio policies considered by market practitioners and academics; see, for instance, \citeonline{ckl99}, \citeonline{liu-2009}, \citeonline{brodie2009} and \citeonline{demol2016}.
+In short, the MV policy consists in finding optimal portfolios that minimize the portfolio variance, whereas the MT policy finds portfolios that minimize the variance of the difference with respect to a given benchmark.
+
+Existing literature often refers to these two portfolio policies as interchangeable, that is, they are treated as being equivalent.
+However, to the best of our knowledge there is no single reference that establishes an analytical derivation to find this equivalence between the two portfolio problems.
+We, on the other hand, provide this derivation by using the \textbf{Sherman-Morrison} formula \cite{matcook2012}.
+
+Furthermore, we provide a formal connection of our analytical result with the OLS regression of the returns on a benchmark against the returns of risky assets.
+Also, we take advantage of the equivalence between MV and MT portfolios to use the approach used in \citeonline{memmel-2006} to find a Global Minimum Variance Portfolio (GMVP) portfolio by means of a regression.
+
+% \cite{jones-1999}
+
+%Yet another similar result appears in \cite{jones-1999}, where the author shows that the resulting $\beta$ of the artificial regression of a vector of ones against the returns of the assets is a kind of mean-variance portfolio, which can be used to find the Tangency Portfolio, if the weights are normalized to satisfy $e'\beta=1$.
+
+The paper is organized as follows.
+Section \ref{section:theory} describes the MV and MT portfolio policies and provides an analytical expression for the equivalence between the two.
+Section \ref{sec:regression} provides an equivalence result to OLS regression and an application to the result of \citeonline{memmel-2006}.
+Section \ref{section:conclusion} concludes.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Two of a kind: Minimum Tracking Error and minimum variance portfolios}\label{section:theory}
+\section{TWO OF A KIND: MINIMMUM TRACKING ERROR AND MINIMUM VARIANCE PORTFOLIOS}\label{section:theory}
+
+In this section, we establish the equivalence between two commonly used problems in the portfolio selection literature: the minimum Tracking Error and minimum variance portfolios of excess returns on a benchmark index. For that purpose, let us define the excess returns of the risky assets on the benchmark as:
+
+\begin{align*}
+R^{e}_{t} &= R_{t} - e y_{t},
+\end{align*}
+
+\noindent
+where $R$ is the $T \times K$ matrix of asset returns, $y$ is the $T$-dimensional vector of returns of the benchmark index, and $e$ is a conformable vector of ones. The unconditional variance of the excess returns is:
+
+\begin{align*}
+V(r) &= \Omega = V(X_{t}) + V(e y_{t}) - 2cov(X_{t}, e y_{t})
+\\
+V(r) &= \Sigma_{XX} + \sigma_{yy} ee' - 2 \sigma_{Xy} e',
+\end{align*}
+
+\noindent
+whereas the portfolio variance is:
+
+\begin{align*}
+V(r_{p}) &= w'V(r)w = w'\Omega w
+\\
+&= w'(\Sigma_{XX} + \sigma^{2}_{y}ee' - 2\sigma_{Xy}e')w
+\\
+&= w'\Sigma_{XX}w + \sigma^{2}_{y}w'ee'w - 2w'\sigma_{Xy}e'w,
+\end{align*}
+
+\noindent
+where $w$ is the vector of portfolio weights. 
+
+\textbf{Remark:}
+Even though the classic optimization problem considers the risk-free asset as a benchmark, \citeonline{tz2011} argue that portfolio managers are benchmarked by a market index, like the S\&P500.
+In that case, the return on the market index can be viewed as the riskless asset to apply the same framework.
+It is also important to note that in the case where the investor uses the GMVP with returns in excess of the risk-free asset, he is tracking the risk-free asset.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Minimum Variance
+We now turn our attention to formulation of the minimum variance (MV) portfolio problem. The MV problem is defined as:
+
+\begin{align}\label{eq:minvar}
+\underset{w}{\text{Min}} \quad &
+w'\Sigma_{XX}w + \sigma^{2}_{y}w'ee'w - 2w'\sigma_{Xy}e'w
+\\
+s.t. \quad &
+e'w = 1.\nonumber
+\end{align}
+
+% FOC
+\noindent
+And has FOC:
+
+\begin{align*}
+	2 \Sigma_{XX} w - 2(\sigma_{Xy}e' + e \sigma_{Xy}')w + 2 \sigma_{y}ee'w &= \lambda e
+\\
+e'w &= 1.
+\end{align*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+On the other hand, the minimum Tracking Error (MT) problem consists in minimizing the variance of the difference between the portfolio $R_{p,t}=w'X_{t}$ and the benchmark, i.e.:
+
+\begin{align*}
+Var(R_{p,t} - y_{t}) 
+&= Var(w'X_{t}) + Var(y) - 2Cov(w'X_{t}, y_{t})
+\\
+&= w'\Sigma_{XX}w + \sigma_{y}^{2} - 2w'\sigma_{Xy}.
+\end{align*}
+
+\noindent
+Therefore, the MT problem can be stated as:
+
+% Tracking Error
+\begin{align}\label{eq:mintrack}
+\underset{w}{\text{Min}} \quad & w'\Sigma_{XX}w + \sigma_{y}^{2} - 2w'\sigma_{Xy} 
+\\
+s.t. \quad &
+e'w = 1. \nonumber
+\end{align}
+
+% FOC
+\noindent
+And has FOC:
+
+\begin{align*}
+2 \Sigma_{XX} w - 2 \sigma_{Xy} &= \lambda e
+\\
+e'w &= 1.
+\end{align*}
+
+It is widely known in the literature \cite{ckl99, liu-2009, brodie2009, demol2016} that the problems \eqref{eq:minvar} and \eqref{eq:mintrack} are equivalent once they are both minimization of a squared sum.
+However, they do not have the same objective function, neither the same FOC.
+Here, we will show that it is only because of the \textbf{Sherman-Morrison} formula \cite{matcook2012} that they will have the same solution.
+Proposition 1 states the equivalence between the results of the optimization problems in \eqref{eq:minvar} and \eqref{eq:mintrack}.\\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent \textbf{Proposition 1:}
+The minimum variance portfolio and minimum Tracking Error portfolios obtained upon solving optimization problems in \eqref{eq:minvar} and \eqref{eq:mintrack}, respectively, are equivalent.\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent \textbf{Proof:} 
+
+The \textbf{Sherman-Morrison} formula \cite{matcook2012} states that:
+
+\begin{align*}
+(A + uv')^{-1} = A^{-1} - \frac{A^{-1}uv'A^{-1}}{1+v'A^{-1}u}
+\end{align*}
+
+\noindent
+where $A$ is a $N \times N$ matrix and $u$, $v$ are column vectors of dimension $N$.
+
+The solution to the MV problem in \eqref{eq:minvar} is:
+\begin{align*}
+w^*_{\text{MV}} &= \frac{A^{-1}e}{e'A^{-1}e} [1 - (e'A^{-1}\sigma_{Xy})] + A^{-1}\sigma_{Xy},
+\end{align*}
+
+\noindent
+where $A = \Sigma_{XX} - e\sigma_{Xy}'$, and we find  
+$A^{-1} = \Sigma_{XX}^{-1} +\dfrac{\Sigma_{XX}^{-1}e\sigma_{Xy}'\Sigma_{XX}^{-1}}{1-\sigma_{Xy}'\Sigma_{XX}^{-1}e}$ using the \textbf{Sherman-Morrison} formula \cite{matcook2012}.
+After rearranging terms, we arrive at:
+
+\begin{align}\label{eq:minvarsol}
+w^*_{\text{MV}} &= w_{ou} + w_{mv}(1-e'w_{ou}),
+\end{align}
+
+\noindent
+where $w_{ou} = \Sigma_{XX}^{-1}\sigma_{Xy}$ and $w_{mv} = \frac{\Sigma_{XX}^{-1}e}{e'\Sigma_{XX}^{-1}e}$. $w_{ou}$ is the vector of weights of the optimal mean-variance unconstrained portfolio whereas $w_{mv}$ is the vector weights of the minimum variance portfolio of the $K$ assets. 
+
+The solution to the MT problem in \eqref{eq:mintrack} is:
+
+\begin{align}
+w^*_{\text{MT}} &= \Sigma_{XX}^{-1} \sigma_{Xy}
++ (1 - e'\Sigma_{XX}^{-1} \sigma_{Xy})
+\frac{\Sigma_{XX}^{-1}e}{e'\Sigma_{XX}^{-1}e}
+\\
+&= w_{ou} + (1 - e'w_{ou})w_{mv},
+\end{align}
+
+\noindent
+which is equivalent to the solution of the MV portfolios in \eqref{eq:minvarsol}. $\blacksquare$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Regression based portfolios}
+\section{REGRESSION BASED PORTFOLIOS} \label{sec:regression}
+
+Another way to find an index-tracking portfolio is to regress the benchmark returns against the risky assets returns.
+This problem is a regression with stochastic regressors, more details about this problem can be found in \citeonline{rao-2008} and \citeonline{rencher-2007}.
+With this in mind, we now consider a regression-based approach to the portfolio selection problem.
+To do this we define the following regression with intercept $\alpha$, slope $\beta$ and constrain $e'\beta=1$:
+
+\begin{align}
+\label{eq:regression} 
+\underset{\beta}{Min} & \quad (y_t - \alpha - \beta X_t)'(y_t - \alpha - \beta X_t)
+\quad \text{s.t.} \quad  e'\beta=1.
+\end{align}
+
+\noindent
+The solution to \eqref{eq:regression} is:
+
+\begin{align*}
+\beta^* &= \beta_{ols} + (1 - \beta_{ols}) \frac{(X'X)^{1}e}{e'(X'X)^{-1}e},
+\end{align*}
+
+\noindent
+where $\beta_{ols} = (X'X)^{-1}X'y$. If we use centered quantities of $X$ and $y$, we arrive at:
+
+\begin{align*}
+\beta^* &= \Sigma_{XX}^{-1} \sigma_{Xy}
++ (1 - e'\Sigma_{XX}^{-1} \sigma_{Xy})
+\frac{\Sigma_{XX}^{-1}e}{e'\Sigma_{XX}^{-1}e}
+\\
+ &= w_{ou} + (1 - e'w_{ou})w_{mv}, 
+\end{align*}
+
+\noindent
+which is equivalent to the result obtained in Proposition 1. Therefore, the equivalence of the minimum variance and minimum Tracking Error portfolios can also be established by means of a regression-based approach.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Memmel}
+Because the index-tracking portfolio is equivalent to the GMVP, we can use the approach presented in \citeonline{memmel-2006} to determine the weights $w_{MV}$.
+In their original approach, they rewrite the weights of the GMVP as regression coefficients.
+
+First, they set up the problem by choosing the return of stock $N$ to be the dependent variable:
+
+\begin{align}
+\label{eq:memmel:ols}
+r_{tN} &= \alpha + \beta_{1}(r_{tN}-r_{t1}) + \dots + \beta_{N-1}(r_{tN}-r_{t,N-1})
++ \varepsilon_{t},
+\quad
+t=1, \dots, T.
+\end{align}
+
+\noindent
+Then, to solve this problem, they define $\beta^{ex}, w_{MW}^{ex}, r_{t}^{ex}$ as $(N-1) \times 1$ vectors.
+The superscript \textit{ex} indicates that the vector has no entry for asset $N$.
+Further, they define $\Omega$ as the covariance matrix of regressors of equation \eqref{eq:memmel:ols}:
+
+\begin{align*}
+	\Omega = var( e r_{t, N}  - r_{t}^{ex} )
+\end{align*}
+
+The regression coefficients $\beta^{ex}$ are the standardized covariances of the regressors and the dependent variable:
+
+\begin{align}
+\label{eq:bex}
+\beta^{ex} &= \Omega^{-1} cov(e r_{tN} - r_{t}^{ex}, r_{tN})
+\end{align}
+
+Now, we have to show that the weights $w_{MV}^{ex}$ of the GMVP correspond to the regression coefficient $\beta^{ex}$.
+We can compute the weight $w_{MV, N}$ as $1 - e'w_{MV}^{ex}$.
+
+To prove $\beta^{ex} = w^{ex}_{MV}$, they consider an arbitrary portfolio $P$.
+Its return is determined by the weght vector $w^{ex}_{MV}=(w_{P,1}, \dots, w_{P, K})'$ and the stock returns $r^{ex}_{t}$ and $r_{t, N}$:
+
+\begin{align*}
+r_{tP} &= w_{P}^{ex}'r_{t}^{ex} + (1- w_{P}^{ex}'e) r_{tN}
+\\&=
+r_{tN} + w_{P}^{ex}'(r_{t}^{ex} - e r_{tN})
+\end{align*}
+
+The return variance of this arbitrary portfolio $P$
+
+\begin{align}
+	\label{eq:var}
+\sigma^{2}_{P} &=
+\sigma^{2}_{N} + w_{P}^{ex}' \Omega w_{P}^{ex} - 2w_{p}^{ex}' cov(r_{tN}e - r^{ex},r_{tN})
+\end{align}
+
+\noindent
+is a function of the weights $w_{P}^{ex}$.
+To find the weights of the GMVP, we minimize equation \eqref{eq:var} with relation to portolio weights $w_{P}^{ex}$.
+This miminization leads to:
+
+\begin{align*}
+2 \Omega w_{P}^{ex} - 2 cov(r_{tN}e-r_{t}^{ex}, r_{tN}) &= 0 
+\\
+\Omega w_{P}^{ex} &= cov(r_{tN}e-r_{t}^{ex}, r_{tN})
+\end{align*}
+
+\noindent
+and they find:
+
+\begin{align}
+	\label{eq:wex}
+w_{P}^{ex} &= \Omega^{-1} cov(r_{tN}e-r_{t}^{ex}, r_{tN})
+\end{align}
+
+The weights \eqref{eq:wex} correspond to the regression coefficients \eqref{eq:bex}.
+%=============================================================================
+
+If we substitute the returns of asset $N$ at time $t$ by the excess returns of asset $N$ on the benchmark $y$ at time $t$, the solution will be a tracking portfolio and the results of \citeonline{memmel-2006} will hold for our portfolio.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Final remarks}\label{section:conclusion}
+\section{FINAL REMARKS}\label{section:conclusion}
+
+In this paper, we have shown the equivalence of a Tracking Error portfolio and a minimum variance portfolio of excess returns on a benchmark.
+Here, we provided an analytical derivation of the solutions to the problems above.
+The solution is a 2-fund portfolio, very common in portfolio theory.
+The solutions are related both to OLS regression with stochastic regressors and the Quadratic Utility formulation of portfolio optimization.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ensaio 3
+
+\chapter{INDEX TRACKING WITH FEATURE SELECTION}
+
+% \section{Introduction} \label{sec:intro:featsel}
+
+\citeonline{tz2011} and \citeonline{liu-2009} point out that the majority of institutional investors are benchmarked by an index, e.g. the SP500.
+So, their performance has to be evaluated in relation to that index.
+Consequently, having to choose index tracking portfolio is closer to the practical life of an institutional investor.
+Index tracking can be defined as a quantitative method of trading and of passive portfolio management \cite{PLS10, nnl14}.
+The most popular way to use this strategy is to form a portfolio of assets to mimic the performance of an externally specified index that, usually, is a market index such as the SP500.
+This performance takes into account the risk-return profile of the specified benchmark.
+
+% two main ways
+There are two main ways of maintaining a fund that tracks an index; one is the full replication and the other is the partial replication.
+% full replication
+Full replication is the simplest one; it consists on maintaining all the assets with the same relative weights of the index being tracked.
+However, despite being possible to achieve a perfect replication with it, the full replication presents some disadvantages:
+(i) it results in small weights, which increase transaction costs;
+(ii) it presents instability of the weights, which means frequent revisions of them;
+(iii) its portfolio rebalancing can become complicated; 
+and (iv) price fluctuation bring too many additions and subtractions of assets to the index.
+
+% partial replication
+It is also possible to try to replicate an index with a portfolio that contains only a small proportion of all the available assets, this is the partial replication.
+But this method also presents some problems:
+(i) the initial selection of the small number of assets to be included in the portfolio can be hard, and
+(ii) the need to estimate optimal weights (allocation) complicates the problem.
+
+To implement an index tracking strategy, the investor has to solve two interconnected problems associated with it.
+The first is the asset selection problem, where the investor selects $p$ assets from a universe of $N$ assets.
+The second is the asset allocation problem, where the investor decides the relative weights of each selected asset.
+
+% -------------------------------------
+% \subsection*{What we do}
+
+The main goal of this paper is to compare the performance of different feature selection algorithms applied to index tracking and portfolio optimization.
+More specifically, we study the case where an investor has to track an Index and he rebalances his portfolio monthly, bimonthly and quarterly (20, 40, and 60 days rebalancing).
+First, we select the assets with the following strategies:
+backward iteration, forward iteration, lasso regression.
+Here, we highlight the use of the backward and forward iteration algorithms that receive very little attention in the literature.
+With the selected assets, we form portfolios by minimizing the Tracking Error volatility.
+Then, we take the out of sample portfolio returns and analyze those returns in comparison to the selected Index.
+We use two different datasets.
+The first is a brazilian dataset of asset prices with daily frequency from January 1999 to December 2010 (2970 days).
+The second is an American dataset of asset prices with daily frequency from January 2010 to October 2017 (1950 days).
+
+The benefits of this two phase method are twofold.
+First, it isolates the effect of the selection methods, so the differences in performance may be attributed to differences in asset selection methods.
+Second, we make use of the Global Minimum Variance Portfolio (GMVP) in the second phase.
+The GMVP has several desirable properties discussed in \citeonline{jag-2003} and \citeonline{CTS2006}.
+As the goal of this paper is to compare the performance of the selection algorithms applied to index tracking and portfolio selection, this separation of phases is very suitable to our needs.
+
+% -------------------------------------
+% \subsection*{Lit Review}
+
+Next, we list papers that evaluated different methods of asset selection and portfolio optimization to implement index tracking and we compare their works to ours.
+%
+\citeonline{liu-2009} selects portfolios that track the SP500 by minimizing Tracking Error volatility without regard for the size of mean of the Tracking Error.
+In that paper, the asset selection phase is solved by only using the 30 assets in the Dow Jones Industrial Average (DJIA).
+\citeonline{dijk2002} use index tracking with small portfolios by asset selection methods.
+\citeonline{PLS10} mention the possibility that the problems of asset selection and portfolio optimization can be put in the form of variable selection.
+They implement the asset selection with methods of penalized regression.
+Thus, we can use other methods of variable selection to choose the assets that will enter our portfolio.
+Here, we will use some methods listed in \citeonline{isl-2014}.
+
+\citeonline{santos15} selects minimum variance portfolios using cardinality constraints to form portfolios with few assets and assesses their performance.
+\citeonline{rbfin-it} select Index Tracking portfolios with cardinality constraints to form portfolios with few assets and track the Bovespa Index.
+This paper resembles those, because we will form portfolios with few assets; however, we will use a different method.
+We will not use cardinality constraints, but feature selection algorithms.
+This can be justified by the lower computational cost of those algorithms.
+We will use only regressions to select the portfolio assets, the optimization of portfolios weights will occur in a different phase.
+
+Other related works are \citeonline{nnl14} e \citeonline{nnen14}, which use non-negative lasso and elastic net regressions to select assets.
+Those works use non-negative least-squares for portfolio optimization (weight selection).
+Yet another related work is \citeonline{lasso-infl}, which uses lasso regression to select variables to forecast inflation.
+This work differs from that in terms of the goal for which we use the lasso regression.
+Here we use it to form portfolios to track a financial Index.
+
+
+% -------------------------------------
+% \subsection*{Results prelim}
+Our results show that, in the brazilian case, the lasso selection method outperforms the other methods by presenting similar Tracking Error volatility and higher mean returns.
+Note that this overperformance is due only to asset selection, not to the shrinkage of the portfolio weights that results from the constraints of the problem.
+This happens because the asset allocation is the same for all portfolios.
+More on the shrinkage of portfolio weights can be found in \citeonline{fan2012, jag-2003, brodie2009}.
+
+However, in the American case, the lasso method presents more volatility, but this is more than offset by its superior mean returns, which ultimately delivers better risk-adjusted performance.
+But, because our primary goal is to minimize Tracking Error volatility, this kind of risk-return tradeoff is not desirable in our case.
+Even though the backward and forward selection methods might be outperformed by the lasso, there are some instances where these methods are superior or comparable to the benchmark index. 
+This has to be highlighted, because those simple methods of feature selection receive too little attention in portfolio literature, even though they might bring good results.
+
+% -------------------------------------
+% \subsection*{TOC}
+
+Beyond this introduction, this paper is organized as follows.
+Section \ref{sec:defs} presents the basics of portfolio selection that will be used throughout the paper.
+Section \ref{sec:selection} presents the algorithms used to apply feature selection in the dataset.
+Section \ref{sec:experiment} presents the methodology of the empirical study.
+Section \ref{sec:results} shows the results obtained in the empirical study.
+% Section \ref{sec:data} presents the data that will be used in this work.
+Finally, Section \ref{sec:conc} concludes.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \clearpage
+\section{BASIC DEFINITIONS} \label{sec:defs}
+
+In this section, we present the basics of portfolio selection that we will use throughout this paper.
+We start by considering an investment universe with $N$ risky assets.
+Each asset has a price in time $t$ denoted by $P_{t,i}$.
+By holding asset $i$ from $t-1$ to $t$, the investor earns the return
+\begin{align} \label{eq:ret}
+	R_{t,i} = \frac{P_{t,i}}{P_{t-1,i}} - 1.
+\end{align}
+
+Let's  denote the $N\times1$ vector of future and uncertain returns of those assets in time $t$ by $R_{t}$, where 
+\begin{align*} % \label{ret_vec}
+	R_{t} =  [R_{t1}, R_{t2} , \dots, R_{tN}]'.
+\end{align*}
+We will assume that the returns have mean vector $E[R_{t}] =\mu_{X}$ and covariance matrix $V[R_{t}] =\Sigma$.
+We also denote the future and uncertain return of the index by $y_{t}$.
+We assume that the index return have mean $E[y_{t}] = \mu_{y}$ and variance $V[y_{t}]=\sigma^2_{y}$.
+
+
+% excess returns
+With those definitions, we can define the \textbf{excess returns} of the risky assets on the index as:
+\begin{align*}
+	R^{e}_{t} &= R_{t} - e y_{t}.
+\end{align*}
+where $e$ is a $N \times 1$ vector of ones.
+We assume that $R_{t}$ has mean vector and covariance matrix 
+\begin{align*}
+E[R^{e}_{t}] &= \mu_{X}-e\mu_{y}=\mu
+\\
+V[R^{e}_{t}] &= \Sigma + \sigma_{y}^{2}ee' - 2Cov(X_{t},y_{t})e' =\Omega.
+\end{align*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% portfolio
+\subsection*{Porfolio Returns}
+
+Next, we define portfolio and portfolio returns.
+A portfolio of the $N$ risky assets is represented by a $N\times 1$ vector $w$, where
+\begin{align*}
+	w = \left[ w_1, w_2 , \dots, w_N \right]',
+\end{align*}
+and $w_{i}$ is the fraction of total wealth invested in asset $i$.
+The vector $w$ can also be called the allocation vector.
+If we constrain the weights in $w$ to sum up to one ($e'w=1$), we have the \textbf{fully bought condition}.
+
+Holding the portfolio $w_{t}$ from $t$ to $t+1$ yields the out of sample return in $t+1$,
+\begin{align} \label{eq:retport}
+	R_{p,t+1} &= w_{t}'R_{t+1}.
+\end{align}
+$R_{p,t+1}$ is a weighted average of the asset returns selected to the portfolio with weights $w_{i}$ for $i=1,\dots,N$.
+\begin{align*} \label{ret_port}
+	R_{p,t+1} = w_{t,1} R_{t+1,1} + \dots + w_{t,N} R_{t+1,N}
+	= \sum_{i=1}^{N} w_{t,i} R_{t+1,i} = w_{t}'R_{t+1}.
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Evolution of Weights
+\subsection*{Evolution of weights}
+
+\citeonline{liu-2009} points out that in the moment prior to rebalancing, each dollar invested in asset $i$ in the portfolio has changed its value from $w_{t,i}$ to $w_{t,i}(1+R_{t+1,i})$, where $w_{t,i}$ is the $i$-th element of $w_{t}$ and the $i$-th element of $R_{t}$ is denoted as $R_{t,i}$.
+Also, in general, each dollar invested in the whole portfolio has changed from $w_{t}$ to $w_{t}(1+R_{p,t+1})$.
+Therefore, prior to rebalancing, the weight on asset $i$ has changed from $w_{i,t}$ to 
+\begin{align*}
+	w_{t,i}^{+1} &= w_{t,i} \dfrac{1+R_{t+1,i}}{1+w_{t}'R_{p,t+1}}.
+\end{align*}
+
+More generally, we can express equation the changed vector of weights as
+\begin{align}
+	\label{eq:wplus1}
+	w_{t}^{+1} &= w_{t} \odot \frac{e + R_{t+1}}{1 + R_{p,t+1}},
+\end{align}
+where $\odot$ denotes the Hadamard (direct) product.
+Compounding another period, the portfolio $w_{t}$ in $t+2$ will have changed to
+\begin{align*}
+	w_{t}^{+2} &= w_{t} \odot 
+	\frac{(e + R_{t+1})\odot(e + R_{t+2})}{(1 + R_{p,t+1})\times(1 + R_{p,t+2})}.
+\end{align*}
+
+Following this logic, we reach a equation for $h$ periods:
+
+\begin{align}
+	\label{eq:wplush}
+	w_{t}^{+h} &= w_{t} \odot 
+	\frac{(e + R_{t+1})\odot\dots\odot(e + R_{t+h})}
+	{(1 + R_{p,t+1})\times \dots \times(1 + R_{p,t+h})}.
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tracking Error
+\subsection*{Tracking Error}
+
+The Tracking Error may be defined as a measure of the difference between the index tracking portfolio return, $R_{p,t}$ and the index return, $y_{t}$.
+So, we have the following expression for the Tracking Error:
+\begin{align} 
+	\label{eq:TE}
+	TE_{t+1} &= w_{t}'R_{t+1} - y_{t+1} 
+	= R_{p, t+1} - y_{t+1},
+\end{align}
+where $w_{t}$ is the allocation vector of our portfolio.
+
+With the expression of the Tracking Error above, we can see that, if the weights are restricted to sum up to one ($e'w=1$), then the excess return of a portfolio on a benchmark is the same as the Tracking Error:
+\begin{align}
+	\notag
+	R^{e}_{p,t+1} & = w_{t}'R_{t+1} = w'(R_{t+1} - e y_{t+1})
+	\\
+	\notag
+	& = w_{t}'R_{t+1} - w'e y_{t+1}
+	\\
+	\label{eq:TER}
+	R^{e}_{p,t+1} & = R_{p,t+1} - y_{t+1} = TE_{t+1}.
+\end{align}
+Hence, if the weights sum up to one ($e'w=1$), minimizing the variance of the Tracking Error is equivalent to minimizing the variance of the excess returns of a portfolio on a benchmark.
+Note that the restriction is important.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \clearpage
+% \section{Feature Selection Algorithms} \label{sec:selection}
+\section{FEATURE SELECTION ALGORITHMS} \label{sec:selection}
+
+Here, we present the methods through which we will select the assets, they are:
+forward stepwise selection, backward stepwise selection, and lasso regression.
+More information about these methods can be found in \citeonline{isl-2014}.
+The methods of asset selection used here depend heavily on the Ordinary Least Squares (OLS) Regression.
+Below, we offer more details about these methods, beginning with some notes on the OLS Regression.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% OLS
+\subsection{Ordinary Least Squares (OLS) Regression}
+
+By regressing the index returns against the asset returns with the portfolio weights being parameters to estimate, we have a regression problem with stochastic regressors, more details about this problem can be found in \citeonline{rao-2008} and \citeonline{rencher-2007}.
+We may represent this problem as:
+\begin{align*} 
+	y_{t} &= \alpha + X_{t}\beta + \varepsilon_{t}.
+\end{align*}
+Note that the intercept $\alpha$ is necessary to let $E[\varepsilon_{t}]=0$, so we can have $V[\varepsilon_{t}] = E[\varepsilon_{t}^2]$.
+
+The OLS regression has the goal to minimize the sum of squared residuals, which is expressed as:
+\begin{align} \label{eq:rss}
+	RSS(\beta)
+	= \sum_{t=1}^{T} \varepsilon_t^2
+	= \sum_{t=1}^{T} (y_t - \alpha - X_t \beta)^2.
+\end{align}
+where $\varepsilon_{t}$ is the residual of the regression.
+% \begin{align*} 
+% 	\varepsilon_{t} = y_{t} - \alpha -  X_{t} \beta.
+% \end{align*}
+
+By minimizing $RSS(\beta)$ in equation \eqref{eq:rss}, we find $\beta_{ols}$:
+\begin{align} 
+	\label{eq:bols}
+	\beta_{ols} = (X'X)^{-1}(X'y)
+\end{align}
+where $X$ is the $J \times N$ matrix of asset returns: $X = [X_{t-J}, X_{t-J+1}, \dots , X_{t-1}]'$ and $y$ is the $J\times 1$ vector of index returns $y = [y_{t-J}, y_{t-J+1}, \dots , y_{t-1}]'$.
+
+%=======================================================================
+\subsection{Forward Stepwise Selection}
+
+The forward stepwise selection uses a series of OLS regressions to select the assets that will enter the investor's portfolio, i.e. the columns that will enter the matrix $X$.
+It starts with a null model with no predictor, then we add one predictor at a time to the model until all predictors are added.
+More specifically, at each step the variable that provides the best fit is added to the model.
+
+%=======================================================================
+\subsection{Backward Stepwise Selection}
+
+In opposition to the forward stepwise selection, the backward stepwise selection starts with the full OLS model, which contains all $N$ predictors available.
+Then the least useful predictors are removed, one at a time, until we reach a model with the desired $p$ predictors.
+
+The forward and backward stepwise selections result in a set of models, each of which contains a subset of $p$ predictors.
+Usually, the researcher determines which of the models in the set of models is the best.
+Here, however, we want a predefined number of assets in our portfolios.
+So we just choose the model with the predefined number $p$ of assets with the smaller $RSS$ and bigger $R^2$.
+To implement both of those algorithms, we  use the \texttt{R} software \cite{R} with the \texttt{leaps} package \cite{R:leaps}.
+
+%=======================================================================
+\subsection{Lasso}
+
+To fit the least squares regression, we estimate the values of $\alpha, \beta_1, \cdots, \beta_p$ that minimize the $RSS$, as in equation \eqref{eq:rss}.
+The lasso regression has a similar form, with its coefficients minimizing the $RSS$ plus a penalty: 
+\begin{align} \label{lasso-reg} %\tag{6.7} 
+\sum_{t=1}^{T} 
+\left( y_t - \alpha - \sum_{j=1}^{p} \beta_j x_{tj} \right)^2 +
+\lambda \sum_{j=1}^{p} |\beta_{j}| =
+	RSS + 
+	\lambda \sum_{j=1}^{p} |\beta_{j}| .
+\end{align}
+That is, the lasso is a penalized regression.
+In the equation above, $\lambda \geq 0$ controls the amount of regularization in the regression.
+When $\lambda = 0$, we have the least squares regression.
+The bigger the value of $\lambda$, the bigger the amount of regularization and tighter the variable selection will be.
+Thus, we have to fit $\lambda$ in a convenient way to suit our objectives.
+In this paper we use the \texttt{glmnet} package \cite{R:glmnet} of the \texttt{R} software \cite{R}.
+Because the betas in the algorithms above might not sum to one, we only use the algorithms to select the assets.
+\citeonline{nnl14} and \citeonline{nnen14} also segregate the asset selection phase and the asset allocation phase by doing different regressions for each phase.
+Another reason to do this is that by using the same equation for all the portfolios' allocation, we can isolate the effect of the asset selection strategies.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXPERIMENT
+% \clearpage
+% \section{The Experiment} \label{sec:experiment}
+\section{THE EXPERIMENT} \label{sec:experiment}
+
+In this section, we present the methodology of our experiment.
+The goal of such experiment is to evaluate the performance of the alternative asset selection techniques against each other and the benchmark index.
+It is done in three steps.
+The first step is the asset selection phase, which is done by using the algorithms from Section \ref{sec:selection}.
+The second step is asset allocation phase, where we form optimal portfolios in pseudo real time.
+The third step is the out of sample performance evaluation of those portfolios against each other and the benchmark.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DATA
+\subsection{Data} \label{sec:data}
+
+In this empirical analysis we have two different datasets.
+The first is the Brazilian dataset; it consists of daily closing prices for 61 stocks traded in the Bovespa and a series of daily closing prices for the Bovespa Index (IBovespa).
+The sample period used here is from January 1999 to December 2010 (2970 days).
+% The asset prices were drawn from Bloomberg, and the IBovespa series was obtained from the Sistema Gerenciador de Séries Temporais from the Brazilian Central Bank.
+The second dataset is the American dataset; it consists of daily closing prices for 462 stocks and a series of daily closing prices for the SP500 index.
+The sample period used here is from January 2010 to October 2017 (1950 days).
+
+From the price and index series, we take the simple daily raw return of each asset, according to equation \eqref{eq:ret}.
+That will leave us with a total of $N+1$ ($N$ stocks plus one index) series of raw returns, with length of $T$, each.
+With the raw return series ($R_{t}$), we use the algorithms from Section \ref{sec:selection} to select which assets will enter in our portfolios (asset selection phase).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Allocation
+\subsection*{Allocation}
+After that, we enter the asset allocation phase.
+To that end, we follow \citeonline{liu-2009} and select portfolios that minimize the volatility of the Tracking Error, without any regard for the size of the mean of the Tracking Error.
+To achieve this, we find the portfolio that minimizes the variance of the excess returns on the benchmark with a fully bought contraint ($e'w=1$).
+The answer to the problem is:
+
+\begin{align} \label{eq:gmv}
+w_{t} = \frac{\hat{\Omega}_{t}^{-1}e}{e'\hat{\Omega}_{t}^{-1}e}
+\end{align}
+where $e$ is a $N \times 1$ vector of ones and $\hat{\Omega}_{t}$ is the covariance matrix estimator of $\Omega$ using information untill time $t$.
+
+One clarification has to be made here, what the formula \eqref{eq:gmv} finds is the portfolio with the least variance of excess returns, without any regard for the mean.
+So, following the index exactly and zeroing the Tracking Error is not a concern, only minimizing the volatility of the Tracking Error.
+Using the equation \eqref{eq:gmv} can be defended on the grounds that it is the Global Minimum Variance Portfolio (GMVP).
+This portfolio achieves just what we want and it offers several desirable properties as presented by \citeonline{jag-2003} and \citeonline{CTS2006}.
+If we wanted to zero the Tracking Error, we would have to optimize a different objective function and use different restrictions in our portfolio.
+However, this portfolio would not have the properties of the GMVP highlighted above.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Rolling Windows
+\subsection*{Rolling Windows}
+
+To estimate the $\hat{\Omega}_{t}$ we adopt a recursive estimation approach based on a \textit{rolling window time series of returns} $\{R_{j}\}_{j=t}^{t+J-1}$ with $t$ varying from $t=1$ to $t=T-J-1$.
+For this experiment, we use window length equal to $J=250$ for the Brazilian dataset and $J=500$ for the American dataset, because the American dataset has more assets, and we need $J>N$ for the covariance matrix to be invertible.
+Another way to see that is by stacking $J$ vectors of excess returns on top of each other and forming the $J \times N$ matrix 
+
+\begin{align*}
+R =
+\begin{bmatrix}
+	R_{t-J}	\\ R_{t-J+1} \\ \dots \\ R_{t-1}
+\end{bmatrix}
+\end{align*}
+
+With the rolling windows' scheme, we form the vector of expected means and the covariance matrices of excess returns with the formulas:
+\begin{align}
+	\hat{\mu}_{t} &= J^{-1}\sum_{j=t}^{t+J-1} R_{t},
+	\\
+	\hat{\Omega}_{t} &= (J-1)^{-1} \sum_{j=t}^{t+J-1}(R_{t} - \hat{\mu})(R_{t} - \hat{\mu})'.
+\end{align}
+This results in $T-J-1$ estimates of expected return vectors and covariance matrices.
+Using them, we find the allocation vector using equation \eqref{eq:gmv}.
+By the end of this process, we generate $T-J-1$ allocation vectors for each asset selection algorithm, in each dataset.
+With the allocation vectors, we compute the \textit{out of sample portfolio returns} with equation \eqref{eq:retport}, which generates the time series $\{R_{p,t+1}\}_{t=J}^{T-1}$.
+This time series is the subject of our analysis. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Evaluation Measures 
+\subsection{Evaluation Measures} % \label{sec:eval}
+
+What we will evaluate are the out of sample portfolio returns in relation to the benchmark index.
+Since the goal of index tracking portfolio is to closely follow the series of interest, our evaluation has to consider how our portfolio performs in relation to the benchmark.
+Note that, as \citeonline{tz2011} and \citeonline{liu-2009} point out, the majority of institutional investors are benchmarked by an index, e.g. the SP500.
+So, their performance has to be evaluated in relation to that index.
+Consequently, having to choose index tracking portfolio is closer to the practical life of an institutional investor.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The statistics that we want to evaluate are the Sharpe Ratio (SR), which is the mean of portfolio returns divided by the standard deviation of the portfolio returns; and the Information Ratio (IR), which is the mean of the Tracking Error divided by the standard deviation of the Tracking Error.
+
+% mean Tracking Error ($\mu_{p}$) and the standard deviation of the Tracking Error ($\sigma_{p}$).
+% They have the following formulas:
+% \begin{align}
+% 	\hat{\mu}_{p} &= (T-J)^{-1}\sum_{t=J}^{T}R_{pt},
+% 	\\
+% 	\hat{\sigma}_{p} &= \sqrt{ (T-J-1)^{-1}\sum_{t=J}^{T} (R_{pt} - \mu)^2 }.
+% \end{align}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % Betas
+% \subsubsection*{Portfolio Correlation and Beta}
+% 
+% Other important statistics are the correlation ($\rho$) and beta ($\beta$) of the portfolios' return against the IBovespa.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Turnover
+\subsubsection*{Transaction Costs}
+
+To get a sense of the amount of trading required to implement each portfolio strategy, we compute the portfolio turnover and report its average through time.
+Turnover in time $t$ has the following formula
+\begin{align}
+	\label{to}
+	TO_{t} &= |w_{t+1} - w_{t}^{+1}|,
+\end{align}
+where $w_{t}^{+1}$ is the portfolio prior to rebalancing as defined in equation \eqref{eq:wplus1}.
+
+% Net returns
+Associated with the turnover there is the associated transaction costs of rebalancing a portfolio.
+If the rebalancing is too frequent or too extreme, it can lead to overtrading.
+According to \citeonline{barber-2000}, overtrading has negative effects on portfolio performance due to its associated transaction costs.
+To take into account the impact of such costs we also evaluate the returns net of transaction costs, which have formula:
+\begin{align}
+	R^{net}_{p,t} &= (1 + R_{p,t} )(1 - c TO) - 1,
+\end{align}
+where $c$ is the fee that must be paid for each transaction.
+We use $c=50bp$ like in \citeonline{dgu2009} and \citeonline{fko2012}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Weight Statistics}
+
+To gauge the amount of short selling in the portfolios, we report their \textbf{Short Interest}.
+It expresses the average size of the short positions (weights smaller than zero) in the portfolio, which has the following formula:
+\begin{align}
+	\text{SI}_{t} = \dfrac{\sum_{i=1}^{N} |w_{i,t}| - 1}{2}
+\end{align}
+
+To assess how many assets our strategies select, we also report the \textbf{average number of assets in the portfolio}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \clearpage
+\section{RESULTS} \label{sec:results}
+
+In this section we present the results of our empirical analysis.
+Each row of the Tables \ref{tab:oos:ibov} through \ref{tab:tc:sp500} presents the statistics of a portfolio, and the first column of the rows presents the name of the portfolios.
+In the Tables, \textbf{IBOV} is the Bovespa Index and \textbf{SP500} is the SP500 Index. 
+Also, in each Table,
+\textbf{bwd} stands for the portfolio formed using the Backward Selection Algorithm, 
+\textbf{fwd} stands for the portfolio formed using the Forward Selection Algorithm, and
+\textbf{las} stands for the portfolio formed using the Lasso Algorithm.
+The numbers after the letters denote the number of active positions allowed in each portfolio.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% NO TC
+
+Tables \ref{tab:oos:ibov} and \ref{tab:oos:sp500} show statistics without considering transaction costs.
+The presented statistics are: annualized Mean and Standard Deviation (SD) of the benchmark index and of the portfolio returns.
+The index is shown in absolute terms and the portfolios are shown in relation to the index (Mean and SD of the portfolios are divided by the Mean and the SD of the index).
+SR denotes the annualized Sharpe Ratio.
+The Tables also show the Mean and SD of the Tracking Error of the portfolios (portfolio return minus the index return).
+And the IR denotes the annualized Information Ratio which is the Mean of the Tracking Error divided by its SD.
+The last three columns of the Table show the alfa, beta, and $R^2$ (intercept in annualized terms, the slope, and the coefficient of determination) of a univariate regression of the out of sample portfolio returns against the benchmark Index in the out of sample period.
+
+The Figures \ref{fig:ibov:ret:10a} through \ref{fig:ibov:ret:20a} and \ref{fig:sp500:ret:20a} through \ref{fig:sp500:ret:40a}, show cumulative returns of each portfolio with a specified rebalancing period and a number of assets.
+Those figures also show in pointed lines the difference between those cumulative returns and the index.
+The Figures \ref{fig:ibov:vol:10a} through \ref{fig:ibov:vol:20a} and \ref{fig:sp500:vol:20a} through \ref{fig:sp500:vol:40a}, show rolling window (250 days) annualized standard deviation.
+Those figures also show in pointed lines the Tracking Error standard deviation.
+
+For the brazilian dataset, the figures show that the portfolios attain similar return and Tracking Error volatility.
+As for the cumulative returns, they show that the lasso presents the higher returns.
+This translates into a bigger Sharpe Ratio (SR) for the lasso method.
+This higher mean is a double-edged knife.
+On one hand, higher returns is good to any investor.
+On the other hand, the higher returns detaches the portfolio from the index, and might increase the portfolio volatility.
+However, because we are only minimizing Tracking Error volatility, it seems that the lasso outperforms the other methods.
+In terms of the Information Ratio (IR), again, the lasso method outperforms the other methods, in all rebalancing frequencies, and for the same reasons as the ones reported for the SR.
+
+For the American dataset, the figures show that the lasso portfolios attain higher Tracking Error volatility than the other methods.
+And the forward and backward iteration show very similar Tracking Error volatility.
+As for the cumulative returns, it seems that the lasso presents the higher ones.
+In the risk-adjusted performance, the lasso presents the higher Sharpe Ratio (SR), but this comes in exchange for higher volatility.
+Once again, we remind the reader that we are only minimizing the Tracking Error volatility, so the lasso, in the American case, does not attain the goal we expected, even though it presents a higher Sharpe Ratio.
+In terms of the Information Ratio (IR), the story is the same as in the SR, and the lasso attains higher values of IR by exchanging more mean returns for more volatility, an undesirable transfer in this kind of portfolio.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TC
+
+Tables \ref{tab:tc:ibov} and \ref{tab:tc:sp500} show statistics of the out of sample portfolio returns net of transaction costs.
+We used transaction costs equal to $50bp$ as in \citeonline{dgu2009}.
+The statistics shown are annualized Mean and Standard Deviation (SD).
+SR is the annualized Sharpe Ratio of those returns.
+TO is the turnover and is presented as a daily percentage average.
+Short interest is the size of the short position and is expressed in percentage.
+Active is the average number of active positions in the portfolio.
+The last three columns of the Table show the alfa, beta, and $R^2$ (intercept in annualized terms, the slope, and the coefficient of determination) of a univariate regression of the out of sample portfolio returns net of transactions costs against the benchmark Index in the out of sample period.
+
+For both the brazilian and the American dataset, the the lasso method does not always select the maximum number of assets.
+This might be the reason why the lasso presents lower turnover, which ultimately leads to lower transaction costs.
+Next, we inspect the average short positions of the portfolios.
+Here we can see that while the short positions increase with the active positions, for the lasso method this increase is much less pronounced than in the other methods.
+This, again, leads to lower turnover and transaction costs.
+Another observation is that the lasso penalty diminishes the portfolio turnover.
+But for the penalty to have this effect, we should use the lasso weights, which we don't, as we separate the asset selection and the asset allocation phase.
+What might be happening here is that even without the penalty, the lasso still selects assets that will present less turnover.
+
+Examining the risk-adjusted performance of the portfolios, we attest that the lasso, once again, has the better Sharpe Ratio (SR).
+And once again this is due more to the higher mean return, than to the lower volatility.
+We already expounded why the higher mean return has two sides to it.
+Other noteworthy fact is that once we consider transaction costs, the bwd and the fwd methods might present lower SR than the index itself.
+One last remark to clarify those results is that the portfolios only differ on its asset selection methods, the asset allocation phase is the same for all of them, so what we are examining is how well each method selects the assets that will enter our portfolio.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \clearpage
+% \section{Concluding Remarks} \label{sec:conc}
+\section{CONCLUDING REMARKS} \label{sec:conc}
+
+Here, we presented portfolios formed by methods of variable selection to track a benchmark index.
+We used two different datasets for two different countries.
+One is an American dataset to track the SP500 Index; the other is a brazilian dataset to track the Bovespa Index.
+In the empirical exercise, we segregated the asset selection and the asset allocation phases to isolate the effect of asset selection for each method.
+In the asset allocation phase we used the Global Minimum Variance Portfolio with returns in excess of the benchmark to minimize the Tracking Error volatility of the portfolio, as in \citeonline{liu-2009}.
+
+In the results section we can observe that, in terms of risk-adjusted performance, the lasso method outperforms the backward and forward selection. 
+In the brazilian case, the lasso presents similar return and Tracking Error volatility, but with higher mean return.
+This translates into higher risk-adjusted performance for the lasso.
+This evidence is robust to rebalancing frequency and transaction costs.
+In the American case, the lasso also presents higher mean return, but presents higher volatility, which ultimately leads to a higher Sharpe Ratio.
+However, because our primary goal is to minimize Tracking Error volatility, that exchange is undesirable to us.
+
+Even though the backward and forward selections are outperformed by the lasso in some cases, there are some instances in which they can track the benchmark index pretty well.
+The positive performance of the portfolios leads us to believe that simple variable selection methods can add value to index tracking portfolios.
+By simple methods we mean methods that are not computationally costly as Integer Quadratic Programming like in \citeonline{santos15,rbfin-it}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\citeonline{lw2008-sr}
+\citeonline{lw2011-var}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IBOV Tab
+\clearpage 
+
+\input{../03-it-featsel/TABS/ibov-rpx.tex}
+% \input{./note-TP-tab-pval-sr.tex}
+
+\input{../03-it-featsel/TABS/spy5-rpx.tex}
+
+\begin{landscape}
+\input{../03-it-featsel/TABS/ibov-ols.tex}
+\end{landscape}
+
+\begin{landscape}
+\input{../03-it-featsel/TABS/spy5-ols.tex}
+\end{landscape}
+
+\begin{table}[!ht] 
+\centering 
+\footnotesize
+\caption{Out of Sample Results for the Index Tracking Portfolios without Transaction Costs (IBOV)} \label{tab:oos:ibov} 
+\vspace{-1 em}
+
+\begin{threeparttable} 
+\begin{tabular}{@{\extracolsep{5pt}} lrrrrrrrrr} 
+\\[-1.8ex] \hline \hline 
+  & Mean & SD & SR & Mean TE & SD TE & IR & alpha & beta & R2 \\ 
+% ---------------------------------------- 
+\hline \\[-1.8ex] 
+IBOV & $18.38$  & $31.52$  & $0.58$  & $0.00$  & $0.00$  & $NaN$  & $0.00$  & $1.00$  & $1.00$ \\ 
+\hline \\[-1.8ex] 
+% ---------------------------------------- 
+\multicolumn{9}{l}{Panel A: Monthly Rebalancing} \\ 
+bwd.10 & $0.99$  & $1.02$  & $0.57$  & $-0.23$  & $9.14$  & $-0.03$  & $0.24$  & $0.97$  & $0.92$ \\ 
+fwd.10 & $1.04$  & $1.02$  & $0.60$  & $0.77$  & $9.16$  & $0.08$  & $1.18$  & $0.98$  & $0.92$ \\ 
+las.10 & $1.14$  & $1.05$  & $0.63$  & $2.55$  & $9.51$  & $0.27$  & $2.42$  & $1.01$  & $0.92$ \\ 
+bwd.15 & $1.09$  & $0.99$  & $0.64$  & $1.58$  & $8.40$  & $0.19$  & $2.50$  & $0.95$  & $0.93$ \\ 
+fwd.15 & $1.07$  & $0.99$  & $0.63$  & $1.37$  & $8.36$  & $0.16$  & $2.23$  & $0.95$  & $0.93$ \\ 
+las.15 & $1.13$  & $1.02$  & $0.65$  & $2.37$  & $8.48$  & $0.28$  & $2.70$  & $0.98$  & $0.93$ \\ 
+bwd.20 & $1.07$  & $0.97$  & $0.64$  & $1.38$  & $8.14$  & $0.17$  & $2.49$  & $0.94$  & $0.93$ \\ 
+fwd.20 & $1.09$  & $0.98$  & $0.65$  & $1.62$  & $8.06$  & $0.20$  & $2.67$  & $0.94$  & $0.93$ \\ 
+las.20 & $1.10$  & $1.00$  & $0.64$  & $1.91$  & $8.00$  & $0.24$  & $2.49$  & $0.97$  & $0.94$ \\ 
+\hline \\[-1.8ex] 
+% ---------------------------------------- 
+\multicolumn{ 9 }{l}{Panel B: Bimonthly Rebalancing} \\ 
+bwd.10 & $1.03$  & $1.02$  & $0.59$  & $0.53$  & $9.07$  & $0.06$  & $1.00$  & $0.97$  & $0.92$ \\ 
+fwd.10 & $1.07$  & $1.02$  & $0.61$  & $1.21$  & $9.20$  & $0.13$  & $1.56$  & $0.98$  & $0.92$ \\ 
+las.10 & $1.17$  & $1.05$  & $0.65$  & $3.05$  & $9.62$  & $0.32$  & $2.97$  & $1.00$  & $0.92$ \\ 
+bwd.15 & $1.12$  & $0.98$  & $0.66$  & $2.19$  & $8.38$  & $0.26$  & $3.17$  & $0.95$  & $0.93$ \\ 
+fwd.15 & $1.10$  & $0.99$  & $0.65$  & $1.79$  & $8.39$  & $0.21$  & $2.65$  & $0.95$  & $0.93$ \\ 
+las.15 & $1.20$  & $1.02$  & $0.69$  & $3.65$  & $8.55$  & $0.43$  & $4.02$  & $0.98$  & $0.93$ \\ 
+bwd.20 & $1.09$  & $0.97$  & $0.65$  & $1.58$  & $8.15$  & $0.19$  & $2.73$  & $0.94$  & $0.93$ \\ 
+fwd.20 & $1.12$  & $0.97$  & $0.67$  & $2.14$  & $8.18$  & $0.26$  & $3.25$  & $0.94$  & $0.93$ \\ 
+las.20 & $1.14$  & $1.00$  & $0.67$  & $2.62$  & $7.97$  & $0.33$  & $3.23$  & $0.97$  & $0.94$ \\ 
+\hline \\[-1.8ex] 
+% ---------------------------------------- 
+\multicolumn{ 9 }{l}{Panel C: Quarterly Rebalancing} \\ 
+bwd.10 & $1.03$  & $1.02$  & $0.59$  & $0.53$  & $9.10$  & $0.06$  & $1.00$  & $0.97$  & $0.92$ \\ 
+fwd.10 & $0.98$  & $1.02$  & $0.56$  & $-0.36$  & $9.23$  & $-0.04$  & $0.14$  & $0.97$  & $0.92$ \\ 
+las.10 & $1.15$  & $1.05$  & $0.64$  & $2.74$  & $9.52$  & $0.29$  & $2.73$  & $1.00$  & $0.92$ \\ 
+bwd.15 & $1.08$  & $0.98$  & $0.64$  & $1.49$  & $8.44$  & $0.18$  & $2.51$  & $0.94$  & $0.93$ \\ 
+fwd.15 & $1.07$  & $0.98$  & $0.64$  & $1.36$  & $8.40$  & $0.16$  & $2.34$  & $0.95$  & $0.93$ \\ 
+las.15 & $1.13$  & $1.01$  & $0.65$  & $2.39$  & $8.65$  & $0.28$  & $2.83$  & $0.98$  & $0.93$ \\ 
+bwd.20 & $1.07$  & $0.97$  & $0.65$  & $1.29$  & $8.19$  & $0.16$  & $2.50$  & $0.93$  & $0.93$ \\ 
+fwd.20 & $1.08$  & $0.97$  & $0.65$  & $1.49$  & $8.19$  & $0.18$  & $2.69$  & $0.93$  & $0.93$ \\ 
+las.20 & $1.10$  & $1.00$  & $0.64$  & $1.76$  & $8.06$  & $0.22$  & $2.43$  & $0.96$  & $0.94$ \\ 
+\hline \hline 
+\end{tabular} 
+\vspace{-2 pt} 
+
+\begin{tablenotes} 
+\textbf{Source:} The author. \\
+\textbf{Note:} In this Table the benchmark index is the Bovespa Index (IBOV).
+The Table shows annualized Mean and Standard Deviation (SD) of the Index and of the portfolio returns.
+The index is shown in absolute terms and the portfolios are shown in relation to the index (Mean and SD of the portfolios are divided by the Mean and the SD of the index).
+SR denotes the annualized Sharpe Ratio.
+The Table also shows the Mean and SD of the Tracking Error of the portfolios (portfolio return minus the index).
+And the IR denotes the annualized Information Ratio which is the Mean of the Tracking Error divided by its SD.
+The last three columns of the Table show the alfa, beta, and $R^2$ (intercept in annualized terms, the slope, and the coefficient of determination) of a univariate regression of the out of sample portfolio returns against the benchmark Index in the period from January 2000 to December of 2010.
+\end{tablenotes} 
+
+\end{threeparttable}
+\end{table} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ibov TC
+\clearpage
+
+\begin{table}[!ht] 
+\centering 
+\footnotesize
+\caption{Out of Sample Results for the Index Tracking Portfolios with Transaction Costs (IBOV)} 
+\label{tab:tc:ibov} 
+\vspace{-1 em}
+
+\begin{threeparttable} 
+\begin{tabular}{@{\extracolsep{5pt}} lrrrrrrrrr} 
+\\[-1.8ex] \hline \hline 
+  & Mean & SD & SR & TO & Short & Active & alpha & beta & R2 \\ 
+% ---------------------------------------- 
+\hline \\[-1.8ex] 
+MKT & $18.38$  & $31.52$  & $0.58$  & $ NA$  & $ NA$  & $ NA$  & $0.00$  & $1.00$  & $1.00$ \\ 
+\hline \\[-1.8ex] 
+% ---------------------------------------- 
+\multicolumn{9}{l}{Panel A: Monthly Rebalancing} \\ 
+bwd.10 & $0.84$  & $1.02$  & $0.48$  & $2.13$  & $-0.08$  & $10.00$  & $-2.43$  & $0.97$  & $0.92$ \\ 
+fwd.10 & $0.89$  & $1.02$  & $0.51$  & $2.18$  & $-0.24$  & $10.00$  & $-1.57$  & $0.98$  & $0.92$ \\ 
+las.10 & $1.04$  & $1.05$  & $0.58$  & $1.40$  & $-0.74$  & $9.99$  & $0.66$  & $1.01$  & $0.92$ \\ 
+bwd.15 & $0.95$  & $0.99$  & $0.56$  & $1.99$  & $-2.50$  & $15.00$  & $-0.00$  & $0.95$  & $0.93$ \\ 
+fwd.15 & $0.93$  & $0.99$  & $0.55$  & $2.08$  & $-1.65$  & $15.00$  & $-0.38$  & $0.95$  & $0.93$ \\ 
+las.15 & $1.03$  & $1.02$  & $0.59$  & $1.41$  & $-0.55$  & $14.93$  & $0.93$  & $0.98$  & $0.93$ \\ 
+bwd.20 & $0.94$  & $0.97$  & $0.56$  & $1.96$  & $-8.04$  & $20.00$  & $0.02$  & $0.94$  & $0.93$ \\ 
+fwd.20 & $0.95$  & $0.98$  & $0.57$  & $2.00$  & $-6.59$  & $20.00$  & $0.16$  & $0.94$  & $0.93$ \\ 
+las.20 & $1.00$  & $1.00$  & $0.59$  & $1.44$  & $-1.14$  & $19.95$  & $0.67$  & $0.97$  & $0.94$ \\ 
+\hline \\[-1.8ex] 
+% ---------------------------------------- 
+\multicolumn{ 9 }{l}{Panel B: Bimonthly Rebalancing} \\ 
+bwd.10 & $0.93$  & $1.02$  & $0.53$  & $1.46$  & $0.00$  & $10.00$  & $-0.83$  & $0.97$  & $0.92$ \\ 
+fwd.10 & $0.97$  & $1.02$  & $0.55$  & $1.41$  & $-0.48$  & $10.00$  & $-0.21$  & $0.98$  & $0.92$ \\ 
+las.10 & $1.10$  & $1.05$  & $0.61$  & $1.01$  & $-0.97$  & $9.99$  & $1.70$  & $1.00$  & $0.91$ \\ 
+bwd.15 & $1.03$  & $0.98$  & $0.61$  & $1.36$  & $-2.72$  & $15.00$  & $1.46$  & $0.95$  & $0.93$ \\ 
+fwd.15 & $1.00$  & $0.99$  & $0.59$  & $1.41$  & $-2.08$  & $15.00$  & $0.88$  & $0.95$  & $0.93$ \\ 
+las.15 & $1.13$  & $1.02$  & $0.65$  & $0.98$  & $-0.59$  & $14.97$  & $2.78$  & $0.98$  & $0.93$ \\ 
+bwd.20 & $0.99$  & $0.97$  & $0.60$  & $1.35$  & $-8.59$  & $20.00$  & $1.03$  & $0.94$  & $0.93$ \\ 
+fwd.20 & $1.02$  & $0.97$  & $0.61$  & $1.34$  & $-7.12$  & $20.00$  & $1.56$  & $0.94$  & $0.93$ \\ 
+las.20 & $1.07$  & $1.00$  & $0.63$  & $1.01$  & $-0.98$  & $19.93$  & $1.96$  & $0.97$  & $0.94$ \\ 
+\hline \\[-1.8ex] 
+% ---------------------------------------- 
+\multicolumn{ 9 }{l}{Panel C: Quarterly Rebalancing} \\ 
+bwd.10 & $0.95$  & $1.02$  & $0.54$  & $1.17$  & $0.00$  & $10.00$  & $-0.46$  & $0.97$  & $0.92$ \\ 
+fwd.10 & $0.90$  & $1.01$  & $0.52$  & $1.11$  & $0.00$  & $10.00$  & $-1.24$  & $0.97$  & $0.92$ \\ 
+las.10 & $1.09$  & $1.04$  & $0.61$  & $0.81$  & $-0.80$  & $10.00$  & $1.72$  & $1.00$  & $0.92$ \\ 
+bwd.15 & $1.00$  & $0.98$  & $0.60$  & $1.11$  & $-2.20$  & $15.00$  & $1.12$  & $0.94$  & $0.93$ \\ 
+fwd.15 & $1.00$  & $0.98$  & $0.59$  & $1.06$  & $-1.68$  & $15.00$  & $1.01$  & $0.95$  & $0.93$ \\ 
+las.15 & $1.08$  & $1.01$  & $0.62$  & $0.79$  & $-0.44$  & $15.00$  & $1.84$  & $0.98$  & $0.93$ \\ 
+bwd.20 & $0.99$  & $0.97$  & $0.60$  & $1.11$  & $-7.99$  & $20.00$  & $1.11$  & $0.93$  & $0.93$ \\ 
+fwd.20 & $1.01$  & $0.97$  & $0.61$  & $1.05$  & $-6.59$  & $20.00$  & $1.37$  & $0.93$  & $0.93$ \\ 
+las.20 & $1.04$  & $1.00$  & $0.61$  & $0.77$  & $-1.08$  & $19.96$  & $1.47$  & $0.96$  & $0.94$ \\ 
+\hline \hline 
+\end{tabular} 
+\vspace{-2pt} 
+
+\begin{tablenotes} 
+\textbf{Source:} The author. \\
+\textbf{Note:}
+In this Table the benchmark index is the Bovespa Index (IBOV).
+The Table shows annualized Mean and Standard Deviation (SD) of the out of sample portfolio returns net of transaction costs.
+We used $c=50bp$ as in \citeonline{dgu2009}.
+SR is the annualized Sharpe Ratio of those returns.
+TO is the turnover and is presented as a daily percentage average.
+Short interest is the size of the short position and is expressed in percentage.
+Active is the average number of active positions in the portfolio.
+The last three columns of the Table show the alfa, beta, and $R^2$ (intercept in annualized terms, the slope, and the coefficient of determination) of a univariate regression of the out of sample portfolio returns net of transaction errors against the benchmark Index in the period from January 2000 to December of 2010.
+\end{tablenotes} 
+
+\end{threeparttable}
+\end{table} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SP TAB
+\clearpage
+
+\begin{table}[!ht] 
+\centering 
+\footnotesize
+\caption{Out of Sample Results for the Index Tracking Portfolios without Transaction Costs (SP500)} \label{tab:oos:sp500} 
+\vspace{-1 em}
+
+\begin{threeparttable} 
+\begin{tabular}{@{\extracolsep{5pt}} lrrrrrrrrr} 
+\\[-1.8ex] \hline \hline 
+  & Mean & SD & SR & Mean TE & SD TE & IR & alpha & beta & R2 \\ 
+% ---------------------------------------- 
+\hline \\[-1.8ex] 
+SP500 & $12.93$  & $12.22$  & $1.06$  & $0.00$  & $0.00$  & $NaN$  & $0.00$  & $1.00$  & $1.00$ \\ 
+\hline \\[-1.8ex] 
+% ---------------------------------------- 
+\multicolumn{9}{l}{Panel A: Monthly Rebalancing} \\ 
+bwd.20 & $1.16$  & $1.03$  & $1.19$  & $2.01$  & $2.75$  & $0.73$  & $2.01$  & $1.00$  & $0.95$ \\ 
+fwd.20 & $1.05$  & $1.04$  & $1.07$  & $0.66$  & $2.90$  & $0.23$  & $0.48$  & $1.01$  & $0.95$ \\ 
+las.20 & $1.26$  & $1.06$  & $1.26$  & $3.39$  & $4.10$  & $0.83$  & $3.38$  & $1.00$  & $0.90$ \\ 
+bwd.30 & $1.06$  & $1.02$  & $1.11$  & $0.80$  & $2.22$  & $0.36$  & $0.82$  & $1.00$  & $0.97$ \\ 
+fwd.30 & $1.09$  & $1.03$  & $1.12$  & $1.16$  & $2.39$  & $0.49$  & $1.05$  & $1.01$  & $0.96$ \\ 
+las.30 & $1.20$  & $1.03$  & $1.23$  & $2.61$  & $3.39$  & $0.77$  & $2.67$  & $1.00$  & $0.93$ \\ 
+bwd.40 & $1.10$  & $1.01$  & $1.16$  & $1.36$  & $1.93$  & $0.70$  & $1.41$  & $1.00$  & $0.98$ \\ 
+fwd.40 & $1.12$  & $1.02$  & $1.16$  & $1.55$  & $2.08$  & $0.75$  & $1.46$  & $1.01$  & $0.97$ \\ 
+las.40 & $1.12$  & $1.03$  & $1.15$  & $1.52$  & $2.93$  & $0.52$  & $1.55$  & $1.00$  & $0.95$ \\ 
+\hline \\[-1.8ex] 
+% ---------------------------------------- 
+\multicolumn{ 9 }{l}{Panel B: Bimonthly Rebalancing} \\ 
+bwd.20 & $1.07$  & $1.01$  & $1.12$  & $0.91$  & $2.86$  & $0.32$  & $1.08$  & $0.99$  & $0.95$ \\ 
+fwd.20 & $1.13$  & $1.03$  & $1.15$  & $1.62$  & $2.79$  & $0.58$  & $1.55$  & $1.01$  & $0.95$ \\ 
+las.20 & $1.25$  & $1.06$  & $1.25$  & $3.21$  & $4.06$  & $0.79$  & $3.13$  & $1.01$  & $0.90$ \\ 
+bwd.30 & $0.99$  & $1.01$  & $1.04$  & $-0.16$  & $2.31$  & $-0.07$  & $-0.02$  & $0.99$  & $0.96$ \\ 
+fwd.30 & $1.19$  & $1.02$  & $1.23$  & $2.48$  & $2.35$  & $1.05$  & $2.44$  & $1.00$  & $0.96$ \\ 
+las.30 & $1.20$  & $1.03$  & $1.23$  & $2.62$  & $3.39$  & $0.77$  & $2.69$  & $0.99$  & $0.93$ \\ 
+bwd.40 & $1.04$  & $1.00$  & $1.10$  & $0.47$  & $1.96$  & $0.24$  & $0.62$  & $0.99$  & $0.97$ \\ 
+fwd.40 & $1.18$  & $1.01$  & $1.23$  & $2.35$  & $2.03$  & $1.16$  & $2.35$  & $1.00$  & $0.97$ \\ 
+las.40 & $1.16$  & $1.02$  & $1.20$  & $2.02$  & $2.99$  & $0.68$  & $2.16$  & $0.99$  & $0.94$ \\ 
+\hline \\[-1.8ex] 
+% ---------------------------------------- 
+\multicolumn{ 9 }{l}{Panel C: Quarterly Rebalancing} \\ 
+bwd.20 & $1.26$  & $1.01$  & $1.31$  & $3.35$  & $2.73$  & $1.23$  & $3.48$  & $0.99$  & $0.95$ \\ 
+fwd.20 & $1.16$  & $1.04$  & $1.18$  & $2.06$  & $2.85$  & $0.72$  & $1.87$  & $1.02$  & $0.95$ \\ 
+las.20 & $1.22$  & $1.06$  & $1.22$  & $2.84$  & $4.18$  & $0.68$  & $2.84$  & $1.00$  & $0.90$ \\ 
+bwd.30 & $1.23$  & $1.00$  & $1.30$  & $2.99$  & $2.22$  & $1.34$  & $3.21$  & $0.98$  & $0.97$ \\ 
+fwd.30 & $1.20$  & $1.02$  & $1.24$  & $2.65$  & $2.33$  & $1.14$  & $2.55$  & $1.01$  & $0.97$ \\ 
+las.30 & $1.19$  & $1.04$  & $1.22$  & $2.45$  & $3.44$  & $0.71$  & $2.49$  & $1.00$  & $0.93$ \\ 
+bwd.40 & $1.24$  & $1.00$  & $1.31$  & $3.09$  & $1.92$  & $1.61$  & $3.27$  & $0.99$  & $0.98$ \\ 
+fwd.40 & $1.18$  & $1.01$  & $1.23$  & $2.34$  & $1.93$  & $1.21$  & $2.31$  & $1.00$  & $0.98$ \\ 
+las.40 & $1.16$  & $1.03$  & $1.20$  & $2.06$  & $2.93$  & $0.70$  & $2.10$  & $1.00$  & $0.95$ \\ 
+\hline \hline 
+\end{tabular} 
+\vspace{-2pt} 
+
+\begin{tablenotes} 
+\textbf{Source:} The author. \\
+\textbf{Note:}
+In this Table the benchmark index is the SP500 Index (SP500).
+The Table shows annualized Mean and Standard Deviation (SD) of the Index and of the portfolio returns.
+The index is shown in absolute terms and the portfolios are shown in relation to the index (Mean and SD of the portfolios are divided by the Mean and the SD of the index).
+SR denotes the annualized Sharpe Ratio.
+The Table also shows the Mean and SD of the Tracking Error of the portfolios (portfolio return minus the index).
+And the IR denotes the annualized Information Ratio which is the Mean of the Tracking Error divided by its SD.
+The last three columns of the Table show the alfa, beta, and $R^2$ (intercept in annualized terms, the slope, and the coefficient of determination) of a univariate regression of the out of sample portfolio returns against the benchmark Index in the period from January 2012 to October of 2017.
+\end{tablenotes} 
+
+\end{threeparttable}
+\end{table} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SP TC
+\clearpage
+
+\begin{table}[!ht] 
+\centering 
+\footnotesize
+\caption{Out of Sample Results for the Index Tracking Portfolios with Transaction Costs (SP500)} 
+\label{tab:tc:sp500} 
+\vspace{-1 em}
+
+\begin{threeparttable} 
+\begin{tabular}{@{\extracolsep{5pt}} lrrrrrrrrr} 
+\\[-1.8ex] \hline \hline 
+  & Mean & SD & SR & TO & Short & Active & alpha & beta & R2 \\ 
+% ---------------------------------------- 
+\hline \\[-1.8ex] 
+SP500 & $12.93$  & $12.22$  & $1.06$  & $ NA$  & $ NA$  & $ NA$  & $0.00$  & $1.00$  & $1.00$ \\ 
+\hline \\[-1.8ex] 
+% ---------------------------------------- 
+\multicolumn{9}{l}{Panel A: Monthly Rebalancing} \\ 
+bwd.20 & $0.53$  & $1.05$  & $0.54$  & $6.42$  & $0.00$  & $20.00$  & $-6.15$  & $1.01$  & $0.92$ \\ 
+fwd.20 & $0.53$  & $1.06$  & $0.53$  & $5.39$  & $-0.03$  & $20.00$  & $-6.35$  & $1.02$  & $0.93$ \\ 
+las.20 & $1.09$  & $1.06$  & $1.09$  & $1.82$  & $-5.85$  & $19.93$  & $1.08$  & $1.00$  & $0.90$ \\ 
+bwd.30 & $0.47$  & $1.03$  & $0.48$  & $6.07$  & $0.00$  & $30.00$  & $-6.89$  & $1.00$  & $0.94$ \\ 
+fwd.30 & $0.56$  & $1.04$  & $0.57$  & $5.43$  & $-0.08$  & $30.00$  & $-5.84$  & $1.01$  & $0.94$ \\ 
+las.30 & $1.02$  & $1.04$  & $1.04$  & $1.89$  & $-9.01$  & $29.88$  & $0.29$  & $1.00$  & $0.93$ \\ 
+bwd.40 & $0.55$  & $1.03$  & $0.57$  & $5.66$  & $0.00$  & $40.00$  & $-5.77$  & $1.00$  & $0.95$ \\ 
+fwd.40 & $0.59$  & $1.04$  & $0.60$  & $5.48$  & $-0.13$  & $40.00$  & $-5.48$  & $1.01$  & $0.95$ \\ 
+las.40 & $0.92$  & $1.03$  & $0.94$  & $2.07$  & $-8.91$  & $39.88$  & $-1.07$  & $1.00$  & $0.94$ \\ 
+\hline \\[-1.8ex] 
+% ---------------------------------------- 
+\multicolumn{ 9 }{l}{Panel B: Bimonthly Rebalancing} \\ 
+bwd.20 & $0.74$  & $1.03$  & $0.76$  & $3.43$  & $0.00$  & $20.00$  & $-3.26$  & $0.99$  & $0.93$ \\ 
+fwd.20 & $0.85$  & $1.04$  & $0.87$  & $2.82$  & $-0.05$  & $20.00$  & $-2.02$  & $1.01$  & $0.94$ \\ 
+las.20 & $1.13$  & $1.06$  & $1.13$  & $1.18$  & $-5.89$  & $19.92$  & $1.65$  & $1.01$  & $0.90$ \\ 
+bwd.30 & $0.66$  & $1.02$  & $0.69$  & $3.33$  & $0.00$  & $30.00$  & $-4.23$  & $0.99$  & $0.95$ \\ 
+fwd.30 & $0.92$  & $1.03$  & $0.94$  & $2.84$  & $-0.06$  & $30.00$  & $-1.14$  & $1.00$  & $0.95$ \\ 
+las.30 & $1.07$  & $1.03$  & $1.10$  & $1.32$  & $-8.68$  & $29.92$  & $1.02$  & $0.99$  & $0.93$ \\ 
+bwd.40 & $0.74$  & $1.01$  & $0.77$  & $3.09$  & $0.00$  & $40.00$  & $-3.29$  & $0.99$  & $0.96$ \\ 
+fwd.40 & $0.91$  & $1.02$  & $0.94$  & $2.81$  & $-0.08$  & $40.00$  & $-1.20$  & $1.00$  & $0.96$ \\ 
+las.40 & $1.01$  & $1.02$  & $1.05$  & $1.45$  & $-9.34$  & $39.92$  & $0.33$  & $0.99$  & $0.94$ \\ 
+\hline \\[-1.8ex] 
+% ---------------------------------------- 
+\multicolumn{ 9 }{l}{Panel C: Quarterly Rebalancing} \\ 
+bwd.20 & $1.02$  & $1.02$  & $1.05$  & $2.49$  & $0.00$  & $20.00$  & $0.36$  & $0.99$  & $0.94$ \\ 
+fwd.20 & $0.96$  & $1.04$  & $0.97$  & $2.06$  & $0.00$  & $20.00$  & $-0.71$  & $1.01$  & $0.94$ \\ 
+las.20 & $1.12$  & $1.06$  & $1.12$  & $1.05$  & $-5.74$  & $19.96$  & $1.52$  & $1.00$  & $0.89$ \\ 
+bwd.30 & $1.01$  & $1.01$  & $1.06$  & $2.30$  & $0.00$  & $30.00$  & $0.32$  & $0.98$  & $0.95$ \\ 
+fwd.30 & $1.00$  & $1.03$  & $1.03$  & $2.08$  & $-0.03$  & $30.00$  & $-0.06$  & $1.01$  & $0.96$ \\ 
+las.30 & $1.08$  & $1.04$  & $1.10$  & $1.10$  & $-9.04$  & $29.92$  & $1.10$  & $1.00$  & $0.92$ \\ 
+bwd.40 & $1.03$  & $1.00$  & $1.09$  & $2.11$  & $0.00$  & $40.00$  & $0.62$  & $0.99$  & $0.96$ \\ 
+fwd.40 & $0.98$  & $1.02$  & $1.02$  & $2.04$  & $-0.04$  & $40.00$  & $-0.25$  & $1.00$  & $0.97$ \\ 
+las.40 & $1.05$  & $1.03$  & $1.08$  & $1.17$  & $-8.45$  & $39.88$  & $0.62$  & $1.00$  & $0.94$ \\ 
+\hline \hline 
+\end{tabular} 
+\vspace{-2pt} 
+
+\begin{tablenotes} 
+\textbf{Source:} The author. \\
+\textbf{Note:}
+In this Table the benchmark index is the SP500 Index (SP500).
+The Table shows annualized Mean and Standard Deviation (SD) of the out of sample portfolio returns net of transaction costs.
+We used $c=50bp$ as in \citeonline{dgu2009}.
+SR is the annualized Sharpe Ratio of those returns.
+TO is the turnover and is presented as a daily percentage average.
+Short interest is the size of the short position and is expressed in percentage.
+Active is the average number of active positions in the portfolio.
+The last three columns of the Table shows the alfa, beta, and $R^2$ (intercept in annualized terms, the slope, and the coefficient of determination) of a univariate regression of the out of sample portfolio returns against the benchmark Index in the period from January 2012 to October of 2017.
+\end{tablenotes} 
+
+\end{threeparttable}
+\end{table} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IBOV figs
+\clearpage
+
+\begin{figure}[htpb]
+\centering
+\footnotesize
+\caption{Cumulative returns with 10 assets (IBOV)}
+\label{fig:ibov:ret:10a}
+\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-1.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-4.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-7.pdf}
+\begin{quote}
+\textbf{Source:} The author.
+\end{quote}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\footnotesize
+\caption{Cumulative returns with 15 assets (IBOV)}
+\label{fig:ibov:ret:15a}
+\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-2.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-5.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-8.pdf}
+\begin{quote}
+\textbf{Source:} The author.
+\end{quote}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\footnotesize
+\caption{Cumulative returns with 20 assets (IBOV)}
+\label{fig:ibov:ret:20a}
+\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-3.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-6.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-9.pdf}
+\begin{quote}
+\textbf{Source:} The author.
+\end{quote}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IBOv VOL
+
+\begin{figure}[htpb]
+\centering
+\footnotesize
+\caption{Volatility of returns with 10 assets (IBOV)}
+\label{fig:ibov:vol:10a}
+\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-1.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-4.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-7.pdf}
+\begin{quote}
+\textbf{Source:} The author.
+\end{quote}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\footnotesize
+\caption{Volatility of returns with 15 assets (IBOV)}
+\label{fig:ibov:vol:15a}
+\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-2.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-5.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-8.pdf}
+\begin{quote}
+\textbf{Source:} The author.
+\end{quote}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\footnotesize
+\caption{Volatility of returns with 20 assets (IBOV)}
+\label{fig:ibov:vol:20a}
+\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-3.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-6.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-9.pdf}
+\begin{quote}
+\textbf{Source:} The author.
+\end{quote}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SP500 FIGS
+\clearpage
+
+\begin{figure}[htpb]
+\centering
+\footnotesize
+\caption{Cumulative returns with 20 assets (SP500)}
+\label{fig:sp500:ret:20a}
+\includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-1.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-4.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-7.pdf}
+\begin{quote}
+\textbf{Source:} The author.
+\end{quote}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\footnotesize
+\caption{Cumulative returns with 30 assets (SP500)}
+\label{fig:sp500:ret:30a}
+\includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-2.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-5.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-8.pdf}
+\begin{quote}
+\textbf{Source:} The author.
+\end{quote}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\footnotesize
+\caption{Cumulative returns with 40 assets (SP500)}
+\label{fig:sp500:ret:40a}
+\includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-3.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-6.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-9.pdf}
+\begin{quote}
+\textbf{Source:} The author.
+\end{quote}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SP500 VOL
+
+\begin{figure}[htpb]
+\centering
+\footnotesize
+\caption{Volatility of returns with 20 assets (SP500)}
+\label{fig:sp500:vol:20a}
+\includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-1.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-4.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-7.pdf}
+\begin{quote}
+\textbf{Source:} The author.
+\end{quote}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\footnotesize
+\caption{Volatility of returns with 30 assets (SP500)}
+\label{fig:sp500:vol:30a}
+\includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-2.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-5.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-8.pdf}
+\begin{quote}
+\textbf{Source:} The author.
+\end{quote}
+
+\textbf{Source:} The author. \\
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\footnotesize
+\caption{Volatility of returns with 40 assets (SP500)}
+\label{fig:sp500:vol:40a}
+\includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-3.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-6.pdf}
+\includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-9.pdf}
+\begin{quote}
+\textbf{Source:} The author.
+\end{quote}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  CONCLUSÃO
+
+\chapter{FINAL CONSIDERATIONS}
+
+In this thesis, we presented three different essays in the context of portfolio optimization and index tracking.
+% first essay TP
+The first essay offers a critique of the Tangency Portfolio (TP).\footnote{A preliminary version of this essay was accepted to the XIX Econtro Brasileiro de Finanças with the title ``Tangency Portfolio: A Critique''}
+This critique is due to the widespread misconception that the TP is the most efficient mean-variance portfolio as can be seen in \citeonline{dgu2009} and \citeonline{memmel-2006} among others.
+In that essay, we present three propositions that show how the TP can be outperformed by other optimal portfolios.
+We also develop an empirical experiment by testing the performance (in and out of sample) of the TP against other portfolios.
+The data used is from the Kenneth French database in the period from July 1963 to June 2018.
+The result is that the TP delivers poor performance and is outperformed by the other portfolios.
+This corroborates the work in \citeonline{fko2012} and, to a lesser extent, the work of \citeonline{CTS2006} about the Global Minimum Variance Portfolio.
+The ultimate takeaway of that essay is that the TP should not be used in empirical comparisons, seen as it will always come at the bottom of the reap.
+
+% second essay LETTER
+The second essay provides an explicit derivation of the equivalence between the minimum variance portfolio and the minimum Tracking Error volatility portfolio.
+This equivalence is much talked about in intuitive terms but seldom demonstrated analytically \cite{liu-2009, demol2016}.
+This derivation relies on the Sherman-Morison formula, that shows how to invert the sum of two matrices with a certain structure.
+A further equivalence of those portfolios to a restricted OLS regression is shown.
+Finally, a 2-fund portfolio result of those portfolios is presented.
+The main contribution of this essay, besides the direct analytical derivation, is to present the connection among general portfolio optimization, index tracking portfolio optimization and OLS regressions.
+
+% third essay FEATSEL
+The third essay is about feature selection in the context of index tracking.
+Index tracking is an important subject in portfolio optimization because, as \citeonline{liu-2009} and \citeonline{tz2011} point out, the majority of managers are benchmarked by broad market indices like the SP500.
+In that essay, we provide an empirical study comparing different feature selection algorithms in the context of portfolio optimization.
+The algorithms we use are the backward iteration, forward iteration, and lasso regression.
+To isolate the effect of the selection algorithms, we separate the asset selection phase from the asset allocation phase.
+In the asset allocation phase we follow \citeonline{liu-2009} and find portfolios that minimize the Tracking Error volatility from a chosen benchmark index, without regard for the size of the Tracking Error mean.
+We use two different datasets for the empirical study; one is an American dataset from January 2010 to October 2017 where we try to follow the SP500 Index; the other is a brazilian dataset from January 1999 to December 2010 where we try to follow the Bovespa Index.
+The results we find is that for the brazilian case the algorithms deliver similar Tracking Error volatility, but the lasso delivers higher returns, which leads to a higher risk-adjusted performance.
+For the American case, the lasso also delievers better risk-adjusted performance, but with higher volatility than the other methods.
+This is undesirable in our case, so we favor the other methods for the American case.
+It is important to highlight that the other methods do not receive much attention in the literature, even though they deliver good results and have rather simple ideas in their basis.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ELEMENTOS PÓS-TEXTUAIS
+\postextual
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Bibliografia
+\bibliographystyle{./abntex2-alf.bst}
+% Ajusta entrada Referencias
+\renewcommand\bibname{REFERENCES}
+\bibliography{refs.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
