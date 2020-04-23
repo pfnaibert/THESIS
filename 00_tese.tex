@@ -2240,6 +2240,15 @@ These measures have the following formulas:
 
 To assess how many assets our strategies select, we also report the \textit{average number of assets in the portfolio}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hypothesis testing
+\subsubsection*{Hypothesis Testing}
+
+To verify if the Mean, Variance, and Sharpe Ratio of each policy are statiscally different from the benchmark index, we use the framework laid out in \citeonline{lw2008, lw2011, lw2018}.
+Their framework relies on the fact that those performance measures are smooth functions of population moments.
+We use the circular block bootstrap of \citeonline{pr92} with block length $2, 4, 6, 8$, and $10$ to find $p$-values of the differences in performance measures.
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \clearpage
 \section{RESULTS} \label{sec:results:it}
@@ -2258,23 +2267,33 @@ The numbers after the letters denote the number of active positions allowed in e
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Description of Tables
 
-Tables \ref{tab:oos:ibov} and \ref{tab:oos:sp500} show statistics without considering transaction costs.
-The presented statistics are: annualized Mean and Standard Deviation (SD) of the benchmark index and of the portfolio returns.
-The index is shown in absolute terms and the portfolios are shown in relation to the index (Mean and SD of the portfolios are divided by the Mean and the SD of the index).
-SR denotes the annualized Sharpe Ratio.
-The Tables also show the Mean and SD of the Tracking Error of the portfolios (portfolio return minus the index return).
-And the IR denotes the annualized Information Ratio which is the Mean of the Tracking Error divided by its SD.
-The last three columns of the Table show the alfa, beta, and $R^2$ (intercept in annualized terms, the slope, and the coefficient of determination) of a univariate regression of the out of sample portfolio returns against the benchmark Index in the out of sample period.
+Tables \ref{tab:ibov:rps} and \ref{tab:spy5:rps} show statistics of the Brazilian and American datasets, respectively.
+The presented statistics are: Mean, Standard Deviation (SD), Sharpe Ratio (SR), and correlation with the index (CORR) for the raw and net portfolio returns of each policy and each rebalancing frequency: monthly (Panel A), bimonthley (Panel B), and quarterly (Panel C). 
+The Tables also show the Turnover (TO), Gross Exposure (Gross), Short Interest (Short), and Active Positions (Active).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Description of Figures
-The Figures \ref{fig:ibov:ret:10a} through \ref{fig:ibov:ret:20a} and \ref{fig:sp500:ret:20a} through \ref{fig:sp500:ret:40a}, show cumulative returns of each portfolio with a specified rebalancing period and a number of assets.
-Those figures also show in pointed lines the difference between those cumulative returns and the index.
-The Figures \ref{fig:ibov:vol:10a} through \ref{fig:ibov:vol:20a} and \ref{fig:sp500:vol:20a} through \ref{fig:sp500:vol:40a}, show rolling window (250 days) annualized standard deviation.
-Those figures also show in pointed lines the Tracking Error standard deviation.
+% Description of PVAL TABLES
+
+Tables 
+\ref{tab:pval:mu:rps:ibov}, 
+\ref{tab:pval:var:rps:ibov}, and 
+\ref{tab:pval:sr:rps:ibov} 
+show the $p$-values for the differences in the Mean, Log-Variance, and Sharpe Ratio of the raw portfolio returns of the Brazilian dataset using the methodology developed in \citeonline{lw2008, lw2011, lw2018}.
+Tables \ref{tab:pval:mu:rpn:ibov}, \ref{tab:pval:var:rpn:ibov}, and \ref{tab:pval:sr:rpn:ibov} show the $p$-values of the same statistics for net portfolio returns of the Brazilian dataset.
+Finally, Tables \ref{tab:pval:mu:rps:spy5} to \ref{tab:pval:sr:rpn:spy5} 
+show the $p$-values of those statistics for the American dataset.
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % Description of Figures
+% The Figures \ref{fig:ibov:ret:10a} through \ref{fig:ibov:ret:20a} and \ref{fig:sp500:ret:20a} through \ref{fig:sp500:ret:40a}, show cumulative returns of each portfolio with a specified rebalancing period and a number of assets.
+% Those figures also show in pointed lines the difference between those cumulative returns and the index.
+% The Figures \ref{fig:ibov:vol:10a} through \ref{fig:ibov:vol:20a} and \ref{fig:sp500:vol:20a} through \ref{fig:sp500:vol:40a}, show rolling window (250 days) annualized standard deviation.
+% Those figures also show in pointed lines the Tracking Error standard deviation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Summarized Results Brazil
+\subsection*{Brazilian Dataset}
+
 For the Brazilian dataset, the figures show that the portfolios attain similar return and Tracking Error volatility.
 As for the cumulative returns, they show that the lasso presents the higher returns.
 This translates into a bigger Sharpe Ratio (SR) for the lasso method.
@@ -2286,6 +2305,8 @@ In terms of the Information Ratio (IR), again, the lasso method outperforms the 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Summarized Results America
+\subsection*{American Dataset} 
+
 For the American dataset, the figures show that the lasso portfolios attain higher Tracking Error volatility than the other methods.
 And the forward and backward iteration show very similar Tracking Error volatility.
 As for the cumulative returns, it seems that the lasso presents the higher ones.
@@ -2346,36 +2367,40 @@ By simple methods we mean methods that are not computationally costly as Integer
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% IBOV Tab
+% IBOV 
 
 \clearpage
 \input{../03-it-featsel/TABS/ibov-rps.tex}
-\clearpage
-\input{../03-it-featsel/TABS/spy5-rps.tex}
+
+% pvals 
+
+% RPS
+\input{../03-it-featsel/TABS/pval-mu-rps-ibov.tex}
+\input{../03-it-featsel/TABS/pval-var-rps-ibov.tex}
+\input{../03-it-featsel/TABS/pval-sr-rps-ibov.tex}
+
+% RPN
+\input{../03-it-featsel/TABS/pval-mu-rpn-ibov.tex}
+\input{../03-it-featsel/TABS/pval-var-rpn-ibov.tex}
+\input{../03-it-featsel/TABS/pval-sr-rpn-ibov.tex}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% pvals IT FEATSEL
+% SP500
 
-% MU ibov e spy5
-\input{../03-it-featsel/TABS/pval-mu-rps-ibov.tex}
-\input{../03-it-featsel/TABS/pval-mu-rpn-ibov.tex}
+\clearpage
+\input{../03-it-featsel/TABS/spy5-rps.tex}
 
+% pvals 
+
+% RPS
 \input{../03-it-featsel/TABS/pval-mu-rps-spy5.tex}
-\input{../03-it-featsel/TABS/pval-mu-rpn-spy5.tex}
-
-% VAR ibov e spy5
-\input{../03-it-featsel/TABS/pval-var-rps-ibov.tex}
-\input{../03-it-featsel/TABS/pval-var-rpn-ibov.tex}
-
 \input{../03-it-featsel/TABS/pval-var-rps-spy5.tex}
-\input{../03-it-featsel/TABS/pval-var-rpn-spy5.tex}
-
-% SR ibov e spy5
-\input{../03-it-featsel/TABS/pval-sr-rps-ibov.tex}
-\input{../03-it-featsel/TABS/pval-sr-rpn-ibov.tex}
-
 \input{../03-it-featsel/TABS/pval-sr-rps-spy5.tex}
+
+% RPN
+\input{../03-it-featsel/TABS/pval-mu-rpn-spy5.tex}
+\input{../03-it-featsel/TABS/pval-var-rpn-spy5.tex}
 \input{../03-it-featsel/TABS/pval-sr-rpn-spy5.tex}
 
 
@@ -2433,177 +2458,177 @@ By simple methods we mean methods that are not computationally costly as Integer
 % The last three columns of the Table shows the alfa, beta, and $R^2$ (intercept in annualized terms, the slope, and the coefficient of determination) of a univariate regression of the out of sample portfolio returns against the benchmark Index in the period from January 2012 to October of 2017.
 % \end{tablenotes} 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% IBOV figs
-\clearpage
-
-\begin{figure}[htpb]
-\centering
-\footnotesize
-\caption{Cumulative returns with 10 assets (IBOV)}
-\label{fig:ibov:ret:10a}
-\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-1.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-4.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-7.pdf}
-\begin{quote}
-\textbf{Source:} The author.
-\end{quote}
-\end{figure}
-
-\begin{figure}[htpb]
-\centering
-\footnotesize
-\caption{Cumulative returns with 15 assets (IBOV)}
-\label{fig:ibov:ret:15a}
-\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-2.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-5.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-8.pdf}
-\begin{quote}
-\textbf{Source:} The author.
-\end{quote}
-\end{figure}
-
-\begin{figure}[htpb]
-\centering
-\footnotesize
-\caption{Cumulative returns with 20 assets (IBOV)}
-\label{fig:ibov:ret:20a}
-\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-3.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-6.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-9.pdf}
-\begin{quote}
-\textbf{Source:} The author.
-\end{quote}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% IBOv VOL
-
-\begin{figure}[htpb]
-\centering
-\footnotesize
-\caption{Volatility of returns with 10 assets (IBOV)}
-\label{fig:ibov:vol:10a}
-\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-1.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-4.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-7.pdf}
-\begin{quote}
-\textbf{Source:} The author.
-\end{quote}
-\end{figure}
-
-\begin{figure}[htpb]
-\centering
-\footnotesize
-\caption{Volatility of returns with 15 assets (IBOV)}
-\label{fig:ibov:vol:15a}
-\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-2.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-5.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-8.pdf}
-\begin{quote}
-\textbf{Source:} The author.
-\end{quote}
-\end{figure}
-
-\begin{figure}[htpb]
-\centering
-\footnotesize
-\caption{Volatility of returns with 20 assets (IBOV)}
-\label{fig:ibov:vol:20a}
-\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-3.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-6.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-9.pdf}
-\begin{quote}
-\textbf{Source:} The author.
-\end{quote}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SP500 FIGS
-\clearpage
-
-\begin{figure}[htpb]
-\centering
-\footnotesize
-\caption{Cumulative returns with 20 assets (SP500)}
-\label{fig:sp500:ret:20a}
-\includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-1.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-4.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-7.pdf}
-\begin{quote}
-\textbf{Source:} The author.
-\end{quote}
-\end{figure}
-
-\begin{figure}[htpb]
-\centering
-\footnotesize
-\caption{Cumulative returns with 30 assets (SP500)}
-\label{fig:sp500:ret:30a}
-\includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-2.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-5.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-8.pdf}
-\begin{quote}
-\textbf{Source:} The author.
-\end{quote}
-\end{figure}
-
-\begin{figure}[htpb]
-\centering
-\footnotesize
-\caption{Cumulative returns with 40 assets (SP500)}
-\label{fig:sp500:ret:40a}
-\includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-3.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-6.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-9.pdf}
-\begin{quote}
-\textbf{Source:} The author.
-\end{quote}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SP500 VOL
-
-\begin{figure}[htpb]
-\centering
-\footnotesize
-\caption{Volatility of returns with 20 assets (SP500)}
-\label{fig:sp500:vol:20a}
-\includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-1.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-4.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-7.pdf}
-\begin{quote}
-\textbf{Source:} The author.
-\end{quote}
-\end{figure}
-
-\begin{figure}[htpb]
-\centering
-\footnotesize
-\caption{Volatility of returns with 30 assets (SP500)}
-\label{fig:sp500:vol:30a}
-\includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-2.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-5.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-8.pdf}
-\begin{quote}
-\textbf{Source:} The author.
-\end{quote}
-
-\textbf{Source:} The author. \\
-\end{figure}
-
-\begin{figure}[htpb]
-\centering
-\footnotesize
-\caption{Volatility of returns with 40 assets (SP500)}
-\label{fig:sp500:vol:40a}
-\includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-3.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-6.pdf}
-\includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-9.pdf}
-\begin{quote}
-\textbf{Source:} The author.
-\end{quote}
-\end{figure}
+%      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%      % IBOV figs
+%      \clearpage
+%      
+%      \begin{figure}[htpb]
+%      \centering
+%      \footnotesize
+%      \caption{Cumulative returns with 10 assets (IBOV)}
+%      \label{fig:ibov:ret:10a}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-1.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-4.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-7.pdf}
+%      \begin{quote}
+%      \textbf{Source:} The author.
+%      \end{quote}
+%      \end{figure}
+%      
+%      \begin{figure}[htpb]
+%      \centering
+%      \footnotesize
+%      \caption{Cumulative returns with 15 assets (IBOV)}
+%      \label{fig:ibov:ret:15a}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-2.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-5.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-8.pdf}
+%      \begin{quote}
+%      \textbf{Source:} The author.
+%      \end{quote}
+%      \end{figure}
+%      
+%      \begin{figure}[htpb]
+%      \centering
+%      \footnotesize
+%      \caption{Cumulative returns with 20 assets (IBOV)}
+%      \label{fig:ibov:ret:20a}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-3.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-6.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-9.pdf}
+%      \begin{quote}
+%      \textbf{Source:} The author.
+%      \end{quote}
+%      \end{figure}
+%      
+%      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%      % IBOv VOL
+%      
+%      \begin{figure}[htpb]
+%      \centering
+%      \footnotesize
+%      \caption{Volatility of returns with 10 assets (IBOV)}
+%      \label{fig:ibov:vol:10a}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-1.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-4.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-7.pdf}
+%      \begin{quote}
+%      \textbf{Source:} The author.
+%      \end{quote}
+%      \end{figure}
+%      
+%      \begin{figure}[htpb]
+%      \centering
+%      \footnotesize
+%      \caption{Volatility of returns with 15 assets (IBOV)}
+%      \label{fig:ibov:vol:15a}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-2.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-5.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-8.pdf}
+%      \begin{quote}
+%      \textbf{Source:} The author.
+%      \end{quote}
+%      \end{figure}
+%      
+%      \begin{figure}[htpb]
+%      \centering
+%      \footnotesize
+%      \caption{Volatility of returns with 20 assets (IBOV)}
+%      \label{fig:ibov:vol:20a}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-3.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-6.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-9.pdf}
+%      \begin{quote}
+%      \textbf{Source:} The author.
+%      \end{quote}
+%      \end{figure}
+%      
+%      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%      % SP500 FIGS
+%      \clearpage
+%      
+%      \begin{figure}[htpb]
+%      \centering
+%      \footnotesize
+%      \caption{Cumulative returns with 20 assets (SP500)}
+%      \label{fig:sp500:ret:20a}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-1.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-4.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-7.pdf}
+%      \begin{quote}
+%      \textbf{Source:} The author.
+%      \end{quote}
+%      \end{figure}
+%      
+%      \begin{figure}[htpb]
+%      \centering
+%      \footnotesize
+%      \caption{Cumulative returns with 30 assets (SP500)}
+%      \label{fig:sp500:ret:30a}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-2.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-5.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-8.pdf}
+%      \begin{quote}
+%      \textbf{Source:} The author.
+%      \end{quote}
+%      \end{figure}
+%      
+%      \begin{figure}[htpb]
+%      \centering
+%      \footnotesize
+%      \caption{Cumulative returns with 40 assets (SP500)}
+%      \label{fig:sp500:ret:40a}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-3.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-6.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-9.pdf}
+%      \begin{quote}
+%      \textbf{Source:} The author.
+%      \end{quote}
+%      \end{figure}
+%      
+%      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%      % SP500 VOL
+%      
+%      \begin{figure}[htpb]
+%      \centering
+%      \footnotesize
+%      \caption{Volatility of returns with 20 assets (SP500)}
+%      \label{fig:sp500:vol:20a}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-1.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-4.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-7.pdf}
+%      \begin{quote}
+%      \textbf{Source:} The author.
+%      \end{quote}
+%      \end{figure}
+%      
+%      \begin{figure}[htpb]
+%      \centering
+%      \footnotesize
+%      \caption{Volatility of returns with 30 assets (SP500)}
+%      \label{fig:sp500:vol:30a}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-2.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-5.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-8.pdf}
+%      \begin{quote}
+%      \textbf{Source:} The author.
+%      \end{quote}
+%      
+%      \textbf{Source:} The author. \\
+%      \end{figure}
+%      
+%      \begin{figure}[htpb]
+%      \centering
+%      \footnotesize
+%      \caption{Volatility of returns with 40 assets (SP500)}
+%      \label{fig:sp500:vol:40a}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-3.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-6.pdf}
+%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-9.pdf}
+%      \begin{quote}
+%      \textbf{Source:} The author.
+%      \end{quote}
+%      \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  CONCLUSÃO THESIS
