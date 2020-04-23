@@ -188,11 +188,6 @@
 \setsubsubsecheadstyle{\normalsize\itshape}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Espaçamentos entre linhas e parágrafos 
-\OnehalfSpacing
-% \SingleSpacing
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % O tamanho do parágrafo é dado por:
 \setlength{\parindent}{1.3cm} % Tamanho do TAB
 
@@ -204,5 +199,65 @@
 % \renewcommand*{\thepage}{\footnotesize\arabic{page}}
 % \renewcommand{\thepage}{\arabic{page}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Atalhos para cores:
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\green}[1]{\textcolor{green}{#1}}
+\newcommand{\magenta}[1]{\textcolor{magenta}{#1}}
+% \newcommand{\hl}[1]{\colorbox{yellow}{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MATH MACROS
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% inner product
+% produto interno na forma <x,y>
+\DeclarePairedDelimiterX\innerp[2]{\langle}{\rangle}{#1,#2}
+
+% floor function
+\DeclarePairedDelimiterX\floor[1]{\lfloor}{\rfloor}{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% sequences
+%  fazer $\{x_n\}$ e $\{x\}_n^N$ mais rápido.
+\renewcommand{\seq}[1]{\{#1\}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Atalhos para notação de conjuntos dos números reais, naturais, etc
+% \renewcommand{\R}{\mathbb{R}}
+\newcommand{\model}{\ensuremath{\mathcal{M}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}} 
+\newcommand{\I}{\ensuremath{\mathbb{R}\setminus\mathbb{Q}}}
+\newcommand{\md}{\ensuremath{\mathcal{D}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% atalhos para outros operadores matemáticos
+\DeclareMathOperator{\L}{\mathcal{L}}
+\DeclareMathOperator{\eu}{\mathrm{e}}
+\DeclareMathOperator{\de}{\mathrm{d}}
+\DeclareMathOperator{\up}{\uparrow}
+\DeclareMathOperator{\dn}{\downarrow}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Derivadas
+\newcommand{\dpf}[2]{\frac{d#1}{d#2}}
+\newcommand{\dsf}[2]{\frac{d^2#1}{d#2^2}}
+\newcommand{\opt}[1]{{#1}^{*}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Derivadas Parciais
+\newcommand{\pdf}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\psdf}[2]{\frac{\partial^2#1}{\partial#2^2}}
+\newcommand{\pcdf}[3]{\frac{\partial^2#1}{\partial#2 \partial#3}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+\newcommand{\mbs}[1]{\boldsymbol{#1}}
+\newcommand{\mbf}[1]{\mathbf{#1}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
