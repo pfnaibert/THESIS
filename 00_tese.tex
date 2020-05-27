@@ -2268,8 +2268,19 @@ The numbers after the letters denote the number of active positions allowed in e
 % Description of Tables
 
 Tables \ref{tab:ibov:rps} and \ref{tab:spy5:rps} show statistics of the Brazilian and American datasets, respectively.
-The presented statistics are: Mean, Standard Deviation (SD), Sharpe Ratio (SR), and correlation with the index (CORR) for the raw and net portfolio returns of each policy and each rebalancing frequency: monthly (Panel A), bimonthley (Panel B), and quarterly (Panel C). 
+The presented statistics are: Mean, Standard Deviation (SD), Sharpe Ratio (SR), and correlation with the index (CORR) for the raw and net portfolio returns of each policy and each rebalancing frequency: monthly (Panel A), bimonthly (Panel B), and quarterly (Panel C). 
 The Tables also show the Turnover (TO), Gross Exposure (Gross), Short Interest (Short), and Active Positions (Active).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Description of Tables
+Tables \ref{tab:tc:ibov} and \ref{tab:tc:sp500} show statistics of the out of sample portfolio returns net of transaction costs.
+We used transaction costs equal to $50bp$ as in \citeonline{dgu2009}.
+The statistics shown are annualized Mean and Standard Deviation (SD).
+SR is the annualized Sharpe Ratio of those returns.
+TO is the turnover and is presented as a daily percentage average.
+Short interest is the size of the short position and is expressed in percentage.
+Active is the average number of active positions in the portfolio.
+The last three columns of the Table show the alfa, beta, and $R^2$ (intercept in annualized terms, the slope, and the coefficient of determination) of a univariate regression of the out of sample portfolio returns net of transactions costs against the benchmark Index in the out of sample period.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Description of PVAL TABLES
@@ -2294,54 +2305,61 @@ show the $p$-values of those statistics for the American dataset.
 % Summarized Results Brazil
 \subsection*{Brazilian Dataset}
 
-For the Brazilian dataset, the figures show that the portfolios attain similar return and Tracking Error volatility.
-As for the cumulative returns, they show that the lasso presents the higher returns.
-This translates into a bigger Sharpe Ratio (SR) for the lasso method.
-This higher mean is a double-edged knife.
-On one hand, higher returns is good to any investor.
-On the other hand, the higher returns detaches the portfolio from the index, and might increase the portfolio volatility.
-However, because we are only minimizing Tracking Error volatility, it seems that the lasso outperforms the other methods.
-In terms of the Information Ratio (IR), again, the lasso method outperforms the other methods, in all rebalancing frequencies, and for the same reasons as the ones reported for the SR.
+% Mean portfolio returns: positive difference means bigger mean than the benchmark.
+For the differences in mean portfolio returns, with the exception of the \texttt{las.15} portfolio with bimonthly rebalancing, there is no evidence of statistical significance for any block length.
+Even the \texttt{las.15} has $p$-values between $7.96\%$ and $8.86\%$.
+For the net portfolio returns there is no exception.
+The lowest value is $18.94\%$ for the \texttt{bwd.10} portfolio with monthly rebalancing and block length $b=08$.
+
+% log-variance of portfolio returns: positive difference means bigger variance than the benchmark.
+For the test of difference with log variances, the exception is the \texttt{las.20} portfolio.
+This portfolio has the largest $p$-values offering no evidence of statistical significance for all block lengths, all rebalancing frequencies with raw and net returns.
+The \texttt{las.10} portfolio has the biggest positive difference (larger variance) in all rebalancing frequencies ($9.92$, $9.69$ $8.84$; $9.92$, $9.68$, $8.72$) with $p$-values below $1\%$ for all block lengths.
+The \texttt{bwd.20} and \texttt{fwd.20} portfolio have the most negative differences (smaller variances) for all the the rebalancing frequencies
+($-5.55$, $-5.93$, $-6.60$; $-5.59$, $-5.94$, $-6.77$) and 
+($-5.04$, $-5.56$, $-6.55$; $-5.05$, $-5.60$, $-6.74$)
+with $p$-values below $1\%$ for all block lengths.
+
+% Sharpe Ratio of portfolio returns: positive difference means bigger SR than the benchmark.
+For differences in Sharpe ratio, there is no evidence of statistical significance.
+The lowest $p$-value ($10.92\%$) for the raw returns is the \texttt{las.20} portfolio with bimonthly rebalancing aand block length $b=04$.
+The lowest $p$-value ($15.56\%$) for the net returns is the \texttt{bwd.10} portfolio with monthly rebalancing aand block length $b=06$.
+
+In summary, for the Brazilian dataset, the index tracking with asset selection did not find portfolios with significant statistical difference in the means, but did find portfolios with significant statistical differences in the log-variances. This, however, did not translate into significant statistical differences in the Sharpe Ratio.
+
+% For the Brazilian dataset, the figures show that the portfolios attain similar return and Tracking Error volatility.
+% As for the cumulative returns, they show that the lasso presents the higher returns.
+% This translates into a bigger Sharpe Ratio (SR) for the lasso method.
+% This higher mean is a double-edged knife.
+% On one hand, higher returns is good to any investor.
+% On the other hand, the higher returns detaches the portfolio from the index, and might increase the portfolio volatility.
+% However, because we are only minimizing Tracking Error volatility, it seems that the lasso outperforms the other methods.
+% In terms of the Information Ratio (IR), again, the lasso method outperforms the other methods, in all rebalancing frequencies, and for the same reasons as the ones reported for the SR.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Summarized Results America
 \subsection*{American Dataset} 
 
-For the American dataset, the figures show that the lasso portfolios attain higher Tracking Error volatility than the other methods.
-And the forward and backward iteration show very similar Tracking Error volatility.
-As for the cumulative returns, it seems that the lasso presents the higher ones.
-In the risk-adjusted performance, the lasso presents the higher Sharpe Ratio (SR), but this comes in exchange for higher volatility.
-Once again, we remind the reader that we are only minimizing the Tracking Error volatility, so the lasso, in the American case, does not attain the goal we expected, even though it presents a higher Sharpe Ratio.
-In terms of the Information Ratio (IR), the story is the same as in the SR, and the lasso attains higher values of IR by exchanging more mean returns for more volatility, an undesirable transfer in this kind of portfolio.
+For the differences in mean portfolio returns, all differences are positive (mean portfolio returns are larger than the benchmark's).
+Even though there is no apparent pattern of statistical significance, there are a lot of $p$-values that are lower than $10\%$.
+For the differences in net portfolio returns, the turnover has a significant role to play.
+On monthly rebalancig only the negative differences are significant, the same occurs with bimonthly rabalancing with lesser negative values appearing.
+With quarterly rebalancing, all the differences are positive, but none is signigicant with the lowest $p$-value being $40.26\%$ for the \texttt{las.20} portfolio with block length $b=06$. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Description of Tables
-Tables \ref{tab:tc:ibov} and \ref{tab:tc:sp500} show statistics of the out of sample portfolio returns net of transaction costs.
-We used transaction costs equal to $50bp$ as in \citeonline{dgu2009}.
-The statistics shown are annualized Mean and Standard Deviation (SD).
-SR is the annualized Sharpe Ratio of those returns.
-TO is the turnover and is presented as a daily percentage average.
-Short interest is the size of the short position and is expressed in percentage.
-Active is the average number of active positions in the portfolio.
-The last three columns of the Table show the alfa, beta, and $R^2$ (intercept in annualized terms, the slope, and the coefficient of determination) of a univariate regression of the out of sample portfolio returns net of transactions costs against the benchmark Index in the out of sample period.
+For the log-variances, with raw portfolio returns, the only negative differences (lower variance than the benchmark) are the \texttt{bwd.30} and \texttt{bwd.40} with quarterly rebalancing ($-0.18$ and $-0.37$) but they are not significant.
+The largest positive differences are for the \texttt{las.20} ($10.92$, $11.62$, and $11.09$ for montly, bimonthly, and quarterly rebalancing) and they have $p$-values below $1\%$ for all block lengths.
+With transaction costs, there are no negative differences and the lowest differences are not significant.
+Again, \texttt{las.20} has the biggest differences ($11.28$, $11.89$, $11.13$) and they are significant below $1\%$.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Summarized Results 
-For both the Brazilian and the American dataset, the the lasso method does not always select the maximum number of assets.
-This might be the reason why the lasso presents lower turnover, which ultimately leads to lower transaction costs.
-Next, we inspect the average short positions of the portfolios.
-Here we can see that while the short positions increase with the active positions, for the lasso method this increase is much less pronounced than in the other methods.
-This, again, leads to lower turnover and transaction costs.
-Another observation is that the lasso penalty diminishes the portfolio turnover.
-But for the penalty to have this effect, we should use the lasso weights, which we don't, as we separate the asset selection and the asset allocation phase.
-What might be happening here is that even without the penalty, the lasso still selects assets that will present less turnover.
-
-% More Summarized Results 
-Examining the risk-adjusted performance of the portfolios, we attest that the lasso, once again, has the better Sharpe Ratio (SR).
-And once again this is due more to the higher mean return, than to the lower volatility.
-We already expounded why the higher mean return has two sides to it.
-Other noteworthy fact is that once we consider transaction costs, the bwd and the fwd methods might present lower SR than the index itself.
-One last remark to clarify those results is that the portfolios only differ on its asset selection methods, the asset allocation phase is the same for all of them, so what we are examining is how well each method selects the assets that will enter our portfolio.
+In regards to the Sharpe Ratio, with no transactions costs, all differences are positive (all SRs are larger than the benchmark's).
+Fir monthly rebalancing there is no $p$-value below $10\%$.
+For bimonthly rebalancing the only $p$-values below $10\%$ are also below $5\%$ for all block lengths.
+Those exceptions are the \texttt{fwd.30} and \texttt{fwd.40} portfolios with differences in SR equal to \red{$1.11$ and $1.10$}.
+For quarterly rebalancing, the biggest differences occur for the \texttt{bwd} portfolios ($1.60$, $1.55$, $1.61$) and they have $p$-values below $1\%$.
+Also, the \texttt{fwd.30} and \texttt{fwd.40} portfolio have $p$-values below $5\%$.
+In the case with transaction costs, positive values for the difference in SRs are the exception.
+There is no positive value with $p$-value below $10\%$, however.
+The only statistically significant differences are negative ones.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \clearpage
