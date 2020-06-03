@@ -73,7 +73,9 @@
 \addtocontents{toc}{\cftsetindents{part}{\cftlastnumwidth}{2em}}
 \cftinserthook{toc}{A}}
 
-\setlength{\cftbeforechapterskip}{2 em}
+% separação entre os titulos dos capitulos na TOC
+% \setlength{\cftbeforechapterskip}{2 em}
+\setlength{\cftbeforechapterskip}{1 em}
 
 % fonte das partes e do capitulo do TOC
 \renewcommand{\cftchapterfont}{\normalsize\bfseries\MakeTextUppercase}
@@ -96,13 +98,21 @@
 % capitulos textual
 \makechapterstyle{ppge1}{%
 \renewcommand{\chapterheadstart}{\vspace{0 em}}
+
 \renewcommand{\chapnamefont}{\bfseries\MakeTextUppercase}
+% \renewcommand{\chapnamefont}{\flushleft\bfseries\MakeTextUppercase}
+
 \renewcommand{\chapnumfont}{\bfseries\MakeTextUppercase}
+% \renewcommand{\chapnumfont}{\flushleft\bfseries\MakeTextUppercase}
+
 \renewcommand{\chaptitlefont}{\bfseries\MakeTextUppercase}
+% \renewcommand{\chaptitlefont}{\raggedleft\bfseries\MakeTextUppercase}
+% \renewcommand{\chaptitlefont}{\flushleft\bfseries\MakeTextUppercase}
 
 \renewcommand{\printchaptername}{}
-\renewcommand{\chapternamenum}{ }
-\renewcommand{\printchapternum}{\chapnumfont \thechapter}
+
+\renewcommand{\chapternamenum}{}
+\renewcommand{\printchapternum}{\chapnumfont\thechapter}
 \renewcommand{\afterchapternum}{\hspace{1 em}}
 \renewcommand{\afterchaptertitle}{\par \vspace{\baselineskip}}
 }
@@ -115,8 +125,8 @@
 \renewcommand{\chapnumfont}{\bfseries}
 \renewcommand{\chaptitlefont}{\centering\bfseries\MakeTextUppercase}
 
-\renewcommand{\printchaptername}{ }
-\renewcommand{\chapternamenum}{ }
+\renewcommand{\printchaptername}{}
+\renewcommand{\chapternamenum}{}
 \renewcommand{\printchapternum}{\chapnumfont \thechapter}
 \renewcommand{\afterchapternum}{\hspace{1 em}}
 \renewcommand{\afterchaptertitle}{\par \vspace{\baselineskip}}
@@ -126,15 +136,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Declaracoes de cabecalhos e Layout de Páginas
 
+% Cabecalho do inicio do capitulo
+\makepagestyle{abntchapfirst}
+\makeoddhead{abntchapfirst}{}{}{\footnotesize{\thepage}}
+
 % Cabecalho padrao
 \makepagestyle{abntheadings}
 \makeevenhead{abntheadings}{\thepage}{}{}
-\makeoddhead{abntheadings}{}{}{\thepage}
+\makeoddhead{abntheadings}{}{}{\footnotesize{\thepage}}
 % \makeheadrule{abntheadings}{\textwidth}{\normalrulethickness}
-
-% Cabecalho do inicio do capitulo
-\makepagestyle{abntchapfirst}
-\makeoddhead{abntchapfirst}{}{}{\thepage}
 
 % layout para elementos pre-textuais
 \newcommand{\pretextual}{%

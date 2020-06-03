@@ -246,8 +246,8 @@ FUNCTION {bbl.and}
   abnt.and.type #1 = {" \& "} 'skip$ if$}
 FUNCTION {bbl.chapter} { "cap." }
 FUNCTION {bbl.colon} {": "}
-FUNCTION {bbl.editors} { "Ed." }
-FUNCTION {bbl.editor} { "Ed." }
+FUNCTION {bbl.editors} { "ed." }
+FUNCTION {bbl.editor} { "ed." }
 FUNCTION {bbl.edby} { "editado por" }
 FUNCTION {bbl.edition} { "ed." }
 FUNCTION {bbl.empty} {""}

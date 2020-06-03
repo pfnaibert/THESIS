@@ -31,8 +31,9 @@
 \usepackage{xcolor}
 \usepackage{ragged2e}           % formatação texto
 \usepackage{bm}                 % bold symbols 
-% \usepackage{url}                % URL
+\usepackage{url}                % URL
 \usepackage{graphicx}			% Inclusão de gráficos
+\usepackage[labelsep=endash]{caption}			% Customize Captions 
 \usepackage{subcaption}			% Faz subfiguras
 \usepackage{textcase}			% MakeTextUppercase
 %\usepackage{subfigure}         % subfigures
@@ -46,6 +47,8 @@
 \usepackage{enumitem}
 \usepackage{calc}
 % \usepackage[colorlink, citecolor=blue]{hyperref}         % referencias dentro do texo (*QUEBRA MEMOIR*)
+\usepackage[hang,flushmargin]{footmisc}     % footnotes
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{macros-ppge.tex}
@@ -137,6 +140,11 @@ Orientador: Prof. Dr. João Frois Caldeira
 % FICHA CATALOGRÁFICA
 %Ficha catalográfica vem aqui
 \clearpage
+
+\begin{center}
+\textbf{[Ficha Catalográfica AQUI]}
+\end{center}
+
 % \includepdf{ficha.pdf}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -286,6 +294,9 @@ Um destaque deste ensaio é que os algoritmos de iteração \textit{forward} e \
 \cleardoublepage
 \listoffigures*
 
+\vspace{2em}
+\red{Incluir Lista apenas se houver 5 ou mais elementos}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % inserir lista de tabelas
 
@@ -316,11 +327,11 @@ Um destaque deste ensaio é que os algoritmos de iteração \textit{forward} e \
 It is reasonable to imagine that investors prefer to elevate their wealth while minimizing the risks associated to any potential gain.
 To that end, professional wealth managers use portfolio optimization on investment decisions.
 This optimization is an important process of diversification in which the proportion of each financial asset kept on a portfolio is determined to maximize the return contingent to a desired risk level.
-The classic approach was introduced by \citeonline{markowitz1952} and \citeonline{markowitz1959}, and perfected by \citeonline{merton1972}.
+The classic approach was introduced by \citeonline{markowitz1952,markowitz1959}, and perfected by \citeonline{merton1972}.
 It is known as the Modern Portfolio Theory (MPT) and it aims to optimize the trade-off between risk and return of a portfolio.
 This mean-variance framework is the basis to the subsequent development of portfolio optimization.
 
-Since the seminal contributions of \citeonline{markowitz1952} and \citeonline{markowitz1959}, mean-variance portfolio optimization has become the cornerstone to several areas in quantitative finance, including asset allocation, portfolio management of stocks, bonds, and other assets.
+Since the seminal contributions of \citeonline{markowitz1952, markowitz1959}, mean-variance portfolio optimization has become the cornerstone to several areas in quantitative finance, including asset allocation, portfolio management of stocks, bonds, and other assets.
 This framework defines the appropriate portfolio weights by solving an optimization problem.
 This problem presents itself in three main forms:
 the first is to maximize return given a level of risk;
@@ -354,7 +365,8 @@ Also, because we wanted to make the essays the most self contained as possible, 
 Finally, this thesis is comprised of five chapters.
 Beyond this introduction, there are three essays, one for each chapter, and the thesis finishes in Chapter 5, with some final considerations.
 % first essay TP
-The first essay offers a critique of the Tangency Portfolio (TP).\footnote{A preliminary version of this essay was accepted to the XIX Econtro Brasileiro de Finanças with the title ``Tangency Portfolio: A Critique''}
+The first essay offers a critique of the Tangency Portfolio (TP).
+\footnote{A preliminary version of this essay was accepted to the XIX Econtro Brasileiro de Finanças with the title ``Tangency Portfolio: A Critique''}
 This critique is due to the widespread misconception that the TP is the most efficient mean-variance portfolio, as can be seen in \citeonline{dgu2009} and \citeonline{memmel-2006} among others.
 % second essay LETTER
 The second essay provides an explicit derivation of the equivalence between the minimum variance portfolio and the minimum Tracking Error volatility portfolio.
@@ -722,7 +734,8 @@ This empirical evaluation consists in forming the optimal portfolios from Sectio
 \subsection{Data}
 % DATA
 The data for this empirical analysis consists of a total of three datasets.
-The first two are of monthly raw returns (not in excess of the risk-free asset) drawn from the Kenneth French library\footnote[1]{\texttt{http://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data\_library.html}}.
+The first two are of monthly raw returns (not in excess of the risk-free asset) drawn from the Kenneth French library
+\footnote[1]{\texttt{http://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data\_library.html}}.
 They are the 10 Industry portfolios (FF10) and the 25 Size and Book to Market portfolios (FF25).
 Versions of those datasets were used in \citeonline{dgu2009} and \citeonline{fko2012}.
 The sample period used here is from July 1963 to June 2018 ($T=660$ months).
@@ -1853,7 +1866,6 @@ We will assume that the returns have mean vector $E[X_{t}] =\mu_{X}$ and covaria
 We also denote the future and uncertain return of the index by $y_{t}$.
 We assume that the index return have mean $E[y_{t}] = \mu_{y}$ and variance $V[y_{t}]=\sigma^2_{y}$.
 
-
 % excess returns
 With those definitions, we can define the \textit{excess returns} of the risky assets on the index as:
 
@@ -2150,7 +2162,7 @@ So, we have $1449$ estimates of covariance matrices.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Allocation
-\subsection*{Allocation}
+\subsection{Allocation}
 After the covariance matrix estimation above, we enter the asset allocation phase.
 To that end, we follow \citeonline{liu-2009} and select portfolios that minimize the volatility of the Tracking Error, without any regard for the size of the mean of the Tracking Error.
 To achieve this, we find the portfolio that minimizes the variance of the excess returns on the benchmark with a fully bought contraint ($e'w=1$).
