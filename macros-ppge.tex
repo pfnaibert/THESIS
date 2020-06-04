@@ -95,25 +95,31 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% capitulos textual
+% Alterado do AbneteX
 \makechapterstyle{ppge1}{%
 \renewcommand{\chapterheadstart}{\vspace{0 em}}
+\newlength{\chapternamenumlength}
 
-\renewcommand{\chapnamefont}{\bfseries\MakeTextUppercase}
-% \renewcommand{\chapnamefont}{\flushleft\bfseries\MakeTextUppercase}
+% tamanhos de fontes de chapter e part	
+\setlength{\beforechapskip}{0pt}
+\renewcommand{\chaptitlefont}{\normalfont\bfseries}
+\renewcommand{\chapnumfont}{\chaptitlefont}
 
-\renewcommand{\chapnumfont}{\bfseries\MakeTextUppercase}
-% \renewcommand{\chapnumfont}{\flushleft\bfseries\MakeTextUppercase}
-
-\renewcommand{\chaptitlefont}{\bfseries\MakeTextUppercase}
-% \renewcommand{\chaptitlefont}{\raggedleft\bfseries\MakeTextUppercase}
-% \renewcommand{\chaptitlefont}{\flushleft\bfseries\MakeTextUppercase}
-
-\renewcommand{\printchaptername}{}
-
+% impressao do numero do capitulo
 \renewcommand{\chapternamenum}{}
-\renewcommand{\printchapternum}{\chapnumfont\thechapter}
-\renewcommand{\afterchapternum}{\hspace{1 em}}
+\renewcommand{\printchapternum}{\chapnumfont\space\thechapter\space}
+\renewcommand{\afterchapternum}{}
+
+% impressao do nome do capitulo
+\renewcommand{\printchaptername}{\chaptitlefont}
+
+% impressao do titulo do capitulo
+\def\printchaptertitle##1{%
+\chaptitlefont%
+\settowidth{\chapternamenumlength}{\printchaptername\printchapternum\afterchapternum}%
+\parbox[t]{\columnwidth-\chapternamenumlength}{##1}}
+
+
 \renewcommand{\afterchaptertitle}{\par \vspace{\baselineskip}}
 }
 
@@ -127,11 +133,13 @@
 
 \renewcommand{\printchaptername}{}
 \renewcommand{\chapternamenum}{}
-\renewcommand{\printchapternum}{\chapnumfont \thechapter}
+
+\renewcommand{\printchapternum}{\chapnumfont\thechapter}
 \renewcommand{\afterchapternum}{\hspace{1 em}}
 \renewcommand{\afterchaptertitle}{\par \vspace{\baselineskip}}
 }
 \chapterstyle{ppge2}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Declaracoes de cabecalhos e Layout de Páginas
@@ -163,7 +171,11 @@
 %   }{%else  
     \pagestyle{abntheadings}%
     \aliaspagestyle{chapter}{abntchapfirst}% customizing chapter pagestyle
-    \chapterstyle{ppge1}
+     \chapterstyle{ppge1}
+     % \chapterstyle{hangnum}
+     % \chapterstyle{article}
+     % \chapterstyle{section}
+     % \chapterstyle{tandh}
 % }  
   % \nouppercaseheads%
   % \bookmarksetup{startatroot}% 
