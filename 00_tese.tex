@@ -2262,7 +2262,7 @@ We use the circular block bootstrap of \citeonline{pr92} with block length $2, 4
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \clearpage
+\clearpage
 \section{RESULTS} \label{sec:results:it}
 
 In this section we present the results of our empirical analysis.
@@ -2281,18 +2281,9 @@ The numbers after the letters denote the number of active positions allowed in e
 
 Tables \ref{tab:ibov:rps} and \ref{tab:spy5:rps} show statistics of the Brazilian and American datasets, respectively.
 The presented statistics are: Mean, Standard Deviation (SD), Sharpe Ratio (SR), and correlation with the index (CORR) for the raw and net portfolio returns of each policy and each rebalancing frequency: monthly (Panel A), bimonthly (Panel B), and quarterly (Panel C). 
+For the net portfolio returns, we used transaction costs equal to $50bp$ as in \citeonline{dgu2009}.
 The Tables also show the Turnover (TO), Gross Exposure (Gross), Short Interest (Short), and Active Positions (Active).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Description of Tables
-Tables \ref{tab:tc:ibov} and \ref{tab:tc:sp500} show statistics of the out of sample portfolio returns net of transaction costs.
-We used transaction costs equal to $50bp$ as in \citeonline{dgu2009}.
-The statistics shown are annualized Mean and Standard Deviation (SD).
-SR is the annualized Sharpe Ratio of those returns.
-TO is the turnover and is presented as a daily percentage average.
-Short interest is the size of the short position and is expressed in percentage.
-Active is the average number of active positions in the portfolio.
-The last three columns of the Table show the alfa, beta, and $R^2$ (intercept in annualized terms, the slope, and the coefficient of determination) of a univariate regression of the out of sample portfolio returns net of transactions costs against the benchmark Index in the out of sample period.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Description of PVAL TABLES
@@ -2314,8 +2305,39 @@ show the $p$-values of those statistics for the American dataset.
 % Those figures also show in pointed lines the Tracking Error standard deviation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Description of the Desired results
+The ideal result of an index tracking portfolio is to track the index perfectly with zero difference in the mean and in the volatility.
+That would mean that our SR would also match the index's SR and we would have mimicked the index perfectly.
+Our optimization problem, however, does not take the mean returns into account. 
+It only minimizes the mean squared differences of returns.
+So our results might have more differences in the mean returns, but big differences in the volatility are not to be tolerated.
+
+Apropos of those mean results, we have to remember that trading and rebalancing the stocks in our portfolios generate transaction costs and those transaction costs will diminish our mean returns \cite{barber-2000}.
+In this way, we have to decide what we really want to evaluate, raw portfolio returns, or net portfolio returns.
+On the one hand, if we are evaluating raw portfolio returns and we have a difference of zero with the benchmark, we must remember that the transaction costs will change that difference to a negative number, when evaluating net portfolio returns.
+But if we have a positive difference with raw returns, the transaction costs might be enough to bring that difference to zero with net returns.
+Or, in a unlucky case, bring that difference to a negative number.
+On the other hand, if we are evaluating net returns, we have a ``what you see is what you get'' type o scenario, because we already accounted for the transaction costs.
+\red{with that said we only evaluate the $p$-value tables of the net return portfolios}.
+
+\red{Even more ideal would be the case where we predict the actual transaction costs and stablish a margin of error just enough to zero the return difference.
+That should be the topic of further research}
+
+Now, for the results that we are seeking to \textbf{AVOID}.
+For the mean of returns, we do not want a significant \textbf{negative} difference.
+Actually, we do not want any negative difference at all,
+because it would mean that our portfolio has lower mean returns than the benchmark's. 
+Acceptable results are nonnegative nonsignificant differences.
+For the volatility of returns, we do not want a significant POSITIVE difference,
+because that would mean a higher volatitily than the benchmark's.
+Acceptable results are nonpositive nonsignificant differences.
+For the Sharpe Ratio of returns, we do not want a significant NEGATIVE difference,
+because that would mean a lower Sharpe Ration than the benchmark's.
+Acceptable results are nonnegative nonsignificant differences.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Summarized Results Brazil
-\subsection*{Brazilian Dataset}
+\subsection{Brazilian Dataset}
 
 % Mean portfolio returns: positive difference means bigger mean than the benchmark.
 For the differences in mean portfolio returns, with the exception of the \texttt{las.15} portfolio with bimonthly rebalancing, there is no evidence of statistical significance for any block length.
@@ -2350,7 +2372,7 @@ In summary, for the Brazilian dataset, the index tracking with asset selection d
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Summarized Results America
-\subsection*{American Dataset} 
+\subsection{American Dataset} 
 
 For the differences in mean portfolio returns, all differences are positive (mean portfolio returns are larger than the benchmark's).
 Even though there is no apparent pattern of statistical significance, there are a lot of $p$-values that are lower than $10\%$.
@@ -2364,9 +2386,9 @@ With transaction costs, there are no negative differences and the lowest differe
 Again, \texttt{las.20} has the biggest differences ($11.28$, $11.89$, $11.13$) and they are significant below $1\%$.
 
 In regards to the Sharpe Ratio, with no transactions costs, all differences are positive (all SRs are larger than the benchmark's).
-Fir monthly rebalancing there is no $p$-value below $10\%$.
+For monthly rebalancing there is no $p$-value below $10\%$.
 For bimonthly rebalancing the only $p$-values below $10\%$ are also below $5\%$ for all block lengths.
-Those exceptions are the \texttt{fwd.30} and \texttt{fwd.40} portfolios with differences in SR equal to \red{$1.11$ and $1.10$}.
+Those exceptions are the \texttt{fwd.30} and \texttt{fwd.40} portfolios.
 For quarterly rebalancing, the biggest differences occur for the \texttt{bwd} portfolios ($1.60$, $1.55$, $1.61$) and they have $p$-values below $1\%$.
 Also, the \texttt{fwd.30} and \texttt{fwd.40} portfolio have $p$-values below $5\%$.
 In the case with transaction costs, positive values for the difference in SRs are the exception.
@@ -2374,7 +2396,7 @@ There is no positive value with $p$-value below $10\%$, however.
 The only statistically significant differences are negative ones.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \clearpage
+\clearpage
 \section{CONCLUDING REMARKS} \label{sec:conc}
 
 Here, we presented portfolios formed by methods of variable selection to track a benchmark index.
@@ -2404,15 +2426,15 @@ By simple methods we mean methods that are not computationally costly as Integer
 
 % pvals 
 
-% RPS
-\input{../03-it-featsel/TABS/pval-mu-rps-ibov.tex}
-\input{../03-it-featsel/TABS/pval-var-rps-ibov.tex}
-\input{../03-it-featsel/TABS/pval-sr-rps-ibov.tex}
+% % RPS
+% \input{../03-it-featsel/TABS/pval-mu-rps-ibov.tex}
+% \input{../03-it-featsel/TABS/pval-var-rps-ibov.tex}
+% \input{../03-it-featsel/TABS/pval-sr-rps-ibov.tex}
 
 % RPN
-\input{../03-it-featsel/TABS/pval-mu-rpn-ibov.tex}
-\input{../03-it-featsel/TABS/pval-var-rpn-ibov.tex}
 \input{../03-it-featsel/TABS/pval-sr-rpn-ibov.tex}
+\input{../03-it-featsel/TABS/pval-var-rpn-ibov.tex}
+\input{../03-it-featsel/TABS/pval-mu-rpn-ibov.tex}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2423,15 +2445,15 @@ By simple methods we mean methods that are not computationally costly as Integer
 
 % pvals 
 
-% RPS
-\input{../03-it-featsel/TABS/pval-mu-rps-spy5.tex}
-\input{../03-it-featsel/TABS/pval-var-rps-spy5.tex}
-\input{../03-it-featsel/TABS/pval-sr-rps-spy5.tex}
+%   % RPS
+%   \input{../03-it-featsel/TABS/pval-mu-rps-spy5.tex}
+%   \input{../03-it-featsel/TABS/pval-var-rps-spy5.tex}
+%   \input{../03-it-featsel/TABS/pval-sr-rps-spy5.tex}
 
 % RPN
-\input{../03-it-featsel/TABS/pval-mu-rpn-spy5.tex}
-\input{../03-it-featsel/TABS/pval-var-rpn-spy5.tex}
 \input{../03-it-featsel/TABS/pval-sr-rpn-spy5.tex}
+\input{../03-it-featsel/TABS/pval-var-rpn-spy5.tex}
+\input{../03-it-featsel/TABS/pval-mu-rpn-spy5.tex}
 
 
 % \begin{tablenotes} 
