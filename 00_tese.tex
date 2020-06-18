@@ -2260,7 +2260,6 @@ To verify if the Mean, Variance, and Sharpe Ratio of each policy are statiscally
 Their framework relies on the fact that those performance measures are smooth functions of population moments.
 We use the circular block bootstrap of \citeonline{pr92} with block length $2, 4, 6, 8$, and $10$ to find $p$-values of the differences in performance measures.
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
 \section{RESULTS} \label{sec:results:it}
@@ -2284,17 +2283,36 @@ The presented statistics are: Mean, Standard Deviation (SD), Sharpe Ratio (SR), 
 For the net portfolio returns, we used transaction costs equal to $50bp$ as in \citeonline{dgu2009}.
 The Tables also show the Turnover (TO), Gross Exposure (Gross), Short Interest (Short), and Active Positions (Active).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Description of the Desired results for oos tables
+The ideal result of an index tracking portfolio is to track the index perfectly with zero difference in the mean and in the volatility.
+That would mean that our SR would also match the index's SR and we would have mimicked the index perfectly.
+Our optimization problem, however, does not take the mean returns into account. 
+It only minimizes the mean squared differences of returns.
+So our results might have more differences in the mean returns, but big differences in the volatility are \red{not to be tolerated}.
+\red{Even more ideal would be the case where we predict the actual transaction costs and stablish a margin of error just enough to zero the return difference.
+That should be the topic of further research}
+
+Apropos of those mean results, we have to remember that trading and rebalancing the stocks in our portfolios generate transaction costs and those transaction costs will diminish our mean returns \cite{barber-2000}.
+In this way, we have to decide what we really want to evaluate, raw portfolio returns, or net portfolio returns.
+On the one hand, if we are evaluating raw portfolio returns and we have a difference of zero with the benchmark, we must remember that the transaction costs will change that difference to a negative number, when evaluating net portfolio returns.
+But if we have a positive difference with raw returns, the transaction costs might be enough to bring that difference to zero with net returns.
+Or, in a unlucky case, bring that difference to a negative number.
+On the other hand, if we are evaluating net returns, we have a ``what you see is what you get'' type o scenario, because we already accounted for the transaction costs.
+with that said we only evaluate the $p$-value tables of the net return portfolios.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Description of PVAL TABLES
 
 Tables 
-\ref{tab:pval:mu:rps:ibov}, 
-\ref{tab:pval:var:rps:ibov}, and 
-\ref{tab:pval:sr:rps:ibov} 
-show the $p$-values for the differences in the Mean, Log-Variance, and Sharpe Ratio of the raw portfolio returns of the Brazilian dataset using the methodology developed in \citeonline{lw2008, lw2011, lw2018}.
-Tables \ref{tab:pval:mu:rpn:ibov}, \ref{tab:pval:var:rpn:ibov}, and \ref{tab:pval:sr:rpn:ibov} show the $p$-values of the same statistics for net portfolio returns of the Brazilian dataset.
-Finally, Tables \ref{tab:pval:mu:rps:spy5} to \ref{tab:pval:sr:rpn:spy5} 
+\ref{tab:pval:sr:rpn:ibov},
+\ref{tab:pval:var:rpn:ibov}, and 
+\ref{tab:pval:mu:rpn:ibov}
+show the $p$-values for the differences in the Sharpe Ratio, Log-Variance, and Mean of the net portfolio returns of the Brazilian dataset using the methodology developed in \citeonline{lw2008, lw2011, lw2018}.
+Tables 
+\ref{tab:pval:sr:rpn:spy5},  
+\ref{tab:pval:var:rpn:spy5}, and
+\ref{tab:pval:mu:rpn:spy5} 
 show the $p$-values of those statistics for the American dataset.
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2303,25 +2321,6 @@ show the $p$-values of those statistics for the American dataset.
 % Those figures also show in pointed lines the difference between those cumulative returns and the index.
 % The Figures \ref{fig:ibov:vol:10a} through \ref{fig:ibov:vol:20a} and \ref{fig:sp500:vol:20a} through \ref{fig:sp500:vol:40a}, show rolling window (250 days) annualized standard deviation.
 % Those figures also show in pointed lines the Tracking Error standard deviation.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Description of the Desired results
-The ideal result of an index tracking portfolio is to track the index perfectly with zero difference in the mean and in the volatility.
-That would mean that our SR would also match the index's SR and we would have mimicked the index perfectly.
-Our optimization problem, however, does not take the mean returns into account. 
-It only minimizes the mean squared differences of returns.
-So our results might have more differences in the mean returns, but big differences in the volatility are not to be tolerated.
-
-Apropos of those mean results, we have to remember that trading and rebalancing the stocks in our portfolios generate transaction costs and those transaction costs will diminish our mean returns \cite{barber-2000}.
-In this way, we have to decide what we really want to evaluate, raw portfolio returns, or net portfolio returns.
-On the one hand, if we are evaluating raw portfolio returns and we have a difference of zero with the benchmark, we must remember that the transaction costs will change that difference to a negative number, when evaluating net portfolio returns.
-But if we have a positive difference with raw returns, the transaction costs might be enough to bring that difference to zero with net returns.
-Or, in a unlucky case, bring that difference to a negative number.
-On the other hand, if we are evaluating net returns, we have a ``what you see is what you get'' type o scenario, because we already accounted for the transaction costs.
-\red{with that said we only evaluate the $p$-value tables of the net return portfolios}.
-
-\red{Even more ideal would be the case where we predict the actual transaction costs and stablish a margin of error just enough to zero the return difference.
-That should be the topic of further research}
 
 Now, for the results that we are seeking to \textbf{AVOID}.
 For the mean of returns, we do not want a significant \textbf{negative} difference.
@@ -2339,61 +2338,70 @@ Acceptable results are nonnegative nonsignificant differences.
 % Summarized Results Brazil
 \subsection{Brazilian Dataset}
 
-% Mean portfolio returns: positive difference means bigger mean than the benchmark.
-For the differences in mean portfolio returns, with the exception of the \texttt{las.15} portfolio with bimonthly rebalancing, there is no evidence of statistical significance for any block length.
-Even the \texttt{las.15} has $p$-values between $7.96\%$ and $8.86\%$.
-For the net portfolio returns there is no exception.
-The lowest value is $18.94\%$ for the \texttt{bwd.10} portfolio with monthly rebalancing and block length $b=08$.
+% Sharpe Ratio of portfolio returns: positive difference means bigger SR than the benchmark.
+The test of differences in Sharpe Ratios are presented in Table \ref{tab:pval:sr:rpn:ibov}.
+Regarding this differences, there is no evidence of statistical significance for any portfolio.
+But we can observe that the only portfolios to never present a negative value of the difference are the \texttt{las.15} and \texttt{las.20} portfolios.
+Also, note that the \texttt{bwd.10} and \texttt{fwd.10} are never positive.
 
 % log-variance of portfolio returns: positive difference means bigger variance than the benchmark.
-For the test of difference with log variances, the exception is the \texttt{las.20} portfolio.
-This portfolio has the largest $p$-values offering no evidence of statistical significance for all block lengths, all rebalancing frequencies with raw and net returns.
-The \texttt{las.10} portfolio has the biggest positive difference (larger variance) in all rebalancing frequencies ($9.92$, $9.69$ $8.84$; $9.92$, $9.68$, $8.72$) with $p$-values below $1\%$ for all block lengths.
-The \texttt{bwd.20} and \texttt{fwd.20} portfolio have the most negative differences (smaller variances) for all the the rebalancing frequencies
-($-5.55$, $-5.93$, $-6.60$; $-5.59$, $-5.94$, $-6.77$) and 
-($-5.04$, $-5.56$, $-6.55$; $-5.05$, $-5.60$, $-6.74$)
-with $p$-values below $1\%$ for all block lengths.
+The test of difference with log variances are presented in Table \ref{tab:pval:var:rpn:ibov}.
+In it we can observe that the \texttt{las.20} portfolio is the only portfolio that does not present evidence of statistical significance.
+The \texttt{las.20} portfolio present negative (lower variance than the benchmark's) nonsignificant differences.
+All the other portfolios present $p$-values lower than $10\%$.
+Noteworthy portfolios are the \texttt{bwd.15}, \texttt{fwd.15}, \texttt{bwd.20}, and \texttt{fwd.20} portfolios.
+These portfolios present negative statistically significant differences.
 
-% Sharpe Ratio of portfolio returns: positive difference means bigger SR than the benchmark.
-For differences in Sharpe ratio, there is no evidence of statistical significance.
-The lowest $p$-value ($10.92\%$) for the raw returns is the \texttt{las.20} portfolio with bimonthly rebalancing aand block length $b=04$.
-The lowest $p$-value ($15.56\%$) for the net returns is the \texttt{bwd.10} portfolio with monthly rebalancing aand block length $b=06$.
+% Mean portfolio returns: positive difference means bigger mean than the benchmark.
+The test of differences in mean portfolio net returns are presented in Table \ref{tab:pval:mu:rpn:ibov}.
+In this table no portfolio has $p$-value under $15\%$, which means that ther is no evidence of statistical significance in the difference of mean net returns.
+Notwithstanding, it might be worth to mention that the \texttt{bwd.10} and \texttt{fwd.10} portfolios do present negative (lower mean than the benchmark's) differences.
+All other differences are nonnegative.
 
-In summary, for the Brazilian dataset, the index tracking with asset selection did not find portfolios with significant statistical difference in the means, but did find portfolios with significant statistical differences in the log-variances. This, however, did not translate into significant statistical differences in the Sharpe Ratio.
+% Figures
+It would be interesting to see figures of the returns and volatility of all the portfolios.
+However, that would take an inordinate amount of space, so for the Brazilian dataset, we only show the figures of the \texttt{las.20} portfolio (Figure \ref{fig:ibov:las.20}), because this is the only portfolio to not have any evidence of statistical significance in any difference.
+We also show the figures of the \texttt{bwd.10} portfolio (Figure \ref{fig:ibov:bwd.10}), because it has the highest negative difference in Sharpe Ratio.
+Finally, we show the figure of the \texttt{bwd.20} portfolio (Figure \ref{fig:ibov:bwd.20}), because it has the highest negative difference in variance.
 
-% For the Brazilian dataset, the figures show that the portfolios attain similar return and Tracking Error volatility.
-% As for the cumulative returns, they show that the lasso presents the higher returns.
-% This translates into a bigger Sharpe Ratio (SR) for the lasso method.
-% This higher mean is a double-edged knife.
-% On one hand, higher returns is good to any investor.
-% On the other hand, the higher returns detaches the portfolio from the index, and might increase the portfolio volatility.
-% However, because we are only minimizing Tracking Error volatility, it seems that the lasso outperforms the other methods.
-% In terms of the Information Ratio (IR), again, the lasso method outperforms the other methods, in all rebalancing frequencies, and for the same reasons as the ones reported for the SR.
+% Summary
+In summary, for the Brazilian dataset, the index tracking with asset selection did not find portfolios with significant statistical difference in the means, but did find portfolios with significant statistical differences in the log-variances.
+This, however, did not translate into significant statistical differences in the Sharpe Ratio.
+The only portfolio that did not present any statistically significant differences is the \texttt{las.20} portfolio.
+Also, we should point out that the quarterly rebalancing, for all portfolios, generally has a higher mean (due to the diminished transaction costs) and lower variance. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Summarized Results America
 \subsection{American Dataset} 
 
-For the differences in mean portfolio returns, all differences are positive (mean portfolio returns are larger than the benchmark's).
-Even though there is no apparent pattern of statistical significance, there are a lot of $p$-values that are lower than $10\%$.
-For the differences in net portfolio returns, the turnover has a significant role to play.
-On monthly rebalancig only the negative differences are significant, the same occurs with bimonthly rabalancing with lesser negative values appearing.
-With quarterly rebalancing, all the differences are positive, but none is signigicant with the lowest $p$-value being $40.26\%$ for the \texttt{las.20} portfolio with block length $b=06$. 
+% Sharpe Ratio of portfolio returns: positive difference means bigger SR than the benchmark.
+The test of differences in Sharpe Ratios are presented in Table \ref{tab:pval:sr:rpn:spy5}.
+In it, the only portfolios that are consistently nonsignificant are the lasso portfolios, with the \texttt{las.20} portfolio also being the only portfolio to have a consistently positive difference.
+In the quarterly rebalancing frequency, all the differences are nonsignificant.
 
-For the log-variances, with raw portfolio returns, the only negative differences (lower variance than the benchmark) are the \texttt{bwd.30} and \texttt{bwd.40} with quarterly rebalancing ($-0.18$ and $-0.37$) but they are not significant.
-The largest positive differences are for the \texttt{las.20} ($10.92$, $11.62$, and $11.09$ for montly, bimonthly, and quarterly rebalancing) and they have $p$-values below $1\%$ for all block lengths.
-With transaction costs, there are no negative differences and the lowest differences are not significant.
-Again, \texttt{las.20} has the biggest differences ($11.28$, $11.89$, $11.13$) and they are significant below $1\%$.
+% log-variance of portfolio returns: positive difference means bigger variance than the benchmark.
+The test of difference with log variances are presented in Table \ref{tab:pval:var:rpn:spy5}.
+In it, we can observer that all differences are positive (bigger variance than the benchmark's).
+Also, the only portfolios to have a $p$-value above $10\%$ are the \texttt{bwd.40} in the bimonthly and quarterly rebalancing frequency and the \texttt{bwd.30} in the quarterly rebalancing frequency.
 
-In regards to the Sharpe Ratio, with no transactions costs, all differences are positive (all SRs are larger than the benchmark's).
-For monthly rebalancing there is no $p$-value below $10\%$.
-For bimonthly rebalancing the only $p$-values below $10\%$ are also below $5\%$ for all block lengths.
-Those exceptions are the \texttt{fwd.30} and \texttt{fwd.40} portfolios.
-For quarterly rebalancing, the biggest differences occur for the \texttt{bwd} portfolios ($1.60$, $1.55$, $1.61$) and they have $p$-values below $1\%$.
-Also, the \texttt{fwd.30} and \texttt{fwd.40} portfolio have $p$-values below $5\%$.
-In the case with transaction costs, positive values for the difference in SRs are the exception.
-There is no positive value with $p$-value below $10\%$, however.
-The only statistically significant differences are negative ones.
+% Mean portfolio returns: positive difference means bigger mean than the benchmark.
+The test of differences in mean portfolio net returns are presented in Table \ref{tab:pval:mu:rpn:spy5}.
+The lasso portfolios are consistently nonsignificant and nonnegative (mean portfolio net return at least as good as the benchmark).
+In the quarterly rebalancing frequency, all differences are nonsignificant.
+
+% Figures
+Once more, it would be interesting to see figures of the returns and volatility of all the portfolios.
+However, that would take an inordinate amount of space.
+Because of this, for the American dataset, we only show the figure of the
+\texttt{las.20} portfolio (Figure \ref{fig:spy:las.20}), because it has the highest positive difference in the variance and the Sharpe Ratio.
+We also show the figure of the \texttt{fwd.20} portfolio (Figure \ref{fig:spy:fwd.20}), because of its poor performance.
+Finally, we show the figure of the \texttt{bwd.40} portfolio (Figure \ref{fig:spy:bwd.40}), because in its quarterly rebalancing form it is the one of the two portfolios to not show any evidence of statistical significance (in this rebalancing frequency).
+
+% Summary
+For the American dataset, we can sum up the results as follows.
+Again, the quarterly rebalancing, generally has a higher mean (due to the diminished transaction costs) and lower variance and, in general, more assets in the portfolio enhance performance. 
+The \texttt{bwd.40} portfolio with quarterly rebalancing tracks the SP500 index well, which is not repeated by the other rebalancing frequencies.
+The lasso portfolios generally surpass the performance of the index, but costing a higher volatility and tracking error.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
@@ -2405,14 +2413,12 @@ One is an American dataset to track the SP500 Index; the other is a Brazilian da
 In the empirical exercise, we segregated the asset selection and the asset allocation phases to isolate the effect of asset selection for each method.
 In the asset allocation phase we used the Global Minimum Variance Portfolio with returns in excess of the benchmark to minimize the Tracking Error volatility of the portfolio, as in \citeonline{liu-2009}.
 
-In the results section we can observe that, in terms of risk-adjusted performance, the lasso method outperforms the backward and forward selection. 
-In the Brazilian case, the lasso presents similar return and Tracking Error volatility, but with higher mean return.
-This translates into higher risk-adjusted performance for the lasso.
-This evidence is robust to rebalancing frequency and transaction costs.
-In the American case, the lasso also presents higher mean return, but presents higher volatility, which ultimately leads to a higher Sharpe Ratio.
-However, because our primary goal is to minimize Tracking Error volatility, that exchange is undesirable to us.
+It should be pointed out that this optimization does not take the mean returns into account. 
+It only minimizes the mean squared differences of returns.
+So our results might have more differences in the mean returns, but less differences in the volatility.
+Further research should study the case where we predict the actual transaction costs and stablish a margin of error just enough to zero the return difference.
 
-Even though the backward and forward selections are outperformed by the lasso in some cases, there are some instances in which they can track the benchmark index pretty well.
+In the results section we can observe that, for the brazilian dataset, the \texttt{las.20} portfolio is the portfolio that best tracks the Ibovespa index, and for the American dataset, the \texttt{bwd.40} with quarterly rebalancing is the best tracker, but with an honorable mention to the lasso portfolios.
 The positive performance of the portfolios leads us to believe that simple variable selection methods can add value to index tracking portfolios.
 By simple methods we mean methods that are not computationally costly as Integer Quadratic Programming like in \citeonline{santos15,rbfin-it}.
 
@@ -2422,265 +2428,100 @@ By simple methods we mean methods that are not computationally costly as Integer
 % IBOV 
 
 \clearpage
-\input{../03-it-featsel/TABS/ibov-rps.tex}
-
-% pvals 
-
-% % RPS
-% \input{../03-it-featsel/TABS/pval-mu-rps-ibov.tex}
-% \input{../03-it-featsel/TABS/pval-var-rps-ibov.tex}
-% \input{../03-it-featsel/TABS/pval-sr-rps-ibov.tex}
+\input{../03-it-featsel/tabs/ibov-rps.tex}
 
 % RPN
-\input{../03-it-featsel/TABS/pval-sr-rpn-ibov.tex}
-\input{../03-it-featsel/TABS/pval-var-rpn-ibov.tex}
-\input{../03-it-featsel/TABS/pval-mu-rpn-ibov.tex}
+\input{../03-it-featsel/tabs/pval-sr-rpn-ibov.tex}
+\input{../03-it-featsel/tabs/pval-var-rpn-ibov.tex}
+\input{../03-it-featsel/tabs/pval-mu-rpn-ibov.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IBOV figs
+\clearpage
+
+\begin{figure}[htpb]
+\centering
+\footnotesize
+\caption{\texttt{las.20} Portfolio (Brazilian Data)}
+\label{fig:ibov:las.20}
+\includegraphics[width=.95\linewidth]{./figs/IBOV-retac-las-20.pdf}
+\begin{quote}
+\textbf{Source:} The author.
+\end{quote}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\footnotesize
+\caption{\texttt{bwd.10} Portfolio (Brazilian Data)}
+\label{fig:ibov:bwd.10}
+\includegraphics[width=.95\linewidth]{./figs/IBOV-retac-bwd-10.pdf}
+\begin{quote}
+\textbf{Source:} The author.
+\end{quote}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\footnotesize
+\caption{\texttt{bwd.20} Portfolio (Brazilian Data)}
+\label{fig:ibov:bwd.20}
+\includegraphics[width=.95\linewidth]{./figs/IBOV-retac-bwd-20.pdf}
+\begin{quote}
+\textbf{Source:} The author.
+\end{quote}
+\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SP500
 
 \clearpage
-\input{../03-it-featsel/TABS/spy5-rps.tex}
+\input{../03-it-featsel/tabs/spy5-rps.tex}
 
 % pvals 
 
-%   % RPS
-%   \input{../03-it-featsel/TABS/pval-mu-rps-spy5.tex}
-%   \input{../03-it-featsel/TABS/pval-var-rps-spy5.tex}
-%   \input{../03-it-featsel/TABS/pval-sr-rps-spy5.tex}
-
 % RPN
-\input{../03-it-featsel/TABS/pval-sr-rpn-spy5.tex}
-\input{../03-it-featsel/TABS/pval-var-rpn-spy5.tex}
-\input{../03-it-featsel/TABS/pval-mu-rpn-spy5.tex}
+\input{../03-it-featsel/tabs/pval-sr-rpn-spy5.tex}
+\input{../03-it-featsel/tabs/pval-var-rpn-spy5.tex}
+\input{../03-it-featsel/tabs/pval-mu-rpn-spy5.tex}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SPY figs
+\clearpage
 
-% \begin{tablenotes} 
-% \textbf{Note:} In this Table the benchmark index is the Bovespa Index (IBOV).
-% The Table shows annualized Mean and Standard Deviation (SD) of the Index and of the portfolio returns.
-% The index is shown in absolute terms and the portfolios are shown in relation to the index (Mean and SD of the portfolios are divided by the Mean and the SD of the index).
-% SR denotes the annualized Sharpe Ratio.
-% The Table also shows the Mean and SD of the Tracking Error of the portfolios (portfolio return minus the index).
-% And the IR denotes the annualized Information Ratio which is the Mean of the Tracking Error divided by its SD.
-% The last three columns of the Table show the alfa, beta, and $R^2$ (intercept in annualized terms, the slope, and the coefficient of determination) of a univariate regression of the out of sample portfolio returns against the benchmark Index in the period from January 2000 to December of 2010.
-% \end{tablenotes} 
+\begin{figure}[htpb]
+\centering
+\footnotesize
+\caption{\texttt{las.20} Portfolio (American Data)}
+\label{fig:spy:las.20}
+\includegraphics[width=.95\linewidth]{./figs/SP500-retac-las-20.pdf}
+\begin{quote}
+\textbf{Source:} The author.
+\end{quote}
+\end{figure}
 
-% \begin{tablenotes} 
-% \textbf{Source:} The author. \\
-% \textbf{Note:}
-% In this Table the benchmark index is the Bovespa Index (IBOV).
-% The Table shows annualized Mean and Standard Deviation (SD) of the out of sample portfolio returns net of transaction costs.
-% We used $c=50bp$ as in \citeonline{dgu2009}.
-% SR is the annualized Sharpe Ratio of those returns.
-% TO is the turnover and is presented as a daily percentage average.
-% Short interest is the size of the short position and is expressed in percentage.
-% Active is the average number of active positions in the portfolio.
-% The last three columns of the Table show the alfa, beta, and $R^2$ (intercept in annualized terms, the slope, and the coefficient of determination) of a univariate regression of the out of sample portfolio returns net of transaction errors against the benchmark Index in the period from January 2000 to December of 2010.
-% \end{tablenotes} 
+\begin{figure}[htpb]
+\centering
+\footnotesize
+\caption{\texttt{fwd.20} Portfolio (American Data)}
+\label{fig:spy:fwd.20}
+\includegraphics[width=.95\linewidth]{./figs/SP500-retac-fwd-20.pdf}
+\begin{quote}
+\textbf{Source:} The author.
+\end{quote}
+\end{figure}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SP 
-
-% \begin{tablenotes} 
-% \textbf{Source:} The author. \\
-% \textbf{Note:}
-% In this Table the benchmark index is the SP500 Index (SP500).
-% The Table shows annualized Mean and Standard Deviation (SD) of the Index and of the portfolio returns.
-% The index is shown in absolute terms and the portfolios are shown in relation to the index (Mean and SD of the portfolios are divided by the Mean and the SD of the index).
-% SR denotes the annualized Sharpe Ratio.
-% The Table also shows the Mean and SD of the Tracking Error of the portfolios (portfolio return minus the index).
-% And the IR denotes the annualized Information Ratio which is the Mean of the Tracking Error divided by its SD.
-% The last three columns of the Table show the alfa, beta, and $R^2$ (intercept in annualized terms, the slope, and the coefficient of determination) of a univariate regression of the out of sample portfolio returns against the benchmark Index in the period from January 2012 to October of 2017.
-% \end{tablenotes} 
-
-% SP TC
-
-% \begin{tablenotes} 
-% \textbf{Source:} The author. \\
-% \textbf{Note:}
-% In this Table the benchmark index is the SP500 Index (SP500).
-% The Table shows annualized Mean and Standard Deviation (SD) of the out of sample portfolio returns net of transaction costs.
-% We used $c=50bp$ as in \citeonline{dgu2009}.
-% SR is the annualized Sharpe Ratio of those returns.
-% TO is the turnover and is presented as a daily percentage average.
-% Short interest is the size of the short position and is expressed in percentage.
-% Active is the average number of active positions in the portfolio.
-% The last three columns of the Table shows the alfa, beta, and $R^2$ (intercept in annualized terms, the slope, and the coefficient of determination) of a univariate regression of the out of sample portfolio returns against the benchmark Index in the period from January 2012 to October of 2017.
-% \end{tablenotes} 
-
-%      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%      % IBOV figs
-%      \clearpage
-%      
-%      \begin{figure}[htpb]
-%      \centering
-%      \footnotesize
-%      \caption{Cumulative returns with 10 assets (IBOV)}
-%      \label{fig:ibov:ret:10a}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-1.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-4.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-7.pdf}
-%      \begin{quote}
-%      \textbf{Source:} The author.
-%      \end{quote}
-%      \end{figure}
-%      
-%      \begin{figure}[htpb]
-%      \centering
-%      \footnotesize
-%      \caption{Cumulative returns with 15 assets (IBOV)}
-%      \label{fig:ibov:ret:15a}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-2.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-5.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-8.pdf}
-%      \begin{quote}
-%      \textbf{Source:} The author.
-%      \end{quote}
-%      \end{figure}
-%      
-%      \begin{figure}[htpb]
-%      \centering
-%      \footnotesize
-%      \caption{Cumulative returns with 20 assets (IBOV)}
-%      \label{fig:ibov:ret:20a}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-3.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-6.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-retac-9.pdf}
-%      \begin{quote}
-%      \textbf{Source:} The author.
-%      \end{quote}
-%      \end{figure}
-%      
-%      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%      % IBOv VOL
-%      
-%      \begin{figure}[htpb]
-%      \centering
-%      \footnotesize
-%      \caption{Volatility of returns with 10 assets (IBOV)}
-%      \label{fig:ibov:vol:10a}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-1.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-4.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-7.pdf}
-%      \begin{quote}
-%      \textbf{Source:} The author.
-%      \end{quote}
-%      \end{figure}
-%      
-%      \begin{figure}[htpb]
-%      \centering
-%      \footnotesize
-%      \caption{Volatility of returns with 15 assets (IBOV)}
-%      \label{fig:ibov:vol:15a}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-2.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-5.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-8.pdf}
-%      \begin{quote}
-%      \textbf{Source:} The author.
-%      \end{quote}
-%      \end{figure}
-%      
-%      \begin{figure}[htpb]
-%      \centering
-%      \footnotesize
-%      \caption{Volatility of returns with 20 assets (IBOV)}
-%      \label{fig:ibov:vol:20a}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-3.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-6.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-IBOV-vol-9.pdf}
-%      \begin{quote}
-%      \textbf{Source:} The author.
-%      \end{quote}
-%      \end{figure}
-%      
-%      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%      % SP500 FIGS
-%      \clearpage
-%      
-%      \begin{figure}[htpb]
-%      \centering
-%      \footnotesize
-%      \caption{Cumulative returns with 20 assets (SP500)}
-%      \label{fig:sp500:ret:20a}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-1.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-4.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-7.pdf}
-%      \begin{quote}
-%      \textbf{Source:} The author.
-%      \end{quote}
-%      \end{figure}
-%      
-%      \begin{figure}[htpb]
-%      \centering
-%      \footnotesize
-%      \caption{Cumulative returns with 30 assets (SP500)}
-%      \label{fig:sp500:ret:30a}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-2.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-5.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-8.pdf}
-%      \begin{quote}
-%      \textbf{Source:} The author.
-%      \end{quote}
-%      \end{figure}
-%      
-%      \begin{figure}[htpb]
-%      \centering
-%      \footnotesize
-%      \caption{Cumulative returns with 40 assets (SP500)}
-%      \label{fig:sp500:ret:40a}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-3.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-6.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-retac-9.pdf}
-%      \begin{quote}
-%      \textbf{Source:} The author.
-%      \end{quote}
-%      \end{figure}
-%      
-%      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%      % SP500 VOL
-%      
-%      \begin{figure}[htpb]
-%      \centering
-%      \footnotesize
-%      \caption{Volatility of returns with 20 assets (SP500)}
-%      \label{fig:sp500:vol:20a}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-1.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-4.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-7.pdf}
-%      \begin{quote}
-%      \textbf{Source:} The author.
-%      \end{quote}
-%      \end{figure}
-%      
-%      \begin{figure}[htpb]
-%      \centering
-%      \footnotesize
-%      \caption{Volatility of returns with 30 assets (SP500)}
-%      \label{fig:sp500:vol:30a}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-2.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-5.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-8.pdf}
-%      \begin{quote}
-%      \textbf{Source:} The author.
-%      \end{quote}
-%      
-%      \textbf{Source:} The author. \\
-%      \end{figure}
-%      
-%      \begin{figure}[htpb]
-%      \centering
-%      \footnotesize
-%      \caption{Volatility of returns with 40 assets (SP500)}
-%      \label{fig:sp500:vol:40a}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-3.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-6.pdf}
-%      \includegraphics[width=.7\linewidth]{./figs/fig-SP500-vol-9.pdf}
-%      \begin{quote}
-%      \textbf{Source:} The author.
-%      \end{quote}
-%      \end{figure}
+\begin{figure}[htpb]
+\centering
+\footnotesize
+\caption{\texttt{bwd.40} Portfolio (American Data)}
+\label{fig:spy:bwd.40}
+\includegraphics[width=.95\linewidth]{./figs/SP500-retac-bwd-40.pdf}
+\begin{quote}
+\textbf{Source:} The author.
+\end{quote}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  CONCLUSÃO THESIS
