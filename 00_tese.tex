@@ -1763,15 +1763,19 @@ The first is a Brazilian dataset of asset prices with daily frequency from Janua
 The second is an American dataset of asset prices with daily frequency from January 2010 to October 2017 (1950 days).
 
 % Results prelim
-Our results show that, in the Brazilian case, the lasso selection method outperforms the other methods by presenting similar Tracking Error volatility and higher mean returns.
+\red{
+Our \textbf{results} show that, in the Brazilian case, the lasso selection method outperforms the other methods by presenting similar Tracking Error volatility and higher mean returns.
 Note that this overperformance is due only to asset selection, not to the shrinkage of the portfolio weights that results from the constraints of the problem.
 This happens because the asset allocation is the same for all portfolios.
 More on the shrinkage of portfolio weights can be found in \citeonline{fan2012, jag-2003, brodie2009}.
+}
 
+\red{
 However, in the American case, the lasso method presents more volatility, but this is more than offset by its superior mean returns, which ultimately delivers better risk-adjusted performance.
 But, because our primary goal is to minimize Tracking Error volatility, this kind of risk-return tradeoff is not desirable in our case.
 Even though the backward and forward selection methods might be outperformed by the lasso, there are some instances where these methods are superior or comparable to the benchmark index. 
 This has to be highlighted, because those simple methods of feature selection receive too little attention in portfolio literature, even though they might bring good results.
+}
 
 % context
 \citeonline{tz2011} and \citeonline{liu-2009} point out that the majority of institutional investors are benchmarked by an index, e.g. the SP500.
@@ -2268,12 +2272,12 @@ In this section we present the results of our empirical analysis.
 We do not annualize any performance measure due to the problem of time aggregation pointed out in \citeonline{lo2002}.
 So the performance measures are all in daily terms.
 Each row of the tables below presents the statistics of a portfolio, and the first column of the rows presents the name of the portfolios.
-In the tables, \textbf{IBOV} is the Bovespa Index and \textbf{SP500} is the SP500 Index. 
+In the tables, IBOV is the Bovespa Index and SP500 is the SP500 Index. 
 Also, in each table,
-\textbf{bwd} stands for the portfolio formed using the Backward Selection Algorithm, 
-\textbf{fwd} stands for the portfolio formed using the Forward Selection Algorithm, and
-\textbf{las} stands for the portfolio formed using the Lasso Algorithm.
-The numbers after the letters denote the number of active positions allowed in each portfolio.
+\texttt{bwd} stands for the portfolio formed using the Backward Selection Algorithm, 
+\texttt{fwd} stands for the portfolio formed using the Forward Selection Algorithm, and
+\texttt{las} stands for the portfolio formed using the Lasso Algorithm.
+The numbers after the letters denote the maximum number of active positions allowed in each portfolio.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Description of Tables
@@ -2289,17 +2293,15 @@ The ideal result of an index tracking portfolio is to track the index perfectly 
 That would mean that our SR would also match the index's SR and we would have mimicked the index perfectly.
 Our optimization problem, however, does not take the mean returns into account. 
 It only minimizes the mean squared differences of returns.
-So our results might have more differences in the mean returns, but big differences in the volatility are \red{not to be tolerated}.
-\red{Even more ideal would be the case where we predict the actual transaction costs and stablish a margin of error just enough to zero the return difference.
-That should be the topic of further research}
+So our results might have more differences in the mean returns, but not in the volatility.
 
 Apropos of those mean results, we have to remember that trading and rebalancing the stocks in our portfolios generate transaction costs and those transaction costs will diminish our mean returns \cite{barber-2000}.
 In this way, we have to decide what we really want to evaluate, raw portfolio returns, or net portfolio returns.
 On the one hand, if we are evaluating raw portfolio returns and we have a difference of zero with the benchmark, we must remember that the transaction costs will change that difference to a negative number, when evaluating net portfolio returns.
 But if we have a positive difference with raw returns, the transaction costs might be enough to bring that difference to zero with net returns.
 Or, in a unlucky case, bring that difference to a negative number.
-On the other hand, if we are evaluating net returns, we have a ``what you see is what you get'' type o scenario, because we already accounted for the transaction costs.
-with that said we only evaluate the $p$-value tables of the net return portfolios.
+On the other hand, if we are evaluating net returns, we have more of a ``what you see is what you get'' type o scenario, because we already accounted for the transaction costs.
+With that said we only evaluate the $p$-value tables of the net return portfolios.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Description of PVAL TABLES
@@ -2322,16 +2324,16 @@ show the $p$-values of those statistics for the American dataset.
 % The Figures \ref{fig:ibov:vol:10a} through \ref{fig:ibov:vol:20a} and \ref{fig:sp500:vol:20a} through \ref{fig:sp500:vol:40a}, show rolling window (250 days) annualized standard deviation.
 % Those figures also show in pointed lines the Tracking Error standard deviation.
 
-Now, for the results that we are seeking to \textbf{AVOID}.
-For the mean of returns, we do not want a significant \textbf{negative} difference.
+Now, for the results that we are seeking to avoid.
+For the mean of returns, we do not want a significant negative difference.
 Actually, we do not want any negative difference at all,
 because it would mean that our portfolio has lower mean returns than the benchmark's. 
-Acceptable results are nonnegative nonsignificant differences.
-For the volatility of returns, we do not want a significant POSITIVE difference,
+Acceptable results are nonnegative and nonsignificant differences.
+For the volatility of returns, we do not want a significant positive difference,
 because that would mean a higher volatitily than the benchmark's.
-Acceptable results are nonpositive nonsignificant differences.
-For the Sharpe Ratio of returns, we do not want a significant NEGATIVE difference,
-because that would mean a lower Sharpe Ration than the benchmark's.
+Acceptable results are nonpositive and nonsignificant differences.
+For the Sharpe Ratio of returns, we do not want a significant negative difference,
+because that would mean a lower Sharpe Ratio than the benchmark's.
 Acceptable results are nonnegative nonsignificant differences.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2350,19 +2352,20 @@ In it we can observe that the \texttt{las.20} portfolio is the only portfolio th
 The \texttt{las.20} portfolio present negative (lower variance than the benchmark's) nonsignificant differences.
 All the other portfolios present $p$-values lower than $10\%$.
 Noteworthy portfolios are the \texttt{bwd.15}, \texttt{fwd.15}, \texttt{bwd.20}, and \texttt{fwd.20} portfolios.
-These portfolios present negative statistically significant differences.
+These portfolios present negative statistically significant differences, which means that they have statistically significant lower variance than the benchmark.
 
 % Mean portfolio returns: positive difference means bigger mean than the benchmark.
 The test of differences in mean portfolio net returns are presented in Table \ref{tab:pval:mu:rpn:ibov}.
 In this table no portfolio has $p$-value under $15\%$, which means that ther is no evidence of statistical significance in the difference of mean net returns.
-Notwithstanding, it might be worth to mention that the \texttt{bwd.10} and \texttt{fwd.10} portfolios do present negative (lower mean than the benchmark's) differences.
-All other differences are nonnegative.
+Notwithstanding, it might be worth to mention that the \texttt{bwd.10} and \texttt{fwd.10} portfolios do present negative (lower mean than the benchmark's) differences; whereas all other differences are nonnegative.
 
 % Figures
 It would be interesting to see figures of the returns and volatility of all the portfolios.
-However, that would take an inordinate amount of space, so for the Brazilian dataset, we only show the figures of the \texttt{las.20} portfolio (Figure \ref{fig:ibov:las.20}), because this is the only portfolio to not have any evidence of statistical significance in any difference.
-We also show the figures of the \texttt{bwd.10} portfolio (Figure \ref{fig:ibov:bwd.10}), because it has the highest negative difference in Sharpe Ratio.
-Finally, we show the figure of the \texttt{bwd.20} portfolio (Figure \ref{fig:ibov:bwd.20}), because it has the highest negative difference in variance.
+However, that would take an inordinate amount of space.
+So, for the Brazilian dataset, we only show a few selected figures of portfolios.
+The \texttt{las.20} portfolio (Figure \ref{fig:ibov:las.20}), because this is the only portfolio to not have any evidence of statistical significance in any difference.
+The \texttt{bwd.10} portfolio (Figure \ref{fig:ibov:bwd.10}), because it has the highest negative difference in Sharpe Ratio.
+Finally, the \texttt{bwd.20} portfolio (Figure \ref{fig:ibov:bwd.20}), because it has the highest negative difference in variance.
 
 % Summary
 In summary, for the Brazilian dataset, the index tracking with asset selection did not find portfolios with significant statistical difference in the means, but did find portfolios with significant statistical differences in the log-variances.
@@ -2390,12 +2393,10 @@ The lasso portfolios are consistently nonsignificant and nonnegative (mean portf
 In the quarterly rebalancing frequency, all differences are nonsignificant.
 
 % Figures
-Once more, it would be interesting to see figures of the returns and volatility of all the portfolios.
-However, that would take an inordinate amount of space.
-Because of this, for the American dataset, we only show the figure of the
-\texttt{las.20} portfolio (Figure \ref{fig:spy:las.20}), because it has the highest positive difference in the variance and the Sharpe Ratio.
-We also show the figure of the \texttt{fwd.20} portfolio (Figure \ref{fig:spy:fwd.20}), because of its poor performance.
-Finally, we show the figure of the \texttt{bwd.40} portfolio (Figure \ref{fig:spy:bwd.40}), because in its quarterly rebalancing form it is the one of the two portfolios to not show any evidence of statistical significance (in this rebalancing frequency).
+Once more, we only show the figures of a few selected portfolios to save space.
+The \texttt{las.20} portfolio (Figure \ref{fig:spy:las.20}), because it has the highest positive difference in the variance and the Sharpe Ratio.
+The \texttt{fwd.20} portfolio (Figure \ref{fig:spy:fwd.20}), because of its poor performance.
+The \texttt{bwd.40} portfolio (Figure \ref{fig:spy:bwd.40}), because in its quarterly rebalancing form it is the one of the two portfolios to not show any evidence of statistical significance (in this rebalancing frequency).
 
 % Summary
 For the American dataset, we can sum up the results as follows.
@@ -2407,7 +2408,7 @@ The lasso portfolios generally surpass the performance of the index, but costing
 \clearpage
 \section{CONCLUDING REMARKS} \label{sec:conc}
 
-Here, we presented portfolios formed by methods of variable selection to track a benchmark index.
+In this essay, we presented portfolios formed by methods of variable selection to track a benchmark index.
 We used two different datasets for two different countries.
 One is an American dataset to track the SP500 Index; the other is a Brazilian dataset to track the Bovespa Index.
 In the empirical exercise, we segregated the asset selection and the asset allocation phases to isolate the effect of asset selection for each method.
@@ -2418,7 +2419,7 @@ It only minimizes the mean squared differences of returns.
 So our results might have more differences in the mean returns, but less differences in the volatility.
 Further research should study the case where we predict the actual transaction costs and stablish a margin of error just enough to zero the return difference.
 
-In the results section we can observe that, for the brazilian dataset, the \texttt{las.20} portfolio is the portfolio that best tracks the Ibovespa index, and for the American dataset, the \texttt{bwd.40} with quarterly rebalancing is the best tracker, but with an honorable mention to the lasso portfolios.
+In the results section we can observe that, for the brazilian dataset, the \texttt{las.20} portfolio is the portfolio that best tracks the Ibovespa index, while for the American dataset, the \texttt{bwd.40} with quarterly rebalancing is the best tracker, but with an honorable mention to the lasso portfolios.
 The positive performance of the portfolios leads us to believe that simple variable selection methods can add value to index tracking portfolios.
 By simple methods we mean methods that are not computationally costly as Integer Quadratic Programming like in \citeonline{santos15,rbfin-it}.
 
