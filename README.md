@@ -2,11 +2,13 @@
 
 This repository contains the files to my PhD thesis.
 
+[Thesis pdf]
+(00_tese.pdf)
 
 # TODO
-- Review Abstracts
-- Review Intro and Conclusion
-- Add Ficha 
+- ~~Review Abstracts~~
+- ~~Review Intro and Conclusion~~
+- Add Ficha
 - Send to Library 
 
 ## Files to add 
@@ -15,8 +17,8 @@ This repository contains the files to my PhD thesis.
 - add figure folders
 
 ## IT-Featsel (Third Essay)
-- Review Introduction
-- Review Conclusion
+- ~~Review Introduction~~
+- ~~Review Conclusion~~
 
 
 
