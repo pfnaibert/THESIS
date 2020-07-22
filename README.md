@@ -2,8 +2,7 @@
 
 This repository contains the files to my PhD thesis.
 
-[Thesis pdf]
-(00_tese.pdf)
+[Thesis pdf](00_tese.pdf)
 
 # TODO
 - ~~Review Abstracts~~
