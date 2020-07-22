@@ -245,11 +245,10 @@ To that end we provide an empirical examination with two datasets: one American 
 To isolate the effect of the selection methods, we separate the asset selection and the asset allocation phase.
 In the asset allocation phase, we follow \citeonline{liu-2009}, and select minimum Tracking Error volatility portfolios.
 The selection methods used are the backward stepwise selection, forward stepwise selection, and the lasso.
-Our results show that, in the Brazilian case, the lasso selection method outperforms the other methods.
-It presents similar Tracking Error volatility and higher mean return, which leads to a better risk-adjusted performance.
+Our results show that, in the Brazilian case, the lasso selection method is the best tracker.
 In the American case, the lasso presents better risk-adjusted performance, but this is due to higher mean returns, not lower volatility.
 This is undesirable in our case.
-One highlight of this essay is that the forward and backward iteration algorithms (simple methods that receive little attention in the literature) perform well in selecting assets for index tracking.
+One highlight of this essay is that the best tracker for the American Dataset uses the backward iteration algorithm (a simple method that receive little attention in the literature).
 
 \noindent
 \textbf{Key-words}: Mean-Variance Analysis. Portfolio Optimization. Index Tracking. Performance Evaluation.
@@ -280,22 +279,20 @@ Para isso, oferecemos um estudo empírico com duas bases de dados, uma americana
 Para isolarmos o efeito dos métodos de seleção, nós separamos a fase de seleção de ativos da fase de alocação de ativos.
 Na fase de alocação de ativos, seguimos \citeonline{liu-2009} e selecionamos a carteira com a menor volatilidade de \textit{Tracking Error}.
 Os métodos de seleção utilizados são o \textit{backward stepwise selection}, o \textit{forward stepwise selection} e o lasso.
-Nossos resultados mostram que, no caso brasileiro, a seleção pelo método lasso supera os outros métodos.
-Ele apresenta volatilidade do \textit{Tracking Error} similar aos outros métodos com maior retorno médio, o que leva a um melhor desempenho ajustado pelo risco.
+Nossos resultados mostram que, no caso brasileiro, a seleção pelo método lasso é o melhor \textit{tracker}.
 No caso americano, o lasso apresenta melhor desempenho ajustado pelo risco, porém isto é devido a maiores retornos, não a menor volatilidade, o que não é desejável no nosso caso.
-Um destaque deste ensaio é que os algoritmos de iteração \textit{forward} e \textit{backward} (métodos simples que recebem pouca atenção na literatura) têm bom desempenho na seleção de ativos para o \textit{index tracking}.
+Um destaque deste ensaio é que o melhor \textit{tracker} para o caso americano é uma carteira que utiliza o algoritmo de iteração \textit{backward} (métodos simples que recebem pouca atenção na literatura).
 
 \noindent 
 \textbf{Palavras-chaves}: Média-Variância. Otimização de Carteiras. \textit{Index Tracking.} Avaliação de Desempenho.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % inserir lista de ilustrações
+% Incluir Lista apenas se houver 5 ou mais elementos %
 
 \cleardoublepage
 \listoffigures*
 
-\vspace{2em}
-\red{Incluir Lista apenas se houver 5 ou mais elementos}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % inserir lista de tabelas
@@ -1653,7 +1650,8 @@ where $\beta_{ols} = (X'X)^{-1}X'y$. If we use centered quantities of $X$ and $y
 which is equivalent to the result obtained in Proposition 1. Therefore, the equivalence of the minimum variance and minimum Tracking Error portfolios can also be established by means of a regression-based approach.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Memmel}
+% \subsection{Kempf and Memmel (2006)}
+\subsection{\citeonline{memmel-2006}}
 Because the index-tracking portfolio is equivalent to the GMVP, we can use the approach presented in \citeonline{memmel-2006} to determine the weights $w_{MV}$.
 In their original approach, they rewrite the weights of the GMVP as regression coefficients.
 
@@ -1763,19 +1761,20 @@ The first is a Brazilian dataset of asset prices with daily frequency from Janua
 The second is an American dataset of asset prices with daily frequency from January 2010 to October 2017 (1950 days).
 
 % Results prelim
-\red{
-Our \textbf{results} show that, in the Brazilian case, the lasso selection method outperforms the other methods by presenting similar Tracking Error volatility and higher mean returns.
-Note that this overperformance is due only to asset selection, not to the shrinkage of the portfolio weights that results from the constraints of the problem.
-This happens because the asset allocation is the same for all portfolios.
+% \clearpage
+% \paragraph*{Results}
+Our results show that, in general more active positions in the portfolio helps index tracking performance. 
+That was already expected.
+Other general conclusion is that the quarterly rebalancing delivers better performance.
+Now for the more specific results, in the Brazilian case, the lasso selection method, specially the portfolio with at most $20$ active positions, better tracks the Bovespa index.
+Note that this is due only to asset selection, not to the shrinkage of the portfolio weights that results from the constraints of the problem.
+This happens because the asset allocation method is the same for all portfolios.
 More on the shrinkage of portfolio weights can be found in \citeonline{fan2012, jag-2003, brodie2009}.
-}
-
-\red{
-However, in the American case, the lasso method presents more volatility, but this is more than offset by its superior mean returns, which ultimately delivers better risk-adjusted performance.
+In the American case, the backward iteration portfolio with at most $40$ assets and quarterly rebalancing is the portfolio that better tracks the benchmark.
+And even though the lasso method tracks the benchmark well in terms of mean returns, it presents more volatility.
 But, because our primary goal is to minimize Tracking Error volatility, this kind of risk-return tradeoff is not desirable in our case.
-Even though the backward and forward selection methods might be outperformed by the lasso, there are some instances where these methods are superior or comparable to the benchmark index. 
 This has to be highlighted, because those simple methods of feature selection receive too little attention in portfolio literature, even though they might bring good results.
-}
+% \clearpage
 
 % context
 \citeonline{tz2011} and \citeonline{liu-2009} point out that the majority of institutional investors are benchmarked by an index, e.g. the SP500.
@@ -2070,7 +2069,7 @@ The forward stepwise selection uses a series of OLS regressions to select the as
 It starts with a null model with no predictor, then we add one predictor at a time to the model until all predictors are added.
 More specifically, at each step the variable that provides the best fit is added to the model.
 
-\red{Algorithm}
+% \red{Algorithm}
 
 %=======================================================================
 \subsection{Backward Stepwise Selection}
@@ -2078,7 +2077,7 @@ More specifically, at each step the variable that provides the best fit is added
 In opposition to the forward stepwise selection, the backward stepwise selection starts with the full OLS model, which contains all $N$ predictors available.
 Then the least useful predictors are removed, one at a time, until we reach a model with the desired $p$ predictors.
 
-\red{Algorithm}
+% \red{Algorithm}
 
 The forward and backward stepwise selections result in a set of models, each of which contains a subset of $p$ predictors.
 Usually, the researcher determines which of the models in the set of models is the best.
@@ -2265,7 +2264,7 @@ Their framework relies on the fact that those performance measures are smooth fu
 We use the circular block bootstrap of \citeonline{pr92} with block length $2, 4, 6, 8$, and $10$ to find $p$-values of the differences in performance measures.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
+% \clearpage
 \section{RESULTS} \label{sec:results:it}
 
 In this section we present the results of our empirical analysis.
@@ -2283,13 +2282,13 @@ The numbers after the letters denote the maximum number of active positions allo
 % Description of Tables
 
 Tables \ref{tab:ibov:rps} and \ref{tab:spy5:rps} show statistics of the Brazilian and American datasets, respectively.
-The presented statistics are: Mean, Standard Deviation (SD), Sharpe Ratio (SR), and correlation with the index (CORR) for the raw and net portfolio returns of each policy and each rebalancing frequency: monthly (Panel A), bimonthly (Panel B), and quarterly (Panel C). 
+The presented statistics are: Mean, Standard Deviation (SD), Sharpe Ratio (SR), and correlation with the benchmark index (CORR) for the raw and net portfolio returns of each policy and each rebalancing frequency: monthly (Panel A), bimonthly (Panel B), and quarterly (Panel C). 
 For the net portfolio returns, we used transaction costs equal to $50bp$ as in \citeonline{dgu2009}.
 The Tables also show the Turnover (TO), Gross Exposure (Gross), Short Interest (Short), and Active Positions (Active).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Description of the Desired results for oos tables
-The ideal result of an index tracking portfolio is to track the index perfectly with zero difference in the mean and in the volatility.
+The ideal result of an index tracking portfolio is to track the benchmark index perfectly with zero difference in the mean and in the volatility.
 That would mean that our SR would also match the index's SR and we would have mimicked the index perfectly.
 Our optimization problem, however, does not take the mean returns into account. 
 It only minimizes the mean squared differences of returns.
@@ -2405,7 +2404,7 @@ The \texttt{bwd.40} portfolio with quarterly rebalancing tracks the SP500 index 
 The lasso portfolios generally surpass the performance of the index, but costing a higher volatility and tracking error.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
+% \clearpage
 \section{CONCLUDING REMARKS} \label{sec:conc}
 
 In this essay, we presented portfolios formed by methods of variable selection to track a benchmark index.
@@ -2419,7 +2418,7 @@ It only minimizes the mean squared differences of returns.
 So our results might have more differences in the mean returns, but less differences in the volatility.
 Further research should study the case where we predict the actual transaction costs and stablish a margin of error just enough to zero the return difference.
 
-In the results section we can observe that, for the brazilian dataset, the \texttt{las.20} portfolio is the portfolio that best tracks the Ibovespa index, while for the American dataset, the \texttt{bwd.40} with quarterly rebalancing is the best tracker, but with an honorable mention to the lasso portfolios.
+In the results section we can observe that, for the Brazilian dataset, the \texttt{las.20} portfolio is the portfolio that best tracks the Bovespa index, while for the American dataset, the \texttt{bwd.40} with quarterly rebalancing is the best tracker, but with an honorable mention to the lasso portfolios.
 The positive performance of the portfolios leads us to believe that simple variable selection methods can add value to index tracking portfolios.
 By simple methods we mean methods that are not computationally costly as Integer Quadratic Programming like in \citeonline{santos15,rbfin-it}.
 
@@ -2555,9 +2554,10 @@ The algorithms we use are the backward iteration, forward iteration, and lasso r
 To isolate the effect of the selection algorithms, we separate the asset selection phase from the asset allocation phase.
 In the asset allocation phase we follow \citeonline{liu-2009} and find portfolios that minimize the Tracking Error volatility from a chosen benchmark index, without regard for the size of the Tracking Error mean.
 We use two different datasets for the empirical study; one is an American dataset from January 2010 to October 2017 where we try to follow the SP500 Index; the other is a Brazilian dataset from January 1999 to December 2010 where we try to follow the Bovespa Index.
-The results we find is that for the Brazilian case the algorithms deliver similar Tracking Error volatility, but the lasso delivers higher returns, which leads to a higher risk-adjusted performance.
+% \clearpage
+The results we find is that for the Brazilian case the lasso is the better tracker of the Bovespa Index.
 For the American case, the lasso also delievers better risk-adjusted performance, but with higher volatility than the other methods.
-This is undesirable in our case, so we favor the other methods for the American case.
+So the better tracker is the backward iteration method with quarterly rebalancing.
 It is important to highlight that the other methods do not receive much attention in the literature, even though they deliver good results and have rather simple ideas in their basis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
