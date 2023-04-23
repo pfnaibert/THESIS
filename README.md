@@ -5,7 +5,7 @@ Essays in Portfolio Optimization
 
 This repository contains the files to my PhD thesis.
 
-The thesis can be found in the followin [link](00_tese.pdf)
+The thesis can be found in the following [link](00_tese.pdf)
 
 ## TODO
 
